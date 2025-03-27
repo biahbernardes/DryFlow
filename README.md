@@ -1,6 +1,6 @@
 # DryFlow
 
-Monitoramento preventivo de umidade em compressores de ar em peqeunas oficinas especializadas em pintura automotiva
+Monitoramento preventivo de umidade em compressores de ar em peqeunas oficinas especializadas em pintura automotiva.
 
 ## 📋 Objetivo do Projeto
 Efetuar um controle contínuo da umidade, possibilitando intervenções rápidas para evitar falhas recorrentes e garantir o funcionamento eficiente dos equipamentos.
