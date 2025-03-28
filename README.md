@@ -34,7 +34,7 @@ Desenvolvido por Equipe DryFlow para o Trabalho de Pesquisa e Inovação da Spri
 
 - [Beatriz B. C. da Silva](https://www.linkedin.com/in/beatrizbernardess)
 - [Eduardo K. de Figueiredo](https://github.com/)
-- [Gustavo K. S. Suzuki](https://github.com/)
-- [Gustavo M. de Oliveira](http://www.linkedin.com/in/)
-- [Lucas H. Tsuzuku](https://www.linkedin.com/in/lucas-hideaki/)
-- [Maria Eduarda dos S. Candido](https://www.linkedin.com/in/)
+- [Gustavo K. S. Suzuki](https://github.com/gustavokeniti/)
+- [Gustavo M. de Oliveira](https://github.com/gustamuniz7/)
+- [Lucas H. Tsuzuku](https://www.linkedin.com/in/lucas-hideaki)
+- [Maria Eduarda dos S. Candido](https://github.com/maria-candidoo)
