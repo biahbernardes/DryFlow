@@ -37,4 +37,4 @@ Desenvolvido por Equipe DryFlow para o Trabalho de Pesquisa e Inovação da Spri
 - [Gustavo K. S. Suzuki](https://github.com/gustavokeniti)
 - [Gustavo M. de Oliveira](https://github.com/gustamuniz7)
 - [Lucas H. Tsuzuku](https://www.linkedin.com/in/lucas-hideaki)
-- [Maria Eduarda dos S. Candido](https://github.com/maria-candidoo)
+- [Maria Eduarda dos S. Candido](https://github.com/maria-candidooo)
