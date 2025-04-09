@@ -10,8 +10,7 @@ email varchar(50) not null
 
 create table oficina (
 idOficina int primary key auto_increment,
-qtdCompressor int not null,
-qtdFuncionario int not null,
+nomeOficina varchar(45) not null,
 fkempresa int not null,
 constraint fk_empresa foreign key (fkempresa) references empresa(idEmpresa)
 );
@@ -51,7 +50,8 @@ constraint fk_telOficina foreign key (fkTelOficina) references oficina(idOficina
 
 create table compressor (
 idCompressor int primary key auto_increment,
-capacidadeUmiMax dec(5,2) not null,
+modelo varchar(45) not null,
+capacidadeUmiMax int not null,
 statusCompressor varchar(20) not null,
 fkCompOficina int not null,
 constraint fk_compOficina foreign key (fkCompOficina) references oficina(idOficina),
@@ -88,11 +88,11 @@ insert into empresa (cnpj, nomeFantasia, email) values
 ('22233344000102', 'Empresa D', 'contato@empresaD.com');
 
 -- Inserir Oficinas
-insert into oficina (qtdCompressor, qtdFuncionario, fkempresa) values
-(10, 5, 1), 
-(15, 7, 2), 
-(20, 9, 3),
-(12, 6, 4);
+insert into oficina (nomeOficina, fkempresa) values
+('Oficina A', 1), 
+('Oficina B', 2), 
+('Oficina C', 3),
+('Oficina D', 4);
 
 -- Inserir Endereços para Empresas (sem associar à oficina)
 insert into endereco (logradouro, rua, numero, cidade, cep, fkEndOficina, fkEndEmpresa) values
@@ -131,11 +131,11 @@ insert into telefones (numero, fkTelFuncionario, fkTelEmpresa, fkTelOficina) val
 ('2199999888', NULL, NULL, 4);
 
 -- Inserir Compressores
-insert into compressor (capacidadeUmiMax, statusCompressor, fkCompOficina) values
-(60.00, 'ativo', 1),
-(75.00, 'ativo', 2),
-(50.00, 'inativo', 3),
-(80.00, 'ativo', 4);
+insert into compressor (modelo, capacidadeUmiMax, statusCompressor, fkCompOficina) values
+('Modelo A', 60, 'ativo', 1),
+('Modelo B', 75, 'ativo', 2),
+('Modelo C', 50, 'inativo', 3),
+('Modelo D', 80, 'ativo', 4);
 
 -- Inserir Sensores
 insert into sensor (fkcompressor) values
