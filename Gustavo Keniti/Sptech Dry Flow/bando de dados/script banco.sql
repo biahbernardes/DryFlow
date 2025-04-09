@@ -145,7 +145,7 @@ insert into sensor (fkcompressor) values
 (4);
 
 -- Inserir Registros de Sensor
-insert into registrosSensor (umidaedRegistrada, dtHrRegistrada, fksensor) values
+insert into registrosSensor (umidadeRegistrada, dtHrRegistrada, fksensor) values
 (55, '2025-04-07 08:00:00', 1),
 (80, '2025-04-07 09:00:00', 2),
 (40, '2025-04-07 10:00:00', 3),
