@@ -64,9 +64,9 @@ fkcompressor int not null,
 constraint fk_compressor foreign key (fkcompressor) references compressor(idCompressor)
 );
 
-create table registrosSensor (
+create table registrossensor (
 idRegistro int primary key auto_increment,
-umidaedRegistrada dec(5,2) not null,
+umidadeRegistrada int not null,
 dtHrRegistrada datetime not null,
 fksensor int not null,
 constraint fk_sensor foreign key (fksensor) references sensor(idSensor)
@@ -75,9 +75,9 @@ constraint fk_sensor foreign key (fksensor) references sensor(idSensor)
 create table alertas (
 idAlerta int primary key auto_increment,
 dtHrAlerta datetime not null,
-umidAlerta dec(5,2),
+umidAlerta int,
 fkalerta int not null,
-constraint fk_alerta foreign key (fkalerta) references registrosSensor(idRegistro)
+constraint fk_alerta foreign key (fkalerta) references registrossensor(idRegistro)
 );
 
 -- Inserir Empresas
@@ -146,12 +146,12 @@ insert into sensor (fkcompressor) values
 
 -- Inserir Registros de Sensor
 insert into registrosSensor (umidaedRegistrada, dtHrRegistrada, fksensor) values
-(55.00, '2025-04-07 08:00:00', 1),
-(80.00, '2025-04-07 09:00:00', 2),
-(40.00, '2025-04-07 10:00:00', 3),
-(85.00, '2025-04-07 11:00:00', 4);
+(55, '2025-04-07 08:00:00', 1),
+(80, '2025-04-07 09:00:00', 2),
+(40, '2025-04-07 10:00:00', 3),
+(85, '2025-04-07 11:00:00', 4);
 
 -- Inserir Alertas
 insert into alertas (dtHrAlerta, umidAlerta, fkalerta) values 
-('2025-04-07 12:30:00', 80.00, 2),
-('2025-04-07 13:30:00', 85.00, 4);
+('2025-04-07 12:30:00', 80, 2),
+('2025-04-07 13:30:00', 85, 4);
