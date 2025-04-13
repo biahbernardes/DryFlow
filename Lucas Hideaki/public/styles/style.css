@@ -286,6 +286,7 @@ body {
 }
 
 .loginButton {
+  margin-top: 2%;
   background-color: #9b9b9b;
   color: #000000;
   width: 40%;
@@ -296,4 +297,9 @@ body {
   border-radius: 50px;
   font-size: 20px;
   text-decoration: none;
+}
+
+/* Parte cadastro */
+.cadastro {
+  height: 750px;
 }
