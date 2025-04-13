@@ -87,3 +87,29 @@ body {
   text-decoration: none;
   color: #000000;
 }
+
+/* Parte do Social */
+
+.social .container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.social .boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.social .box {
+  height: 100%;
+  width: 50%;
+  padding: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
