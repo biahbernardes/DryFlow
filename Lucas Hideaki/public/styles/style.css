@@ -16,7 +16,7 @@ body {
 
 .header {
   margin: 0;
-  background-color: grey;
+  background-color: #9b9b9b;
 }
 
 .header .container {
@@ -44,9 +44,9 @@ body {
 /* Parte do Banner */
 
 .banner {
-  height: 750px;
   color: #ffffff;
   background-image: url(../assets/banner.png);
+  background-size: cover;
 }
 
 .banner .container {
@@ -74,6 +74,16 @@ body {
 }
 
 .boxButtons {
+  margin: 2%;
+  padding: 2%;
+  background-color: #9b9b9b;
+  border: 1px solid #9b9b9b;
+  border-radius: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+  width: 40%;
+  font-size: 20px;
+  text-decoration: none;
+  color: #000000;
 }
