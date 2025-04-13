@@ -42,6 +42,8 @@ body {
 }
 
 .boxes {
+  margin-top: 5%;
+  margin-bottom: 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,8 +120,6 @@ body {
 
 .diagrama .boxes {
   flex-direction: column;
-  margin-top: 5%;
-  margin-bottom: 5%;
 }
 
 .diagrama .box_1 {
@@ -128,6 +128,36 @@ body {
   justify-content: space-between;
 }
 
+.diagrama .box_1 a {
+  background-color: #000000;
+  color: #ffffff;
+  width: 50%;
+  text-align: center;
+  padding: 5%;
+  align-self: center;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+.diagrama .box_1_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .diagrama .box_2 img {
   width: 100%;
+}
+
+/* Parte do dht11 */
+
+.dht11 {
+  background-color: #141414;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.dht11 img {
+  width: 75%;
+  border-radius: 50px;
 }
