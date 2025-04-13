@@ -8,6 +8,12 @@ body {
   margin: 0;
 }
 
+.container {
+  width: 80%;
+  display: flex;
+  margin: auto;
+}
+
 .header {
   margin: 0;
   background-color: grey;
@@ -25,12 +31,6 @@ body {
   width: 100%;
 }
 
-.container {
-  width: 80%;
-  display: flex;
-  margin: auto;
-}
-
 .navbar {
   padding: 0px;
 }
@@ -39,4 +39,41 @@ body {
   text-decoration: none;
   color: #ffffff;
   font-weight: 500;
+}
+
+/* Parte do Banner */
+
+.banner {
+  height: 750px;
+  color: #ffffff;
+  background-image: url(../assets/banner.png);
+}
+
+.banner .container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.banner .boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.banner .box {
+  height: 100%;
+  width: 50%;
+  padding: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxButtons {
+  display: flex;
+  align-items: center;
 }
