@@ -221,6 +221,10 @@ body {
   font-size: 25px;
 }
 
+.footer .box1 {
+  text-align: justify;
+}
+
 #img_local {
   width: 400px;
 }
