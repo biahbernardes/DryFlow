@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login | Dryflow</title>
+    <title>Home | Dryflow</title>
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
@@ -11,13 +11,13 @@
       <div class="container">
         <ul class="navbar">
           <li>
-            <a href="">SERVIÇOS</a>
+            <a href="./index.html">SERVIÇOS</a>
           </li>
           <li>
-            <a href="">SOBRE NÓS</a>
+            <a href="./index.html">SOBRE NÓS</a>
           </li>
           <li>
-            <a href=""
+            <a href="./index.html"
               ><img src="./assets/logo_dryflow_somenteLogo_semfundo.png" alt=""
             /></a>
           </li>
@@ -25,35 +25,21 @@
             <a href="./login.html">LOGIN</a>
           </li>
           <li>
-            <a href="">SUPORTE</a>
+            <a href="./dashboard.html">SUPORTE</a>
           </li>
         </ul>
       </div>
     </div>
-    <div class="banner">
+    <div class="login">
       <div class="container">
         <div class="boxes">
-          <div class="box">
-            <h1>Eficiência e Qualidade na Pintura Automotiva</h1>
+          <div class="box box_1">
+            <h1>Que bom tê-lo de volta!</h1>
             <p>
-              Você já parou para pensar em quanto tempo e dinheiro sua oficina
-              perde devido à umidade no sistema de ar comprimido? Retrabalho,
-              desperdício de tinta e falhas na pintura são problemas comuns que
-              afetam a qualidade do serviço e a satisfação dos clientes.
+              Ainda não criou uma conta na Dry Flow? clique no botão a baixo e
+              faça o seu cadastro!
             </p>
-            <p>
-              Com a Flow, sua oficina ganha uma solução inteligente para
-              monitoramento da umidade, garantindo pinturas impecáveis, redução
-              de custos e maior produtividade.
-            </p>
-          </div>
-
-          <div class="box">
-            <a href="./login.html" class="boxButtons">
-              <img src="./assets/profileIcon.png" alt="Pessoa" />
-              <p>Login</p>
-            </a>
-            <a href="./login.html" class="boxButtons">
+            <a href="./cadastro.html" class="boxButtons">
               <img
                 src="./assets/profileCadastroIcon.png"
                 alt="Pessoa para Cadastro"
@@ -61,10 +47,23 @@
               <p>Cadastro</p>
             </a>
           </div>
+
+          <div class="box box_2">
+            <div class="formulario">
+              <p>Email</p>
+              <input type="text" id="ipt_login" />
+              <p>Senha</p>
+              <input type="text" id="ipt_senha" />
+
+              <a href="./dashboard.html" class="loginButton">
+                <img src="./assets/entrarIcon.png" alt="portaEntrar" />
+                <p>Entrar</p>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
     <div class="footer">
       <div class="container">
         <div class="boxes">

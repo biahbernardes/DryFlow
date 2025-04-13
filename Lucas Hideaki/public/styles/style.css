@@ -33,6 +33,22 @@ body {
   align-items: center;
 }
 
+.boxButtons {
+  margin: 2%;
+  padding: 2%;
+  background-color: #9b9b9b;
+  border: 1px solid #9b9b9b;
+  opacity: 50%;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 40%;
+  font-size: 20px;
+  text-decoration: none;
+  color: #000000;
+}
+
 /* Parte do header */
 
 .header {
@@ -79,22 +95,6 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.boxButtons {
-  margin: 2%;
-  padding: 2%;
-  background-color: #9b9b9b;
-  border: 1px solid #9b9b9b;
-  opacity: 50%;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 40%;
-  font-size: 20px;
-  text-decoration: none;
-  color: #000000;
 }
 
 /* Parte do Social */
@@ -230,3 +230,62 @@ body {
 }
 
 /* Parte login */
+
+.login {
+  color: #ffffff;
+  background-image: url(../assets/banner.png);
+  background-size: cover;
+}
+
+.login .container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.login .box_1 {
+  text-align: center;
+}
+
+.login .box_2 {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 50px;
+  box-shadow: -10px -10px rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  width: 100%;
+}
+
+.formulario p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.formulario input {
+  border: #000000 solid 3px;
+  border-radius: 50px;
+  font-size: 20px;
+  height: 5px;
+  padding: 20px;
+}
+
+.loginButton {
+  margin-top: 5%;
+  padding: 1%;
+  background-color: #9b9b9b;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+  text-decoration: none;
+  color: #000000;
+  width: 50%;
+  align-self: center;
+}
