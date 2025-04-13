@@ -41,6 +41,23 @@ body {
   font-weight: 500;
 }
 
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.box {
+  height: 100%;
+  width: 50%;
+  padding: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Parte do Banner */
 
 .banner {
@@ -53,23 +70,6 @@ body {
   height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-}
-
-.banner .boxes {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.banner .box {
-  height: 100%;
-  width: 50%;
-  padding: 2.5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -97,19 +97,19 @@ body {
   align-items: center;
 }
 
-.social .boxes {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+/* Parte da missao */
+
+.missao {
+  color: #ffffff;
+  background-image: url(../assets/missao.png);
+  background-size: cover;
 }
 
-.social .box {
-  height: 100%;
-  width: 50%;
-  padding: 2.5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.missao .boxes {
+  justify-content: space-around;
+}
+
+.missao .box {
+  text-align: center;
+  width: 20%;
 }
