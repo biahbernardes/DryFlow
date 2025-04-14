@@ -592,7 +592,7 @@ span {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: fit-content;
+    height: 890px;
     background: linear-gradient(180deg, rgba(51, 11, 11, 0.8) 0%, rgba(92, 6, 6, 0.7) 35%, rgba(71, 28, 28, 0.6) 100%), url("assets/banner1.jpg");
     background-size: cover;
     background-position: center;
