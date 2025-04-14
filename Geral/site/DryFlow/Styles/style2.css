@@ -1,139 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
-
-
-body{
-    font-family: "Montserrat";
-    margin: 0;
-    background-color: #990000;
-    
+* {
+    font-family: "Roboto", "Barlow", Arial, Helvetica, sans-serif;
 }
 
-.container{
+.header .logo {
+    height: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(70, 4, 4);
+}
+
+.container {
     width: 80%;
     margin: auto;
     display: flex;
-
 }
 
-.header .container{
+.header .container {
     justify-content: space-between;
 }
-.header{
-    background-color: rgba(115, 115, 115, 0.371) ;
-    position: fixed;
-    width: 100%;
-    z-index: 50;
+
+.header {
+    background-color: rgb(70, 4, 4);
 }
 
-.header .navbar{
-    color: black;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    
-}
-.navbar a{
+.header a {
     color: white;
-    text-decoration: none;
-    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+    text-decoration-line: none;
 }
 
-.header .container{
-    color: #990000;
-    margin-left: 10px;
-    
-}
-
-/* Login */
 .login {
-    height: 700px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    height: 830px;
     width: 100%;
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-        url("../Imgs/fundo-dryflow.jpg");
+    background: linear-gradient(180deg, rgba(58, 3, 3, 0.37) 0%, rgba(19, 2, 2, 0.644) 35%, rgba(56, 17, 17, 0.89) 100%), url("../Imgs/fundo-dryflow.jpg");
     background-size: cover;
-    background-position: center bottom;
+    background-position: center;
+    display: flex;
 }
 
-.card-login {
-    
-    background-color: #f1f1f1;
-    padding: 30px 40px;
-    border-radius: 10px;
+.login .container {
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
     text-align: center;
+}
+
+.login .container .mens {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 300px;
+}
+
+.login .container .mens h1 {
+    margin: 0;
+    color: white;
+    width: 70%;
+    font-size: 50px;
+}
+
+.login .container .mens a {
+    background-color: rgba(128, 128, 128, 0.637);
+    padding: 15px;
+    width: 200px;
+    border-radius: 30px;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 25px;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.575);
+}
+
+.login .container .mens a img {
+    height: 35px;
+}
+
+.login .nav {
+    background-color: rgba(128, 128, 128, 0.637);
+    width: 30%;
+    height: fit-content;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.575);
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.card-login h2 {
-    color: #990000;
-    margin-bottom: 20px;
+.login .nav p {
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    display: flex;
 }
 
-.formulario .campo {
-    margin-bottom: 20px;
-    text-align: center;
+.login .nav input {
+    width: 400px;
+    padding: 10px;
+    font-size: larger;
+    border-radius: 20px;
+    border: none;
+}
+
+.login .nav button {
+    background-color: rgba(128, 128, 128, 0.637);
+    padding: 15px;
+    width: 200px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 25px;
+    border: none;
+}
+
+.login .nav button:hover {
+    box-shadow: 0 0 30px;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.login .nav button:active {
+    transform: scale(1);
+}
+
+.login .nav-botao {
+    padding: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.formulario label {
-    display: flex;
-    margin-bottom: 5px;
-    color: #ff69b4;
+span {
     font-weight: bold;
-}
-
-.formulario input {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #990000;
-    border-radius: 5px;
-    outline: none;
-    box-sizing: border-box;
-}
-
-.botao {
-    width: 100%;
-    padding: 10px;
-    background-color: #990000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 16px;
- 
-}
-
-.botao:hover {
-    background-color: #990000;
+    font-size: 20px;
 }
 
 .footer {
-    background-color: black;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    border-top: 2px solid white;
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .footer .container {
-    justify-content: center;
-    font-size: 20px;
-    color: white;
-    flex-direction: column;
-  }
+    background-color: rgb(70, 4, 4);
+    height: 120px;
+    display: flex;
+}
 
-  .imagemrodape{
-    justify-content: center;
-  }
-  
+.footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footer .container p {
+    color: white;
+    font-weight: 600;
+    font-size: 19px;
+    display: flex;
+}
+
+.footer .container a {
+    margin-top: 20px;
+    height: 60px;
+    display: flex;
+}
