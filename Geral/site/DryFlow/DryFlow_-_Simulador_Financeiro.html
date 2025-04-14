@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro - Flow</title>
+    <link rel="stylesheet" href="Styles/style3.css">
+    
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+          <ul class="navbar">
+            
+            <li class="agora">
+              <a href="./dryflow-index.html">Início</a>
+            </li>
+            <li>
+              <a href="#">Simulador Financeiro</a>
+            </li>
+            <li><img src="../DryFlow/Imgs/logoDryFlow.png"></li>
+            <li>
+              <a href="./dryflow-login.html">Login</a>
+            </li>
+            <li>
+              <a href="./cadastro-dryflow.html">Cadastro</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <br>
+    <!--Background da página--> 
+    <div class="background-container"></div>
+
+    <!--Caixa de seleção das calculadoras--> 
+    <div class="container">
+        <h2>Selecione o simulador financeiro</h2>
+
+        <!--Cria um botão para selecionar a calculadora de gastos com retrabalho-->  
+        <button onclick="pintura()">Economia com Refação</button>
+        
+        <!--Cria um botão para selecionar a calculadora de manutenção--> 
+        <button onclick="manuntecao()">Economia com Manutenção</button>     
+          
+    </div>
+
+    <!--Div onde as calculadoras serão exibidas dinamicamente--> 
+    <div id="div_calculadoras"></div>
+    
+
+    <script>
+        /*Função para exibir a calculadora de economia com retrabalho*/
+        function pintura(){
+            div_calculadoras.innerHTML = 
+            `       
+            <div class="container">
+                <h2>Economia com Refação</h2>
+                <h3>Calcular possíveis gasto com refação de pintura de carros</h3>
+
+                <p>Número de carros pintados por mês</p>
+                <input type="number" id="ipt_numeroCarros" placeholder="Ex: 100">
+
+                <p>Custo de tinta por carro (R$)</p>
+                <input type="number" id="ipt_tinta" placeholder="Ex: 400">
+
+                <p>Porcentagem de retrabalho de pintura (%)</p>
+                <input type="number" id="ipt_porcentagem" placeholder="Ex: 20">
+
+                <p>Custo médio por retrabalho (R$)</p>
+                <input type="number" id="ipt_custoRetrabalho" placeholder="Ex: 100">
+                
+                <button onclick="calculoRetrabalho()">Calcular Economia</button>
+                
+                <div id="div_mensagem"></div>
+            </div>`;
+            
+        }
+
+        /*Função para exibir a calculadora de economia com manutenção*/
+        function manuntecao(){
+            div_calculadoras.innerHTML =
+            `   
+                <div class="container">
+                    <h2>Economia com Manutenção</h2>
+                    <h3>Calcular possíveis gastos com  a manuntenção dos compressores de ar</h3>
+
+                    <p>Quantidade de Compressores</p>
+                    <input type="number" id="ipt_quantidadeCompressores" placeholder="Ex: 10">
+
+                    <p>Custo de Manutenção Corretiva (R$)</p>
+                    <input type="number" id="ipt_custoCorretiva" placeholder="Ex: 5000">
+
+                    <p>Custo de Manutenção Preventiva (R$)</p>
+                    <input type="number" id="ipt_custoPreventiva" placeholder="Ex: 1000">
+
+                    <p>Custo de Parada de Produção (R$/hora)</p>
+                    <input type="number" id="ipt_custoParada" placeholder="Ex: 2000">
+
+                    <p>Tempo Médio de Parada (horas)</p>
+                    <input type="number" id="ipt_tempoParada" placeholder="Ex: 5">
+
+                    <button onclick="calculoManutencao()">Calcular Economia</button>
+
+                    <div id="div_mensagem2"></div>
+                </div>`;
+        }
+
+        /*Função para calcular a economia com retrabalho*/
+        function calculoRetrabalho(){
+            var numeroCarros = Number(ipt_numeroCarros.value);
+            var custoTinta = Number(ipt_tinta.value);
+            var porcentagem = Number(ipt_porcentagem.value);
+            var custoRetrabalho = Number(ipt_custoRetrabalho.value);
+
+            // Cálculo do custo total de retrabalho
+            var carrosRetrabalhados = numeroCarros * (porcentagem / 100); // Número de carros retrabalhados
+            var custoTotalRetrabalho = carrosRetrabalhados * (custoRetrabalho+custoTinta); 
+
+            // Economia estimada com Flow (redução de 20% no retrabalho)
+            var economia = custoTotalRetrabalho * 0.2;
+
+            // Exibição dos resultados com formatação
+            div_mensagem.innerHTML = `<br>🚀 <b>Economia estimada com Flow:</b> <br><span class="economia"><b>R$ ${economia.toFixed(2)}</b></span> por mês!<br>
+                                      📉 <b>Custo atual com refação:</b> <br><span class="gasto"><b>R$ ${custoTotalRetrabalho.toFixed(2)}</b></span> por mês!`;
+        }
+
+        /*Função para calcular a economia com manutenção*/
+        function calculoManutencao(){
+            var quantidadeCompressores = Number(ipt_quantidadeCompressores.value);
+            var custoCorretiva = Number(ipt_custoCorretiva.value);
+            var custoPreventiva = Number(ipt_custoPreventiva.value);
+            var custoParada = Number(ipt_custoParada.value);
+            var tempoParada = Number(ipt_tempoParada.value);
+            var custoFlow = 100;
+                    
+            // Cálculo do custo com manutenção corretiva
+            var gastoCorretiva = quantidadeCompressores * (custoCorretiva + (custoParada * tempoParada));
+
+            // Cálculo do custo com manutenção preventiva utilizando o sensor
+            var gastoPreventiva = quantidadeCompressores + (custoFlow + custoPreventiva);
+                    
+            // Exibição dos resultados com formatação
+            div_mensagem2.innerHTML = `<br>📉 <b>Manutenção corretiva do compressor sem o Flow:</b> <br><span class="gasto">R$ <b>${gastoCorretiva.toFixed(2)}</b></span><br>
+                                       🚀 <b>Manutenção preventiva do compressor com o Flow:</b> <br><span class="economia">R$ <b>${gastoPreventiva.toFixed(2)}</span></b>`;
+        }
+    </script>
+</body>
+</html>
