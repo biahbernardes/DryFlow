@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dryflow.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0"></script>
+</head>
+
+<body>
+    <div class="header-dashboard">
+        <div class="container">
+            <a class="a-header" href="index.html"><img class="logo" src="assets/logo.png"></a>
+        </div>
+    </div>
+
+    <div class="container-pai">
+        <h1>Dryflow Dashboard</h1>
+        <div class="container">
+            <div class="first-grafico">
+                <canvas id="linha"></canvas>
+            </div>
+            <div class="first-grafico">
+                <canvas id="barra"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" class="footer">
+        <div class="container">
+            <p>Dry Flow Solutions</p>
+            <a class="a-header" href="index.html"><img class="logo" src="assets/logo.png"></a>
+            <p>Ligue (11)12345-6789</p>
+        </div>
+    </div>
+</body>
+<script>
+    const graficoLinha = document.getElementById('linha');
+
+    new Chart(graficoLinha, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Umidade',
+                data: [20, 32, 46, 63, 76, 80],
+                borderColor: "blue",
+                backgroundColor: "blue",
+                borderWidth: 1
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Umidade %'
+                    },
+                    ticks: {
+                        callback: function (value) {
+                            return value + '%';
+                        }
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Horário'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Sensor D',
+                    font: {
+                        size: 18
+                    }
+                },
+                annotation: {
+                    annotations: {
+                        umidadeIdeal: {
+                            type: 'line',
+                            yMin: 50,
+                            yMax: 50,
+                            borderColor: 'red',
+                            borderWidth: 2,
+                            borderDash: [6, 4],
+                            label: {
+                                content: 'Limite Ideal',
+                                enabled: true,
+                                backgroundColor: 'red',
+                                color: 'white',
+                                position: 'end'
+                            }
+                        }
+                    }
+                }
+            },
+            interaction: {
+                mode: 'index',
+                intersect: false
+            }
+        }
+    });
+
+    const graficoBarra = document.getElementById('barra');
+
+    new Chart(graficoBarra, {
+        type: 'bar',
+        data: {
+            labels: ['Sensor A', 'Sensor B', 'Sensor C', 'Sensor D', 'Sensor E', 'Sensor F'],
+            datasets: [{
+                label: 'Umidade',
+                data: [30, 55, 21, 80, 42, 12],
+                borderColor: "blue",
+                backgroundColor: "blue",
+                borderWidth: 1,
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Umidade %'
+                    },
+                    ticks: {
+                        callback: function (value) {
+                            return value + '%';
+                        }
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Sensores'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Controle de umidade nos compressores',
+                    font: {
+                        size: 18
+                    }
+                },
+                annotation: {
+                    annotations: {
+                        umidadeIdeal: {
+                            type: 'line',
+                            yMin: 50,
+                            yMax: 50,
+                            borderColor: 'red',
+                            borderWidth: 2,
+                            borderDash: [6, 4],
+                            label: {
+                                content: 'Limite Ideal',
+                                enabled: true,
+                                backgroundColor: 'red',
+                                color: 'white',
+                                position: 'end'
+                            }
+                        }
+                    }
+                }
+            },
+            interaction: {
+                mode: 'index',
+                intersect: false
+            }
+        },
+        plugins: [Chart.registry.getPlugin('annotation')]
+    });
+</script>
+
+</html>
