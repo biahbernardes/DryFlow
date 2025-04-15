@@ -16,7 +16,7 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
   let poolBancoDados = mysql
     .createPool({
       host: "127.0.0.1",
-      user: "dryflow",
+      user: "administrador",
       password: "123456",
       database: "dryflow",
       port: 3306,
