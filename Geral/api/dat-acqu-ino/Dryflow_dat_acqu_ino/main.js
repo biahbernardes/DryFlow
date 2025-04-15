@@ -17,7 +17,7 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
     .createPool({
       host: "127.0.0.1",
       user: "administrador",
-      password: "123456",
+      password: "1234",
       database: "dryflow",
       port: 3307,
     })
