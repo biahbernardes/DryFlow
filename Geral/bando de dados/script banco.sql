@@ -63,14 +63,6 @@ fkcompressor int not null,
 constraint fk_compressor foreign key (fkcompressor) references compressor(idCompressor)
 );
 
-create table alertas (
-idAlerta int primary key auto_increment,
-dtHrAlerta datetime not null,
-umidAlerta dec(5,2),
-fkregistro int not null,
-constraint fk_alerta foreign key (fkalerta) references registrosSensor(idRegistro)
-);
-
 create table registrosSensor (
 idRegistro int primary key auto_increment,
 umidaedRegistrada dec(5,2) not null,
@@ -78,3 +70,12 @@ dtHrRegistrada datetime not null,
 fksensor int not null,
 constraint fk_sensor foreign key (fksensor) references sensor(idSensor)
 );
+
+create table alertas (
+idAlerta int primary key auto_increment,
+dtHrAlerta datetime not null,
+umidAlerta dec(5,2),
+fkregistro int not null,
+constraint fk_alerta foreign key (fkregistro) references registrosSensor(idRegistro)
+);
+
