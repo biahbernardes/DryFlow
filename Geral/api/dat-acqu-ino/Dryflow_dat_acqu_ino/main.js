@@ -19,7 +19,7 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
       user: "administrador",
       password: "123456",
       database: "dryflow",
-      port: 3306,
+      port: 3307,
     })
     .promise();
 
