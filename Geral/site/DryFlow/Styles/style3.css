@@ -53,7 +53,7 @@ width: 100%;
 
 }
 
-.navbar li {
+.navbar h5 {
     display: flex;
     align-items: center;
 }

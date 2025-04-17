@@ -20,10 +20,11 @@ body{
     justify-content: space-between;
 }
 .header{
-    background-color: rgba(73, 72, 72, 0.441) ;
+    background-color: rgba(0, 0, 0, 0.350) ;
     position: fixed;
     width: 100%;
     z-index: 50;
+    height: 100px;
 }
 
 .header .navbar{
@@ -84,13 +85,32 @@ body{
 
 .social{
     background-color: beige;
+    height: 550px;
+    justify-content: center;
+    display: flex; 
+    align-items: center;      
+    gap: 100px;               
+    padding: 0 40px;
+    text-align: center;
+    flex-wrap: wrap; 
 } 
+
+.box video{
+    border: solid black;
+    border-radius: 10px;
+}
 
 .boxes{
     width: 100%;
     display: flex;
     justify-content: center;
     height: 100%;
+    display: flex;
+    align-items: center;      
+    gap: 100px;               
+    padding: 0 40px;
+    text-align: center;
+    flex-wrap: wrap; 
 }
 
 .box{
@@ -101,11 +121,7 @@ body{
     align-items: center;
     text-align: center;
     padding: 50px;
-}
-.box img{
-    width: 100%;
-    justify-content: flex-end;
-
+    height: 40px;
 }
 
 .box h3{
@@ -115,18 +131,25 @@ body{
 }
 
 .valores{
-    height: 400px;
+    height: 700px;
     background-image: url("../Imgs/business-dryflow.png");
     background-size: cover;
     background-position: center;
+    display: flex;
+    justify-content: center;  
 }
 
-.valores h3{
+.valores h3 {
     color: white;
+    font-size: 24px;
+    margin-bottom: 16px;
 }
 
-.valores p{
+.valores p {
     color: white;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 450px;
 }
 
 .footer {
@@ -153,7 +176,10 @@ body{
 
   .sensores{
     background-color: beige;
-    height: 75%;
+    height: 450px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 
   .sensores h2{
@@ -162,5 +188,7 @@ body{
 
   .sensores img{
     width: 60%;
+    border: solid black 2px;
+    border-radius: 15px;
   }
 
