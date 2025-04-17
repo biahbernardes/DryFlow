@@ -85,8 +85,8 @@ body {
 .login .container .mens h1 {
     margin: 0;
     color: white;
-    width: 70%;
-    font-size: 50px;
+    width: 100%;
+    font-size: 70px;
 }
 
 .login .container .mens a {
