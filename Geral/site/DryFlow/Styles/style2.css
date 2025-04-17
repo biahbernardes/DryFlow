@@ -22,25 +22,39 @@ body {
     display: flex;
 }
 
-.header .container {
+.header .container{
     justify-content: space-between;
 }
-
-.header {
-    background-color: rgb(70, 4, 4);
+.header{
+    background-color: rgba(73, 72, 72, 0.441) ;
+    position: fixed;
+    width: 100%;
+    z-index: 50;
 }
 
-.header a {
-    color: white;
+.header .navbar{
+    color: black;
+    list-style-type: none;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    font-size: 25px;
-    text-decoration-line: none;
+    justify-content: space-evenly;
+    width: 100%;
+    
+}
+.navbar a{
+    color: white;
+    text-decoration: none;
+    
+}
+
+.header .container .titulo{
+    color: #990000;
+    margin-left: 10px;
+    
 }
 
 .login {
-    height: 830px;
+    height: 808px;
     width: 100%;
     background: linear-gradient(180deg, rgba(58, 3, 3, 0.37) 0%, rgba(19, 2, 2, 0.644) 35%, rgba(56, 17, 17, 0.89) 100%), url("../Imgs/fundo-dryflow.jpg");
     background-size: cover;
@@ -154,7 +168,7 @@ span {
 }
 
 .footer {
-    background-color: rgb(70, 4, 4);
+    background-color: rgb(0, 0, 0);
     height: 120px;
     display: flex;
 }
