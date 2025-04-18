@@ -83,7 +83,7 @@ values
 insert into funcionario(nome, email, senha, cargo, fkOficina, administrador)  
 values 
 ("Brando", "Bran0@gmail.com", "1234567", "Gerente", 1, null),  
-("Julia", "Juju@gamil.com", "654321", "Mecânico", 1, 2),  
+("Julia", "Juju@gamil.com", "654321", "Mecânico", 1, 1),  
 ("João Paulo", "JP@gmail.com", "sumido", "Gerente", 2, null),  
 ("Manoel", "Mano3l@gmail.com", "hello_world","Ajudante", 2, 3),  
 ("Rossim", "Ross@gmail.com", "o_banco_nunca_erra","Gerente", 3, null),  
