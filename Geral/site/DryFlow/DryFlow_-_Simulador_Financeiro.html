@@ -15,29 +15,26 @@
     <div class="container">
       <ul class="navbar">
 
-        <h5 class="agora">
           <a href="./dryflow-index.html">Início</a>
-        </h5>
-        <h5>
-          <a href="#">Simulador Financeiro</a>
-        </h5>
+          <a href="./dryflow-index.html#sobrenos">Sobre nós</a>
         <li><img src="../DryFlow/Imgs/logoDryFlow.png"></li>
-        <h5>
+
+          <a href="#">Simulador Financeiro</a>
+  
           <a href="./dryflow-login.html">Login</a>
-        </h5>
-        <h5>
-          <a href="./cadastro-dryflow.html">Cadastro</a>
-        </h5>
+      
       </ul>
     </div>
   </div>
+</div>
   <br>
   <br>
   <!--Background da página-->
-  <div class="background-container"></div>
+  <div class="background-container">
+
 
   <!--Caixa de seleção das calculadoras-->
-  <div class="container">
+  <div class="container-calculadora">
     <h2>Selecione o simulador financeiro</h2>
 
     <!--Cria um botão para selecionar a calculadora de gastos com retrabalho-->
@@ -45,7 +42,6 @@
 
     <!--Cria um botão para selecionar a calculadora de manutenção-->
     <button onclick="manuntecao()">Economia com Manutenção</button>
-
   </div>
 
   <!--Div onde as calculadoras serão exibidas dinamicamente-->
@@ -73,7 +69,7 @@
                 <p>Custo médio por retrabalho (R$)</p>
                 <input type="number" id="ipt_custoRetrabalho" placeholder="Ex: 100">
                 
-                <button onclick="calculoRetrabalho()">Calcular</button>
+                <button onclick="calculoRetrabalho()">Calcular Economia</button>
                 
                 <div id="div_mensagem"></div>
             </div>`;
@@ -107,6 +103,7 @@
 
                     <div id="div_mensagem2"></div>
                 </div>`;
+          
     }
 
     /*Função para calcular a economia com retrabalho*/
@@ -147,6 +144,7 @@
       div_mensagem2.innerHTML = `<br>📉 <b>Manutenção corretiva do compressor sem o Flow:</b> <br><span class="gasto">R$ <b>${gastoCorretiva.toFixed(2)}</b></span><br>
                                        🚀 <b>Manutenção preventiva do compressor com o Flow:</b> <br><span class="economia">R$ <b>${gastoPreventiva.toFixed(2)}</span></b>`;
     }
+     
   </script>
 </body>
 
