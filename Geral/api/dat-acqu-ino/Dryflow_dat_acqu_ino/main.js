@@ -16,7 +16,7 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
   let poolBancoDados = mysql
     .createPool({
       host: "127.0.0.1",
-      user: "administrador",
+      user: "SpOficina_api",
       password: "Dry#2025",
       database: "dryflow",
       port: 3307,
@@ -57,22 +57,23 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
       const sensorAnalogico = parseFloat(valores[1]);      
       */
       const sensorUmidade = parseInt(valores[0]);
-      const sensorDigital = parseInt(valores[1]);
+      // const sensorDigital = parseInt(valores[0]);
 
       // armazena os valores dos sensores nos arrays correspondentes
       valoresSensorUmidade.push(sensorUmidade);
-      valoresSensorDigital.push(sensorDigital);
+      // valoresSensorDigital.push(sensorDigital);
 
       // insere os dados no banco de dados (se habilitado)
       if (HABILITAR_OPERACAO_INSERIR) {
         // este insert irá inserir os dados na tabela "medida"
         await poolBancoDados.execute(
-          "INSERT INTO registrosSensor (umidadeRegistrada, dtHrRegistrada, fksensor) VALUES (?, current_timestamp, 1)",
+          "INSERT INTO registro_sensor (umidadeRegistrada, dtHrRegistrada, fksensor) VALUES (?, current_timestamp, 1)",
           [sensorUmidade]
         );
         console.log(
           "valores inseridos no banco: ",
-          sensorUmidade + ", " + sensorDigital
+          sensorUmidade
+          //  " + sensorDigital
         );
       }
     });
@@ -106,20 +107,21 @@ const servidor = (valoresSensorUmidade, valoresSensorDigital) => {
   app.get("/sensores/analogico", (_, response) => {
     return response.json(valoresSensorUmidade);
   });
-  app.get("/sensores/digital", (_, response) => {
-    return response.json(valoresSensorDigital);
-  });
+  // app.get("/sensores/digital", (_, response) => {
+  //   return response.json(valoresSensorDigital);
+  // });
 };
 
 // função principal assíncrona para iniciar a comunicação serial e o servidor web
 (async () => {
   // arrays para armazenar os valores dos sensores
   const valoresSensorUmidade = [];
-  const valoresSensorDigital = [];
+  // const valoresSensorDigital = [];
 
   // inicia a comunicação serial
-  await serial(valoresSensorUmidade, valoresSensorDigital);
+  await serial(valoresSensorUmidade);
 
   // inicia o servidor web
-  servidor(valoresSensorUmidade, valoresSensorDigital);
+  // valoresSensorDigital
+  servidor(valoresSensorUmidade);
 })();
