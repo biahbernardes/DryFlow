@@ -42,6 +42,11 @@ body{
     
 }
 
+.navbar a:hover {
+    color: #990000;
+}
+
+
 .header .container .titulo{
     color: #990000;
     margin-left: 10px;

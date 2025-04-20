@@ -19,6 +19,7 @@ body {
     background-size: cover;
     text-align: center;
     padding-top: 80px; /* espaço para o header fixo */
+    padding-bottom: 80px;
 }
 .header {
     width: 100%;
@@ -132,9 +133,15 @@ button:hover {
     width: 100%;
     max-width: 420px;
     border-radius: 15px;
-    background-color: rgba(0, 0, 0, 0.35); /* cor levemente escura, se quiser pode tirar */
-    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.35); /* cor levemente escura */
+    margin-bottom: 50px;
 }
+
+.label {
+    color: white;
+  }
+
+
 .economia {
     color: rgb(0, 150, 0);
 }

@@ -121,10 +121,13 @@
       var economia = custoTotalRetrabalho * 0.2;
 
       // Exibição dos resultados com formatação
-      div_mensagem.innerHTML = `<br>🚀 <b>Economia estimada com Flow:</b> <br><span class="economia"><b>R$ ${economia.toFixed(2)}</b></span> por mês!<br>
-                                      📉 <b>Custo atual com refação:</b> <br><span class="gasto"><b>R$ ${custoTotalRetrabalho.toFixed(2)}</b></span> por mês!`;
+      div_mensagem.innerHTML = `
+  <br>🚀 <span class="label"><b>Economia estimada com Flow:</b></span> <br>
+  <span class="economia"><b>R$ ${economia.toFixed(2)}</b></span> <span class="label">por mês!</span><br> 
+  📉 <span class="label"><b>Custo atual com refação:</b></span> <br>
+  <span class="gasto"><b>R$ ${custoTotalRetrabalho.toFixed(2)}</b></span> <span class="label">por mês!</span>
+`;
     }
-
     /*Função para calcular a economia com manutenção*/
     function calculoManutencao() {
       var quantidadeCompressores = Number(ipt_quantidadeCompressores.value);
@@ -141,10 +144,13 @@
       var gastoPreventiva = quantidadeCompressores + (custoFlow + custoPreventiva);
 
       // Exibição dos resultados com formatação
-      div_mensagem2.innerHTML = `<br>📉 <b>Manutenção corretiva do compressor sem o Flow:</b> <br><span class="gasto">R$ <b>${gastoCorretiva.toFixed(2)}</b></span><br>
-                                       🚀 <b>Manutenção preventiva do compressor com o Flow:</b> <br><span class="economia">R$ <b>${gastoPreventiva.toFixed(2)}</span></b>`;
+      div_mensagem2.innerHTML = `
+  <br>📉 <span class="label"><b>Manutenção corretiva do compressor sem o Flow:</b></span><br>
+  <span class="gasto">R$ <b>${gastoCorretiva.toFixed(2)}</b></span><br>
+  🚀 <span class="label"><b>Manutenção preventiva do compressor com o Flow:</b></span><br>
+  <span class="economia">R$ <b>${gastoPreventiva.toFixed(2)}</b></span>
+`;
     }
-     
   </script>
 </body>
 
