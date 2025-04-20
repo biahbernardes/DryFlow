@@ -133,7 +133,7 @@ button:hover {
     width: 100%;
     max-width: 420px;
     border-radius: 15px;
-    background-color: rgba(0, 0, 0, 0.35); /* cor levemente escura */
+    /* background-color: rgba(0, 0, 0, 0.35); */ /* cor levemente escura */
     margin-bottom: 50px;
 }
 
