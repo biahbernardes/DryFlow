@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="dryflow.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a class="a-header" href="index.html#banner4">Serviços</a>
+            <a class="a-header" href="index.html#banner3">Sobre Nós</a>
+            <a class="a-header" href="index.html"><img class="logo" src="assets/logo.png"></a>
+            <a class="a-header" href="login.html">Login</a>
+            <a class="a-header" href="index.html#footer">Suporte</a>
+        </div>
+    </div>
+    <div class="cadastro">
+        <div class="container">
+            <div class="mens">
+                <h1>Bem-vindo!</h1>
+                <p>Já tem uma conta na Dry Flow? clique no botão a baixo e faça o seu login!</p>
+                <a href="login.html"><img class="logo" src="assets/botao -login.png"> Login</a>
+            </div>
+
+            <div class="nav">
+                <div class="boxer">
+                    <div class="box">
+                        <p>Nome da empresa:</p>
+                        <input placeholder="Insira o nome da sua empresa" type="text" id="ipt_nomeEmpresa">
+                        <p>CNPJ:</p>
+                        <input placeholder="Insira o cnpf da sua empresa" type="text" id="ipt_cnpj">
+                        <p>Telefone:</p>
+                        <input placeholder="Insira o número de contato" type="text" id="ipt_telefone">
+                        <p>E-mail:</p>
+                        <input placeholder="Insira o email para contato" type="text" id="ipt_email">
+                        <p>Senha:</p>
+                        <input placeholder="Crie uma senha" type="text" id="ipt_senha">
+                    </div>
+                    <div class="box">
+                        <p>Logradouro:</p>
+                        <input placeholder="Insira a rua da sua empresa" type="text" id="ipt_logradouro">
+                        <p>Rua:</p>
+                        <input placeholder="Insira a rua da sua empresa" type="text" id="ipt_rua">
+                        <p>Número:</p>
+                        <input placeholder="Insira o numero da sua empresa" type="number" id="ipt_numero">
+                        <p>Cidade:</p>
+                        <input placeholder="Insira a cidade da sua empresa" type="text" id="ipt_cidade">
+                        <p>Cep:</p>
+                        <input placeholder="Insira o cep da sua empresa" type="text" id="ipt_cep">
+                    </div>
+                </div>
+                <div class="nav-botao">
+                    <button onclick="cadastro()">Confirmar cadastro</button>
+                    <div id="div_mensagem"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" class="footer">
+        <div class="container">
+            <p>Dry Flow Solutions</p>
+            <a class="a-header" href="index.html"><img class="logo" src="assets/logo.png"></a>
+            <p>Ligue (11)12345-6789</p>
+        </div>
+    </div>
+</body>
+<script>
+    function cadastro() {
+        var nomeEmpresa = ipt_nomeEmpresa.value;
+        var cnpj = ipt_cnpj.value;
+        var telefone = ipt_telefone.value;
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+        var rua = ipt_rua.value;
+        var numero = Number(ipt_numero.value);
+        var cidade = ipt_cidade.value;
+        var cep = ipt_cep.value;
+        var logradouro = ipt_logradouro.value;
+
+        var mensCadastro;
+
+        var tamanhoSenha = senha.length;
+
+        var terminaCom = email.endsWith(".com") || email.endsWith(".com.br");
+        var indiceArroba = email.indexOf("@");
+        var contemArroba = indiceArroba >= 0;
+
+        var cnpjValido = cnpj.length;
+
+        var telefoneValido = telefone.length;
+        var indiceTraço = telefone.indexOf("-");
+        var indiceParenteses = telefone.indexOf("(") || telefone.indexOf(")");
+
+        var cepValido = cep.length;
+
+        if (nomeEmpresa == "" || cnpj == "" || telefone == "" || email == "" || senha == "" || rua == "" || numero == "" || cidade == "" || cep == "" || logradouro == "") {
+            mensCadastro = "<span><br>Todos os campos devem ser preenchidos!</span>"
+        }
+
+        else if (!terminaCom || !contemArroba) {
+            mensCadastro = "<span><br>O e-mail não é válido. Por favor, insira um e-mail com formato válido (exemplo@sptech.com ou exemplo@sptech.com.br).</span>";
+        }
+
+        else if (tamanhoSenha < 6) {
+            mensCadastro = "<span><br>A senha deve ter pelo menos 6 caracteres.</span>";
+        }
+
+        else if (cnpjValido != 14) {
+            mensCadastro = "<span><br>O cnpj deve ter 14 caracteres.</span>";
+        }
+
+        else if (telefoneValido != 14 || !indiceTraço || !indiceParenteses) {
+            mensCadastro = "<span><br>O telefone não é válido. Por favor, insira um telefone com formato válido (exemplo: (11)12345-6789).</span>";
+        }
+
+        else if (cepValido != 8) {
+            mensCadastro = "<span><br>O cep não é válido. Por favor, insira um cep com formato válido (exemplo: 12345678).</span>";
+        }
+        else {
+            mensCadastro = "<span><br>Cadastro criado com sucesso!</span>"
+        }
+
+        div_mensagem.innerHTML = `${mensCadastro}`
+
+    }
+</script>
+
+</html>

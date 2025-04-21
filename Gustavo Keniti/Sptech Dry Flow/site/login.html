@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="dryflow.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a class="a-header" href="index.html#banner4">Serviços</a>
+            <a class="a-header" href="index.html#banner3">Sobre Nós</a>
+            <a class="a-header" href="index.html"><img class="logo" src="assets/logo.png"></a>
+            <a class="a-header" href="login.html">Login</a>
+            <a class="a-header" href="index.html#footer">Suporte</a>
+        </div>
+    </div>
+
+    <div class="login">
+        <div class="container">
+            <div class="mens">
+                <h1>Que bom tê-lo de volta!</h1>
+                <p>Ainda não criou uma conta na Dry Flow? clique no botão a baixo e faça o seu cadastro!</p>
+                <a href="cadastro.html"><img src="assets/botao -sair.png">Cadastro</a>
+            </div>
+
+            <div class="nav">
+                <p>Email:</p>
+                <input placeholder="Insira seu email" type="text" id="ipt_email">
+                <p>Senha:</p>
+                <input placeholder="Insira sua senha" type="password" id="ipt_senha">
+                <div class="nav-botao">
+                    <button id="botaoLogin" onclick="login()">Login</button>
+                    <div id="div_mensagem"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" class="footer">
+        <div class="container">
+            <p>Dry Flow Solutions</p>
+            <a class="a-header" href="index.html"><img class="logo" src="assets/logo.png"></a>
+            <p>Ligue (11)12345-6789</p>
+        </div>
+    </div>
+</body>
+<script>
+    var tentativas = 3
+    function login() {
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+
+        var mensLogin;
+
+        var tamanhoSenha = senha.length;
+
+        var terminaCom = email.endsWith(".com") || email.endsWith(".com.br");
+        var indiceArroba = email.indexOf("@");
+        var contemArroba = indiceArroba >= 0;
+
+
+        if (email == "" || senha == "") {
+            mensLogin = "<span><br>Todos os campos devem ser preenchidos!</span>"
+        }
+
+        else if (!terminaCom || !contemArroba) {
+            mensLogin = "<span><br>O e-mail não é válido. Por favor, insira um e-mail com formato válido <br>(exemplo@sptech.com ou exemplo@sptech.com.br).</span>";
+        }
+        else if (tamanhoSenha <= 5) {
+            mensLogin = '<span><br>Senha inválida</span>'
+        }
+        else if (email == 'brandao@sptech.com' && senha == '654321' || email == 'julia@sptech.com' && senha == '654321') {
+            window.location.href = "dashboard.html";
+        }
+        else if (email !== 'julia@sptech.com' && email !== 'brandao@sptech.com') {
+            mensLogin = '<span><br>Email não cadastrado. Realize o cadastro.</span>'
+        } else {
+            mensLogin = "<span><br>Senha incorreta.</span>";
+            tentativas--
+            mensLogin += `<span><br>Você ainda tem ${tentativas} tentativa(s)</span>`
+
+            if (tentativas <= 0) {
+                mensLogin = ""
+                mensLogin += `<span><br>Usuário bloquado! Por favor, tente mais tarde.</span>`
+                document.getElementById("botaoLogin").disabled = true;
+            }
+        }
+
+        div_mensagem.innerHTML = `${mensLogin}`
+
+    }
+</script>
+
+</html>
