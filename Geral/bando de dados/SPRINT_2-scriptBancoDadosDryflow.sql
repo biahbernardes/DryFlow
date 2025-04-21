@@ -54,7 +54,7 @@ constraint fk_oficinaCompressor foreign key (fkOficina) references oficina(idOfi
 
 create table sensor(   
 idSensor int auto_increment primary key,   
-fkCompressor int not null,  
+fkCompressor int not null UNIQUE,  
 constraint fk_compressor foreign key(fkCompressor) references compressor(idCompressor)  
 );  
 
