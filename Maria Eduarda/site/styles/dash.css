@@ -102,7 +102,7 @@ canvas#myChart2 {
 }
 
 .sidebar h1 {
-    font-size: 1.1em;
+    font-size: 1.02em;
     font-weight: 200;
     /* margin-bottom: 11.5px; */
     text-align: center;
@@ -134,7 +134,7 @@ canvas#myChart2 {
 
 .sidebar .profile img {
     width: 45px;
-    height: auto;
+    height: 45px;
 }
 
 .sidebar .profile {
