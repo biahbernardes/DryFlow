@@ -102,14 +102,5 @@ insert into compressor(modelo, capacidadeUmiMax, statusCompressor, fkOficina) va
 
 insert into sensor(fkCompressor) values (1), (2), (3); 
 
--- Testes
 
-SELECT * FROM oficina;
-SELECT * FROM endereco;
-SELECT * FROM funcionario;
-SELECT * FROM telefone;
-SELECT * FROM compressor;
-SELECT * FROM sensor;
-SELECT * FROM registro_sensor;
-SELECT * FROM telefone;
  
