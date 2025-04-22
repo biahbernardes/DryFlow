@@ -9,6 +9,8 @@ SELECT * FROM sensor;
 SELECT * FROM registro_sensor;
 SELECT * FROM telefone;
 
+TRUNCATE registro_sensor;
+
 SELECT nomeOficina AS NOME_OFICINA, logradouro, rua, numero, cidade, cep  FROM oficina INNER JOIN endereco ON idOficina = fkOficina;
 
 SELECT nomeOficina AS NOME_OFICINA FROM oficina INNER JOIN compressor ON fkOficina = idOficina;
