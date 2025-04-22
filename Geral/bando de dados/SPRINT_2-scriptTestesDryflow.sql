@@ -1,4 +1,5 @@
 -- Testes
+USE dryflow;
 
 SELECT * FROM oficina;
 SELECT * FROM endereco;
@@ -14,3 +15,14 @@ TRUNCATE registro_sensor;
 SELECT nomeOficina AS NOME_OFICINA, logradouro, rua, numero, cidade, cep  FROM oficina INNER JOIN endereco ON idOficina = fkOficina;
 
 SELECT nomeOficina AS NOME_OFICINA FROM oficina INNER JOIN compressor ON fkOficina = idOficina;
+
+SELECT c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
+FROM compressor c
+INNER JOIN sensor s ON s.fkCompressor = c.idCompressor
+INNER JOIN registro_sensor r ON r.fkSensor = s.idSensor;
+
+SELECT c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
+FROM compressor c
+INNER JOIN sensor s ON s.fkCompressor = c.idCompressor
+INNER JOIN registro_sensor r ON r.fkSensor = s.idSensor
+WHERE umidadeRegistrada > 50;
