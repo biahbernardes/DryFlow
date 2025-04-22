@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Flow</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <img src="assets/logosemfundo.png" alt="Logo Flow" class="logo">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#sobre">Sobre Nós</a></li>
+      <li><a href="./DryFlow_-_Simulador_Financeiro.html">Simulador</a></li>
+      <li><a href="login.html">Sair</a></li>
+    </ul>
+  </div>
+
+  <div class="hero" style="flex-direction: column; text-align: center;">
+    <div class="text-content">
+      <h1>Dashboard de Umidade</h1>
+      <p>Visualize os níveis de umidade detectados nos compressores de pintura ao longo da semana.</p>
+      
+      <canvas id="graficoUmidade" width="600" height="300"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('graficoUmidade').getContext('2d');
+    const graficoUmidade = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        datasets: [{
+          label: 'Umidade (%)',
+          data: [45, 55, 60, 52, 47, 63, 58],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          tension: 0.4,
+          fill: true,
+          pointRadius: 5
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: {
+              display: true,
+              text: '% de Umidade'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

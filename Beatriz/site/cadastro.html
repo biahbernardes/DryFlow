@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Funcionário - Flow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <img src="assets/logosemfundo.png" alt="Logo Flow" class="logo">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#sobre">Sobre Nós</a></li>
+      <li><a href="#">Simulador</a></li>
+      <li><a href="login.html">Sair</a></li>
+    </ul>
+  </div>
+
+  <div class="hero login">
+    <div class="login-box">
+      <h1>Cadastrar Novo Funcionário</h1>
+
+      <input type="text" id="ipt_nome" placeholder="Nome Completo" required>
+      <input type="email" id="ipt_email" placeholder="Email" required>
+      <input type="text" id="ipt_setor" placeholder="Setor" required>
+      
+      <button onclick="cadastrarFuncionario()" class="btn">Cadastrar</button>
+
+      <p id="mensagem"></p>
+      <a href="dashboard.html" class="btn-outline">Ir para o Dashboard</a>
+    </div>
+  </div>
+
+  <script>
+    function cadastrarFuncionario() {
+      const nome = ipt_nome.value;
+      const email = ipt_email.value;
+      const setor = ipt_setor.value;
+
+      if (nome && email && setor) {
+        document.getElementById("mensagem").textContent = `Funcionário ${nome} cadastrado com sucesso!`;
+
+        // Limpa os campos
+        document.getElementById("ipt_nome").value = "";
+        document.getElementById("ipt_email").value = "";
+        document.getElementById("ipt_setor").value = "";
+      } else {
+        document.getElementById("mensagem").textContent = "Preencha todos os campos!";
+        document.getElementById("mensagem").style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
+

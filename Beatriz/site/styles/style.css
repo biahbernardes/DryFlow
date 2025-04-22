@@ -1,0 +1,164 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 15px 30px;
+  color: white;
+}
+
+.navbar .logo {
+  height: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover {
+  color: #ffae00;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 50px;
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(26, 26, 26, 0.7)), url('assets/fundo.jpg') no-repeat center center/cover;
+  color: white;
+}
+
+.text-content {
+  max-width: 50%;
+}
+
+.text-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.btn, .btn-outline {
+  padding: 10px 25px;
+  margin-top: 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn {
+  background-color: #ffae00;
+  color: black;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #ffae00;
+  color: #ffae00;
+}
+
+.btn:hover, .btn-outline:hover {
+  opacity: 0.8;
+}
+
+/* Carousel */
+.carousel {
+  width: 45%;
+  position: relative;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel img.active {
+  display: block;
+}
+
+/* Seção Sobre */
+.sobre {
+  padding: 60px 50px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.sobre h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sobre-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.descricao {
+  flex: 1;
+  padding-right: 40px;
+  min-width: 300px;
+}
+
+.video {
+  flex: 1;
+  min-width: 300px;
+}
+
+.video img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-content, .carousel {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .sobre-container {
+    flex-direction: column;
+  }
+
+  .descricao, .video {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+}

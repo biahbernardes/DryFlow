@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Flow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <img src="assets/logosemfundo.png" alt="Logo Flow" class="logo">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#sobre">Sobre Nós</a></li>
+      <li><a href="#">Simulador</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+
+  <div class="hero login">
+    <div class="login-box">  
+      <h1>Bem-vindo!</h1>
+      <p>Faça login para acessar o painel de controle da sua oficina.</p>
+
+      <input type="text" id="usuario" placeholder="Usuário" required style="padding:10px; margin:10px; width: 250px;">
+      <br>
+      <input type="password" id="senha" placeholder="Senha" required style="padding:10px; margin:10px; width: 250px;">
+      <br>
+      <button onclick="verificarLogin()" class="btn">Entrar</button>
+
+      <p id="erro" style="color: red; margin-top: 10px;"></p>
+    </div>
+  </div>
+
+  <script>
+   function verificarLogin() {
+  var usuario = document.getElementById("usuario").value;
+  var senha = document.getElementById("senha").value;
+
+  if (usuario === "admin" && senha === "1234") {
+    window.location.href = "cadastro.html";
+  } else {
+    document.getElementById("erro").innerHTML = "Usuário ou senha inválidos.";
+  }
+}
+  </script>
+</body>
+</html>

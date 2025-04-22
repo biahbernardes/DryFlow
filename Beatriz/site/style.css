@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.navbar {
+  background-color: #9b9b9b;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  height: 50px;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+  color: #b11010;
+}
+
+.hero {
+  background-image: url('assets/banner.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.text-content {
+  max-width: 600px;
+  padding: 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.btn, .btn-outline {
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn {
+  background-color: black;
+  color: white;
+}
+
+.btn:hover {
+  background-color: gray;
+}
+
+.btn-outline {
+  border: 2px solid gray;
+  color: black;
+  background: none;
+}
+
+.btn-outline:hover {
+  background-color: gray;
+  color: black;
+}
+
+.carousel img {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  margin-left: 1rem;
+}
+
+.sobre {
+  background-color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.sobre h2 {
+  color: black;
+  margin-bottom: 2rem;
+}
+
+.sobre-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.sobre .descricao {
+  max-width: 500px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.sobre .video img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.diagrama {
+  background-color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.diagrama h2 {
+  color: black;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.diagrama-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.diagrama .descricao {
+  max-width: 500px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.diagrama .diagramas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.diagrama .img-diagrama {
+  width: 600px;
+  border-radius: 10px;
+}
+
+.extra-texto {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-image: url('assets/finally.png');
+  background-size: cover;
+  margin-bottom: -20px;
+}
+
+.box img {
+  width: 200px;
+  height: auto;
+}
+
+.extra-texto h1 {
+  color: white;
+  margin-bottom: 1.5rem;
+  flex-direction: column;
+  text-align: center;
+  font-size: 30px;
+}
+
+footer {
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.hero.login {
+  background-image: none;
+  background-color: #e6e6e6;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px); /* altura da tela menos a navbar */
+  text-align: center;
+}
+
+.login-box {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  margin: 0 auto;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.login-box .btn {
+  width: 100%;
+}
+
+#erro {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
