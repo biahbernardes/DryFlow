@@ -16,13 +16,15 @@ SELECT nomeOficina AS NOME_OFICINA, logradouro, rua, numero, cidade, cep  FROM o
 
 SELECT nomeOficina AS NOME_OFICINA FROM oficina INNER JOIN compressor ON fkOficina = idOficina;
 
-SELECT c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
+SELECT o.nomeOficina Oficina, c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
 FROM compressor c
+INNER JOIN oficina o ON c.fkOficina = o.idOficina
 INNER JOIN sensor s ON s.fkCompressor = c.idCompressor
 INNER JOIN registro_sensor r ON r.fkSensor = s.idSensor;
 
-SELECT c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
+SELECT o.nomeOficina Oficina, c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
 FROM compressor c
+INNER JOIN oficina o ON c.fkOficina = o.idOficina
 INNER JOIN sensor s ON s.fkCompressor = c.idCompressor
 INNER JOIN registro_sensor r ON r.fkSensor = s.idSensor
 WHERE umidadeRegistrada > 50;
