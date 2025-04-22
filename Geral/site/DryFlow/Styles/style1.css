@@ -1,62 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
-    font-family: "Roboto", "Barlow", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", "Barlow", Arial, Helvetica, sans-serif;
 }
 
 .header .logo {
-    height: 60px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  height: 60px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 body {
-    margin: 0;
-    background-color: rgb(70, 4, 4);
+  margin: 0;
+  background-color: rgb(70, 4, 4);
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    display: flex;
+  width: 80%;
+  margin: auto;
+  display: flex;
 }
 
-.header .container{
+.header .container {
   justify-content: space-between;
 }
-.header{
-  background-color: rgba(0, 0, 0, 0.350) ;
+.header {
+  background-color: rgba(0, 0, 0, 0.35);
   position: fixed;
   width: 100%;
   z-index: 50;
 }
 
-.header .navbar{
+.header .navbar {
   color: black;
   list-style-type: none;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  
 }
-.navbar a{
+.navbar a {
   color: white;
   text-decoration: none;
-  
 }
 
-.header .container .titulo{
+.header .container .titulo {
   color: #990000;
   margin-left: 10px;
-  
 }
 
 .cadastro {
   height: 1200px;
   width: 100%;
-  background: linear-gradient(180deg, rgba(58, 3, 3, 0.37) 0%, rgba(19, 2, 2, 0.644) 35%, rgba(56, 17, 17, 0.89) 100%), url("../Imgs/fundo-dryflow.jpg");
+  background: linear-gradient(
+      180deg,
+      rgba(58, 3, 3, 0.37) 0%,
+      rgba(19, 2, 2, 0.644) 35%,
+      rgba(56, 17, 17, 0.89) 100%
+    ),
+    url("../Imgs/fundo-dryflow.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -186,31 +189,54 @@ body {
 }
 
 span {
-    font-weight: bold;
-    font-size: 20px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .footer {
-    background-color: rgb(0, 0, 0);
-    height: 120px;
-    display: flex;
+  background-color: rgb(0, 0, 0);
+  padding: 20px 0;
 }
 
 .footer .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 90%;
 }
 
-.footer .container p {
-    color: white;
-    font-weight: 600;
-    font-size: 19px;
-    display: flex;
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.footer .container a {
-    margin-top: 20px;
-    height: 60px;
-    display: flex;
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .logo {
+  height: 60px;
+}
+
+.footer p {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.footer .sub-info {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.footer .email-link {
+  color: white;
+  text-decoration: underline;
 }
