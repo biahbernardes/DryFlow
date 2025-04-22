@@ -26,7 +26,7 @@
       </ul>
     </div>
   </div>
-</div>
+
   <br>
   <br>
   <!--Background da página-->
@@ -68,10 +68,14 @@
 
                 <p>Custo médio por retrabalho (R$)</p>
                 <input type="number" id="ipt_custoRetrabalho" placeholder="Ex: 100">
-                
+                <br/>
+                <br/>
                 <button onclick="calculoRetrabalho()">Calcular Economia</button>
-                
-                <div id="div_mensagem"></div>
+                <br/>
+                <div id="div_mensagem">Resultado aparecerá aqui!</div>
+                <br/>
+                <br/>
+
             </div>`;
 
     }
@@ -98,10 +102,13 @@
 
                     <p>Tempo Médio de Parada (horas)</p>
                     <input type="number" id="ipt_tempoParada" placeholder="Ex: 5">
-
+                    <br/>
+                    <br/>
                     <button onclick="calculoManutencao()">Calcular Economia</button>
-
-                    <div id="div_mensagem2"></div>
+                    <br/>
+                    <div id="div_mensagem2">Resultado aparecerá aqui!</div>
+                    <br/>
+                    <br/>
                 </div>`;
           
     }
@@ -122,7 +129,7 @@
 
       // Exibição dos resultados com formatação
       div_mensagem.innerHTML = `
-  <br>🚀 <span class="label"><b>Economia estimada com Flow:</b></span> <br>
+  🚀 <span class="label"><b>Economia estimada com Flow:</b></span> <br>
   <span class="economia"><b>R$ ${economia.toFixed(2)}</b></span> <span class="label">por mês!</span><br> 
   📉 <span class="label"><b>Custo atual com refação:</b></span> <br>
   <span class="gasto"><b>R$ ${custoTotalRetrabalho.toFixed(2)}</b></span> <span class="label">por mês!</span>

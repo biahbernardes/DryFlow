@@ -160,6 +160,22 @@ button:hover {
     border-radius: 15px;
 }
 
+#div_mensagem {
+    background-color: rgba(0, 0, 0, 0.75);
+    margin-top: 5%;
+    padding: 5%;
+    border-radius: 15px;
+    color: #ffffff;
+}
+
+#div_mensagem2 {
+    background-color: rgba(0, 0, 0, 0.75);
+    margin-top: 5%;
+    padding: 5%;
+    border-radius: 15px;
+    color: #ffffff;
+}
+
 /*.background-container {
     position: fixed;
     top: 0;
