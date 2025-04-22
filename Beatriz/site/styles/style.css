@@ -1,4 +1,4 @@
-/* Reset básico */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -37,29 +36,15 @@
   color: #ffae00;
 }
 
-/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 60px 50px;
-  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(26, 26, 26, 0.7)), url('assets/fundo.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(26, 26, 26, 0.7)), url('assets/fundo.jpg');
   color: white;
 }
 
-.text-content {
-  max-width: 50%;
-}
-
-.text-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.text-content p {
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
 
 .btn, .btn-outline {
   padding: 10px 25px;
@@ -87,7 +72,6 @@
   opacity: 0.8;
 }
 
-/* Carousel */
 .carousel {
   width: 45%;
   position: relative;
@@ -98,14 +82,8 @@
   height: auto;
   border-radius: 10px;
   display: none;
-  transition: opacity 0.5s ease-in-out;
 }
 
-.carousel img.active {
-  display: block;
-}
-
-/* Seção Sobre */
 .sobre {
   padding: 60px 50px;
   background-color: #f4f4f4;
@@ -139,26 +117,4 @@
 .video img {
   width: 100%;
   border-radius: 10px;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .text-content, .carousel {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .sobre-container {
-    flex-direction: column;
-  }
-
-  .descricao, .video {
-    padding: 0;
-    margin-bottom: 20px;
-  }
 }
