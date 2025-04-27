@@ -1,250 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
-
-
-body{
-    font-family: "Montserrat";
-    margin: 0;
-    background-color: #990000;
-    
+:root {
+  --primary-color: #5a0002;
+  --light-primary: #a40606;
+  --ligthest-color: #d7cf07;
+  --secondary-color: #230007;
+  --light-secondary: #d98324;
+  /*   
+  --primary-color: #d90429;
+  --light-primary: #ef233c;
+  --ligthest-color: #edf2f4;
+  --secondary-color: #2b2d42;
+  --light-secondary: #8d99ae; */
 }
 
-.container{
-    width: 80%;
-    margin: auto;
-    display: flex;
-
+body {
+  font-family: "Montserrat";
+  margin: 0;
+  background-color: var(--primary-color);
 }
 
-.header .container{
-    justify-content: space-between;
-}
-.header{
-    background-color: rgba(0, 0, 0, 0.350) ;
-    position: fixed;
-    width: 100%;
-    z-index: 50;
-    height: 100px;
+.container {
+  width: 80%;
+  margin: auto;
+  display: flex;
 }
 
-.header .navbar{
-    color: black;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    
+.header .container {
+  justify-content: space-between;
 }
-.navbar a{
-    color: white;
-    text-decoration: none;
-    
+.header {
+  background-color: rgba(0, 0, 0, 0.35);
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  height: 100px;
+}
+
+.header .navbar {
+  color: black;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.navbar a {
+  color: var(--ligthest-color);
+  text-decoration: none;
 }
 
 .navbar a:hover {
-    color: #990000;
+  color: var(--light-secondary);
 }
 
-
-.header .container .titulo{
-    color: #990000;
-    margin-left: 10px;
-    
+.header .container .titulo {
+  color: var(--light-secondary);
+  margin-left: 10px;
 }
 
-.banner{
-    height: 700px;
-    background-image: url('../Imgs/fundo-dryflow.jpg');
-    background-size: cover;
-    background-position: center bottom;
+.banner {
+  height: 700px;
+  background-image: url("../Imgs/fundo-dryflow.jpg");
+  background-size: cover;
+  background-position: center bottom;
 }
 
-.banner .container p{
-    color: rgb(255, 255, 255);
-    font-size: 40px;
-    justify-content: center;
-    width: 45%;
+.banner .container p {
+  color: var(--ligthest-color);
+  font-size: 40px;
+  justify-content: center;
+  width: 45%;
 }
 
 .banner .container {
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: brightness(50%);
-    width: 100%;
-    flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: brightness(25%);
+  width: 100%;
+  flex-direction: column;
 }
 
-.banner .container p span{
-    font-weight: 600;
-    color: red
+.banner .container p span {
+  font-weight: 600;
+  color: var(--light-secondary);
 }
 
-.banner .container h3{
-    font-weight: 600;
-    color: white;
-    justify-content: center;
-    width: 35%;
+.banner .container h3 {
+  font-weight: 600;
+  color: var(--ligthest-color);
+  justify-content: center;
+  width: 35%;
 }
 
-.social{
-    background-color: beige;
-    height: 460px;
-    justify-content: center;
-    display: flex; 
-    align-items: center;      
-    gap: 100px;               
-    padding: 0 40px;
-    text-align: center;
-    flex-wrap: wrap; 
-} 
-
-.box video{
-    border: solid black;
-    border-radius: 10px;
+.social {
+  background-color: var(--light-primary);
+  height: 460px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 0 40px;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
-.boxes{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    display: flex;
-    align-items: center;      
-    gap: 40px;               
-    padding: 0 40px;
-    text-align: center;
-    flex-wrap: wrap; 
+.box video {
+  border: solid black;
+  border-radius: 10px;
 }
 
-.box{
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    padding: 20px;
-    height: auto;
-
+.boxes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 40px;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
-.box h3{
-    color: red;
-    margin-bottom: 0px;
-    font-size: large;
-    margin-bottom: 16px;
+.box {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--ligthest-color);
+  padding: 20px;
+  height: auto;
 }
 
-.valores{
-    height: 500px;
+.box h3 {
+  color: var(--ligthest-color);
+  margin-bottom: 0px;
+  font-size: large;
+  margin-bottom: 16px;
+}
 
-    background-image: url("../Imgs/business-dryflow.png");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;  
+.valores {
+  height: 500px;
 
-    padding-bottom: 10px;
-
+  background-image: url("../Imgs/business-dryflow.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: brightness(25%);
+  padding-bottom: 10px;
 }
 
 .valores h3 {
-    color: white;
-    font-size: 24px;
-    margin-bottom: 16px;
+  color: var(--light-secondary);
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
 .valores p {
-    color: white;
+  color: var(--ligthest-color);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 450px;
+}
 
-    font-size: 16px;
+.diagrama {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-secondary);
+  height: auto;
+  flex-direction: column;
+  color: var(--secondary-color);
+}
+.diagrama img {
+  width: 90%;
+}
 
-    line-height: 1.6;
-    max-width: 450px;
+.sensores {
+  background-color: var(--secondary-color);
+  height: 450px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.sensores h2 {
+  color: var(--light-secondary);
+}
+
+.sensores img {
+  width: 60%;
+  border: solid black 2px;
+  border-radius: 15px;
 }
 
 .footer {
-
-    background-color: rgb(0, 0, 0);
-    padding: 20px 0;
-  }
-  
-  .footer .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 90%;
-  }
-  
-  .footer-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .footer-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .footer .logo {
-    height: 60px;
-  }
-  
-  .footer p {
-    color: white;
-    font-weight: 600;
-    font-size: 18px;
-    margin: 5px 0;
-  }
-  
-  .footer .sub-info {
-    font-weight: 400;
-    font-size: 14px;
-  }
-  
-  .footer .email-link {
-    color: white;
-    text-decoration: underline;
-  }
-  
-  
-
-  .sensores{
-    background-color: beige;
-    height: 450px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  .sensores h2{
-    color: red;
-  }
-
-  .sensores img{
-    width: 60%;
-    border: solid black 2px;
-    border-radius: 15px;
-  }
-
-
-.diagrama{
-    display: flex;
-    align-items: center;
-    background-color: white;
-    height: auto;
-    flex-direction: column;
-}
-.diagrama img {
-    width: 60%;
-    
+  background-color: rgb(0, 0, 0);
+  padding: 20px 0;
 }
 
+.footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .logo {
+  height: 60px;
+}
+
+.footer p {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.footer .sub-info {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.footer .email-link {
+  color: white;
+  text-decoration: underline;
+}
