@@ -78,7 +78,7 @@ body{
 
 .banner .container p span{
     font-weight: 600;
-    color: red
+    color: white
 }
 
 .banner .container h3{
@@ -89,7 +89,7 @@ body{
 }
 
 .social{
-    background-color: beige;
+    background-color: white;
     height: 460px;
     justify-content: center;
     display: flex; 
@@ -218,7 +218,7 @@ body{
   
 
   .sensores{
-    background-color: beige;
+    background-color: white;
     height: 450px;
     justify-content: center;
     align-items: center;
@@ -242,9 +242,12 @@ body{
     background-color: white;
     height: auto;
     flex-direction: column;
+    height: 300px;
 }
 .diagrama img {
     width: 60%;
-    
 }
 
+.diagrama h2{
+    color: red;
+}
