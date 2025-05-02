@@ -1,28 +1,40 @@
 -- Testes
 USE dryflow;
 
+-- Teste das tabelas
 SELECT * FROM oficina;
+SELECT * FROM empresa;
 SELECT * FROM endereco;
 SELECT * FROM funcionario;
 SELECT * FROM telefone;
 SELECT * FROM compressor;
 SELECT * FROM sensor;
-SELECT * FROM registro_sensor;
-SELECT * FROM telefone;
+SELECT * FROM registroSensor;
+SELECT * FROM alerta;
 
-TRUNCATE registro_sensor;
+-- Apagar os registros captados pelo sensor
+SELECT * FROM information_schema.referential_constraints where constraint_schema = 'dryflow' AND table_name = 'alerta';
+ALTER TABLE alerta DROP FOREIGN KEY fk_alerta;
+TRUNCATE registroSensor;
+TRUNCATE alerta;
+ALTER TABLE alerta ADD CONSTRAINT fk_alerta foreign key (fkAlerta) references registroSensor(idRegistro);
 
-SELECT nomeOficina AS NOME_OFICINA, logradouro, rua, numero, cidade, cep  FROM oficina INNER JOIN endereco ON idOficina = fkOficina;
+-- Mostrar empresa e seu endereço
+SELECT 
+empresa.nomeFantasia, 
+endereco.rua AS Rua, 
+endereco.numero AS Número, 
+endereco.cidade AS Cidade, 
+endereco.cep AS CEP FROM empresa 
+INNER JOIN endereco ON endereco.fkEndEmpresa = empresa.idEmpresa;
 
-SELECT o.nomeOficina Oficina, c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
-FROM compressor c
-INNER JOIN oficina o ON c.fkOficina = o.idOficina
-INNER JOIN sensor s ON s.fkCompressor = c.idCompressor
-INNER JOIN registro_sensor r ON r.fkSensor = s.idSensor;
+-- Mostrar oficina e seu endereço
+SELECT 
+oficina.nomeOficina AS Nome_Oficina, 
+endereco.rua AS Rua, 
+endereco.numero AS Número, 
+endereco.cidade AS Cidade, 
+endereco.cep AS CEP FROM oficina 
+INNER JOIN endereco ON endereco.fkEndOficina = oficina.idOficina;
 
-SELECT o.nomeOficina Oficina, c.idCompressor 'Número Compressor', c.modelo 'Modelo Compressor', s.idSensor 'Número Sensor', r.umidadeRegistrada 'Registro Umidade'
-FROM compressor c
-INNER JOIN oficina o ON c.fkOficina = o.idOficina
-INNER JOIN sensor s ON s.fkCompressor = c.idCompressor
-INNER JOIN registro_sensor r ON r.fkSensor = s.idSensor
-WHERE umidadeRegistrada > 50;
+-- Mostrar compressor e sua respectiva oficina
