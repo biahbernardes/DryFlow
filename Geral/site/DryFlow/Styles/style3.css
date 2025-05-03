@@ -15,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../Imgs/fundo-dryflow.jpg');
+    background-image: url('../Imgs/carro.png.png');
     background-size: cover;
     text-align: center;
     padding-top: 80px; /* espaço para o header fixo */

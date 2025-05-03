@@ -218,7 +218,7 @@ body{
   
 
   .sensores{
-    background-color: white;
+    background-color: #E0E0E0;
     height: 450px;
     justify-content: center;
     align-items: center;
@@ -239,7 +239,7 @@ body{
 .diagrama{
     display: flex;
     align-items: center;
-    background-color: #E0FFFF;
+    background-color: white;
     height: auto;
     flex-direction: column;
     height: 300px;
