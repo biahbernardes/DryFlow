@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-image: url('../Imgs/carro.png.png');
+    backdrop-filter: brightness(50%);
     background-size: cover;
     text-align: center;
     padding-top: 80px; /* espaço para o header fixo */
@@ -117,7 +118,7 @@ button {
     font-size: 18px;
     font-weight: bold;
     color: #fff;
-    background: #990000;
+    background: #1e5290;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -125,7 +126,7 @@ button {
 }
 
 button:hover {
-    background: #4e0505;
+    background: #0c1326;
     transform: scale(1.05);
 }
 
