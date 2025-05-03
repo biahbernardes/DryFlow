@@ -132,7 +132,7 @@ body{
 }
 
 .box h3{
-    color: red;
+    color: #1e5290;
     margin-bottom: 0px;
     font-size: large;
     margin-bottom: 16px;
@@ -141,7 +141,7 @@ body{
 .valores{
     height: 500px;
 
-    background-image: url("../Imgs/business-dryflow.png");
+    background-image: url("../Imgs/businessazul.png");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -226,7 +226,7 @@ body{
   }
 
   .sensores h2{
-    color: red;
+    color: 	#4682B4;
   }
 
   .sensores img{
@@ -239,7 +239,7 @@ body{
 .diagrama{
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #E0FFFF;
     height: auto;
     flex-direction: column;
     height: 300px;
@@ -249,5 +249,5 @@ body{
 }
 
 .diagrama h2{
-    color: red;
+    color: 	#4682B4;
 }
