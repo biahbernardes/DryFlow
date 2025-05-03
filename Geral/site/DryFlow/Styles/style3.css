@@ -139,7 +139,7 @@ button:hover {
 }
 
 .label {
-    color: white;
+    color: black;
   }
 
 
@@ -162,7 +162,7 @@ button:hover {
 }
 
 #div_mensagem {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: #89bfff;
     margin-top: 5%;
     padding: 5%;
     border-radius: 15px;
@@ -170,7 +170,7 @@ button:hover {
 }
 
 #div_mensagem2 {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: #89bfff;
     margin-top: 5%;
     padding: 5%;
     border-radius: 15px;
