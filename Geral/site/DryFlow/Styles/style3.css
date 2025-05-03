@@ -16,7 +16,6 @@ body {
     flex-direction: column;
     align-items: center;
     background-image: url('../Imgs/carro.png.png');
-    backdrop-filter: brightness(50%);
     background-size: cover;
     text-align: center;
     padding-top: 80px; /* espaço para o header fixo */
@@ -166,7 +165,7 @@ button:hover {
     margin-top: 5%;
     padding: 5%;
     border-radius: 15px;
-    color: #ffffff;
+    color: black;
 }
 
 #div_mensagem2 {
@@ -174,8 +173,18 @@ button:hover {
     margin-top: 5%;
     padding: 5%;
     border-radius: 15px;
-    color: #ffffff;
+    color: black;
 }
+
+.backdrop-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: brightness(50%);
+    z-index: 0;
+  }
 
 /*.background-container {
     position: fixed;
