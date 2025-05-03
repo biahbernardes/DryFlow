@@ -45,7 +45,7 @@ body {
 }
 
 .navbar a:hover {
-  color: #990000;
+  color: #4a82c4;
 }
 
 .header .container .titulo {
@@ -60,9 +60,9 @@ body {
       180deg,
       rgba(58, 3, 3, 0.37) 0%,
       rgba(19, 2, 2, 0.644) 35%,
-      rgba(56, 17, 17, 0.89) 100%
+      rgba(18, 32, 58, 0.89) 100%
     ),
-    url("../Imgs/fundo-dryflow.jpg");
+    url("../Imgs/carro.png.png");
   background-size: cover;
   background-position: center;
   display: flex;
