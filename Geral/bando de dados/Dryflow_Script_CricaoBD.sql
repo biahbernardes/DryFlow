@@ -72,6 +72,7 @@ fkSensor int not null,
 constraint fk_sensor foreign key (fkSensor) references sensor(idSensor)
 );
 
+/*
 create table alerta (
 idAlerta int primary key auto_increment,
 dtHrAlerta datetime not null,
@@ -79,6 +80,7 @@ umidAlerta int,
 fkAlerta int not null,
 constraint fk_alerta foreign key (fkAlerta) references registroSensor(idRegistro)
 );
+*/
 
 -- Inserir Empresas
 insert into empresa (cnpj, nomeFantasia, email) values
@@ -87,12 +89,13 @@ insert into empresa (cnpj, nomeFantasia, email) values
 ('11122233000181', 'Empresa C', 'contato@empresaC.com'),
 ('22233344000102', 'Empresa D', 'contato@empresaD.com');
 
--- Inserir Oficinas
+-- Inserir Oficinas (Empresa A tem 1 oficina a mais)
 insert into oficina (nomeOficina, fkEmpresa) values
 ('Oficina A', 1), 
 ('Oficina B', 2), 
 ('Oficina C', 3),
-('Oficina D', 4);
+('Oficina D', 4),
+('Oficina E', 1);
 
 -- Inserir Endereços para Empresas (sem associar à oficina)
 insert into endereco (rua, numero, cidade, bairro, cep, fkEndOficina, fkEndEmpresa) values
@@ -106,14 +109,17 @@ insert into endereco (rua, numero, cidade, bairro, cep, fkEndOficina, fkEndEmpre
 ('Av. Tropical', 101, 'São Paulo','Bairro D', '01001001', 1, NULL),
 ('Rua do Sol', 202, 'São Paulo','Bairro E', '01002001', 2, NULL),
 ('Rua das Flores', 303, 'Rio de Janeiro','Bairro F', '20001001', 3, NULL),
-('Rua das Pedras', 404, 'Belo Horizonte','Bairro G', '30001001', 4, NULL);
+('Rua das Pedras', 404, 'Belo Horizonte','Bairro G', '30001001', 4, NULL),
+('Rua dos Diamantes', 505, 'Belo Horizonte','Bairro H', '40001001', 5, NULL);
 
 -- Inserir Funcionários
 insert into funcionario (nome, email, senha, cargo, fkOficina) values
 ('João Silva', 'joao@empresaA.com', 'senha123', 'Técnico', 1),
 ('Maria Oliveira', 'maria@empresaB.com', 'senha123', 'Gerente', 2),
 ('Carlos Souza', 'carlos@empresaC.com', 'senha123', 'Supervisor', 3),
-('Ana Costa', 'ana@empresaD.com', 'senha123', 'Técnico', 4);
+('Ana Costa', 'ana@empresaD.com', 'senha123', 'Técnico', 4),
+('Roberta Marinho', 'roberta@empresaD.com', 'senha123', 'Técnico', 5),
+('Hector Silva', 'hector@empresaA.com', 'senha123', 'Gerente', 1);
 
 -- Inserir Telefones
 insert into telefone (numero, fkTelFuncionario, fkTelEmpresa, fkTelOficina) values
@@ -121,6 +127,8 @@ insert into telefone (numero, fkTelFuncionario, fkTelEmpresa, fkTelOficina) valu
 ('11987654321', 2, NULL, NULL),
 ('21387654321', 3, NULL, NULL),
 ('31987654321', 4, NULL, NULL),
+('45687654321', 5, NULL, NULL),
+('78887654321', 6, NULL, NULL),
 ('1123456789', NULL, 1, NULL), 
 ('1122334455', NULL, 2, NULL),
 ('2133445566', NULL, 3, NULL),
@@ -128,30 +136,38 @@ insert into telefone (numero, fkTelFuncionario, fkTelEmpresa, fkTelOficina) valu
 ('1198887777', NULL, NULL, 1),
 ('2133222333', NULL, NULL, 2),
 ('3199988777', NULL, NULL, 3),
-('2199999888', NULL, NULL, 4);
+('2199999888', NULL, NULL, 4),
+('2145679888', NULL, NULL, 5);
 
 -- Inserir Compressores
 insert into compressor (modelo, capacidadeUmiMax, status, fkOficina) values
 ('Modelo A', 60, 'ativo', 1),
 ('Modelo B', 75, 'ativo', 2),
 ('Modelo C', 50, 'inativo', 3),
-('Modelo D', 80, 'ativo', 4);
+('Modelo D', 80, 'ativo', 4),
+('Modelo E', 87, 'ativo', 5);
 
 -- Inserir Sensores
 insert into sensor (fkCompressor) values
 (1),
 (2),
 (3),
-(4);
+(4),
+(5);
 
 -- Inserir Registros de Sensor
 insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
 (55, '2025-04-07 08:00:00', 1),
+(60, '2025-04-07 09:00:00', 1),
+(64, '2025-04-07 10:00:00', 1),
 (80, '2025-04-07 09:00:00', 2),
 (40, '2025-04-07 10:00:00', 3),
-(85, '2025-04-07 11:00:00', 4);
+(85, '2025-04-07 11:00:00', 4),
+(88, '2025-04-07 12:00:00', 5);
 
--- Inserir Alertas
+/*
+-- Inserir Alertas (Comentei para não usarmos ela)
 insert into alerta (dtHrAlerta, umidAlerta, fkAlerta) values 
 ('2025-04-07 12:30:00', 80, 2),
 ('2025-04-07 13:30:00', 85, 4);
+*/
