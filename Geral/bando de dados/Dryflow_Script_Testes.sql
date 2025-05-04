@@ -37,4 +37,15 @@ endereco.cidade AS Cidade,
 endereco.cep AS CEP FROM oficina 
 INNER JOIN endereco ON endereco.fkEndOficina = oficina.idOficina;
 
--- Mostrar compressor e sua respectiva oficina
+-- Mostrar compressor e sua respectiva oficina e endereço
+SELECT 
+compressor.modelo AS Modelo_Compressor,
+oficina.nomeOficina AS Nome_Oficina,
+endereco.rua AS Rua,
+endereco.numero AS Número,
+endereco.cidade AS Cidade,
+endereco.bairro AS Bairro,
+endereco.cep AS CEP
+FROM compressor 
+INNER JOIN oficina ON fkOficina=idOficina
+INNER JOIN endereco ON fkEndOficina = idOficina;

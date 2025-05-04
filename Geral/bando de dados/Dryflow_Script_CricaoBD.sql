@@ -20,6 +20,7 @@ idEndereco int primary key auto_increment,
 rua varchar(45) not null,
 numero int not null,
 cidade varchar(45) not null,
+bairro varchar(45) not null,
 cep char(8) not null,
 fkEndOficina int,
 fkEndEmpresa int,
@@ -94,18 +95,18 @@ insert into oficina (nomeOficina, fkEmpresa) values
 ('Oficina D', 4);
 
 -- Inserir Endereços para Empresas (sem associar à oficina)
-insert into endereco (rua, numero, cidade, cep, fkEndOficina, fkEndEmpresa) values
-('Av. Central', 100, 'São Paulo', '01001000', NULL, 1), 
-('Av. Paulista', 200, 'São Paulo', '01002000', NULL, 2),
-('Rua das Flores', 300, 'Rio de Janeiro', '20001000', NULL, 3),
-('Rua das Pedras', 400, 'Belo Horizonte', '30001000', NULL, 4);
+insert into endereco (rua, numero, cidade, bairro, cep, fkEndOficina, fkEndEmpresa) values
+('Av. Central', 100, 'São Paulo', 'Bairro A', '01001000', NULL, 1), 
+('Av. Paulista', 200, 'São Paulo', 'Bairro B','01002000', NULL, 2),
+('Rua das Flores', 300, 'Rio de Janeiro', 'Bairro C','20001000', NULL, 3),
+('Rua das Pedras', 400, 'Belo Horizonte', 'Bairro D','30001000', NULL, 4);
 
 -- Inserir Endereços para Oficinas (sem associar à empresa)
-insert into endereco (rua, numero, cidade, cep, fkEndOficina, fkEndEmpresa) values
-('Av. Tropical', 101, 'São Paulo', '01001001', 1, NULL),
-('Rua do Sol', 202, 'São Paulo', '01002001', 2, NULL),
-('Rua das Flores', 303, 'Rio de Janeiro', '20001001', 3, NULL),
-('Rua das Pedras', 404, 'Belo Horizonte', '30001001', 4, NULL);
+insert into endereco (rua, numero, cidade, bairro, cep, fkEndOficina, fkEndEmpresa) values
+('Av. Tropical', 101, 'São Paulo','Bairro D', '01001001', 1, NULL),
+('Rua do Sol', 202, 'São Paulo','Bairro E', '01002001', 2, NULL),
+('Rua das Flores', 303, 'Rio de Janeiro','Bairro F', '20001001', 3, NULL),
+('Rua das Pedras', 404, 'Belo Horizonte','Bairro G', '30001001', 4, NULL);
 
 -- Inserir Funcionários
 insert into funcionario (nome, email, senha, cargo, fkOficina) values
