@@ -21,7 +21,6 @@ ALTER TABLE alerta ADD CONSTRAINT fk_alerta foreign key (fkAlerta) references re
 */
 
 -- Apagar os registros captados pelo sensor
-SELECT * FROM information_schema.referential_constraints where constraint_schema = 'dryflow' AND table_name = 'alerta';
 TRUNCATE registroSensor;
 
 -- Mostrar empresa e seu endereço
