@@ -48,7 +48,7 @@ nome AS NOME_FUNCIONÁRIO,
 email AS EMAIL_FUNCIONÁRIO,
 cargo AS CARGO_FUNCIONÁRIO
 FROM oficina 
-INNER JOIN funcionario ON idOficina = fkOficina;
+INNER JOIN funcionario ON idOficina = fkOficina ORDER BY nomeOficina;
 
 -- Mostrar Oficina e seus funcionários de uma determinada oficina
 SELECT
@@ -60,7 +60,7 @@ FROM oficina
 INNER JOIN funcionario ON idOficina = fkOficina
 WHERE nomeOficina = 'Oficina A';
 
--- Mostrar compressor e sua respectiva oficina e endereço
+-- Mostrar compressor e seu respectivo endereço e empresa
 SELECT 
 compressor.modelo AS Modelo_Compressor,
 oficina.nomeOficina AS Nome_Oficina,
@@ -68,10 +68,13 @@ endereco.rua AS Rua,
 endereco.numero AS Número,
 endereco.cidade AS Cidade,
 endereco.bairro AS Bairro,
-endereco.cep AS CEP
+endereco.cep AS CEP,
+empresa.nomeFantasia AS Nome_Empresa,
+empresa.cnpj AS CNPJ
 FROM compressor 
 INNER JOIN oficina ON fkOficina=idOficina
-INNER JOIN endereco ON fkEndOficina = idOficina;
+INNER JOIN endereco ON fkEndOficina = idOficina
+INNER JOIN empresa ON fkEmpresa = idEmpresa ;
 
 -- Mostrar compressor e sua respectiva oficina e endereço de uma determinada empresa
 SELECT 
@@ -111,4 +114,4 @@ dtHrRegistrada AS DATA_E_HORA_REGISTRO
 FROM compressor 
 INNER JOIN sensor ON fkCompressor = idCompressor
 INNER JOIN registroSensor ON fkSensor = idSensor
-WHERE umidadeRegistrada >= capacidadeUmiMax;
+WHERE umidadeRegistrada > capacidadeUmiMax;
