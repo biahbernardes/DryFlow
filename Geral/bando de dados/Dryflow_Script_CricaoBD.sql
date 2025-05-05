@@ -23,8 +23,8 @@ cidade varchar(45) not null,
 bairro varchar(45) not null,
 estado varchar(45) not null,
 cep char(8) not null,
-fkEndOficina int,
-fkEndEmpresa int,
+fkEndOficina int UNIQUE,
+fkEndEmpresa int UNIQUE,
 constraint fk_endOficina foreign key (fkEndOficina) references oficina(idOficina),
 constraint fk_endEmpresa foreign key (fkEndEmpresa) references empresa(idEmpresa)
 );
