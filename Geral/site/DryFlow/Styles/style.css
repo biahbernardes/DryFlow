@@ -141,7 +141,7 @@ body{
 .valores{
     height: 500px;
 
-    background-image: url("../Imgs/testemissao.jpg");
+    background-image: url("../Imgs/valores.png");
     background-size: cover;
     background-position: center;
     display: flex;
