@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="./Styles/dash.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   </head>
 
   <body>
+    <div class="div-marquee">
+    <marquee>⚠️ ALERTA: Compressor A atingiu o limite de umidade!</marquee>
+    </div>  
     <div class="kpiData">Última Atualização: <span id="dataHora"></span></div>
     <div class="container-pai">
       <div class="sidebar">
@@ -29,54 +33,60 @@
         </a>
       </div>
 
+     
       <div class="graficos">
-        <div class="container">
-          <div class="kpis">
-            <div class="card1">
-              <p>
-                Compressores perto do limite de umidade:<br /><br /><span
-                  id="kpi-perto"
-                  >0</span
-                >
-              </p>
-            </div>
-            <div class="card2">
-              <p>
-                Compressores dentro do limite de umidade:<br /><br /><span
-                  id="kpi-no-limite"
-                  >0</span
-                >
-              </p>
-            </div>
-            <div class="card3">
-              <p>
-                Compressores acima do limite de umidade:<br /><br /><span
-                  id="kpi-acima"
-                  >0</span
-                >
-              </p>
-            </div>
+        <div class="info-limites">
+          <div class="card">
+            <div class="primeira">.</div>
+            <h4 >Próximo ao Limite de Umidade</h4>
+            <span >Entre 45% e 49%</span>
+          </div>
+          <div class="card">
+            <div class="segunda">.</div>
+            <h4 >Limite de Umidade</h4>
+            <span>50%</span>
+          </div>
+          <div class="card">
+            <div class="terceira">.</div>
+            <h4 >Acima do Limite de Umidade</h4>
+            <span>Maior que 50%</span>
           </div>
         </div>
-        <div class="graficoLine">
-          <h4>Umidade dos Compressores nas Últimas Horas</h4>
-          <!-- <div class="checkbox-container">
-          <label><input type="checkbox" value="Compressor A" checked> Compressor A</label>
-          <label><input type="checkbox" value="Compressor B" checked> Compressor B</label>
-          <label><input type="checkbox" value="Compressor C" checked> Compressor C</label>
-          <label><input type="checkbox" value="Compressor D" checked> Compressor D</label>
-        </div> -->
-          <div class="charts">
-            <canvas id="myChart2"></canvas>
+        <!-- KPIs -->
+        <div class="kpis-container">
+          <div class="card1">
+            <p>
+              Compressores perto do limite de umidade:<br /><br /><span id="kpi-perto">0</span>
+            </p>
+          </div>
+          <div class="card2">
+            <p>
+              Compressores dentro do limite de umidade:<br /><br /><span id="kpi-no-limite">0</span>
+            </p>
+          </div>
+          <div class="card3">
+            <p>
+              Compressores acima do limite de umidade:<br /><br /><span id="kpi-acima">0</span>
+            </p>
           </div>
         </div>
+      
+        <!-- Gráficos -->
         <div class="graficoBarra">
           <h4>Umidade Atual dos Compressores</h4>
           <div class="charts">
             <canvas id="myChart"></canvas>
           </div>
         </div>
+        <div class="graficoLine">
+          <h4>Umidade dos Compressores por Dia</h4>
+          <div class="charts">
+            <canvas id="myChart2"></canvas>
+          </div>
+        </div>
+      
       </div>
+      
     </div>
 
     <script>
@@ -118,7 +128,7 @@
         {
           label: "Umidade Atual",
           data: [80, 84, 57, 43],
-          backgroundColor: "#b2273c",
+          backgroundColor: "#89bfff",
           borderWidth: 1,
         },
       ];
@@ -146,18 +156,19 @@
                   type: "line",
                   yMin: 50,
                   yMax: 50,
-                  borderColor: " #FFA500",
+                  borderColor: " #ff0000",
                   borderWidth: 2,
                   borderDash: [6, 4],
                   label: {
                     content: "Limite",
                     enabled: true,
 
-                    backgroundColor: " #FFA500",
+                    backgroundColor: " #ff0000",
                     color: "white",
                     position: "end",
                     font: {
                       size: 9,
+                      
                     },
                   },
                 },
@@ -170,12 +181,21 @@
               title: {
                 display: true,
                 text: "Umidade %",
+                color: '0c1326',
+                font:{
+                  weight: 500,
+                }
               },
             },
             x: {
               title: {
                 display: true,
                 text: "Compressor",
+                color: '0c1326',
+                font:{
+                  weight: 500,
+
+                }
               },
             },
           },
@@ -191,30 +211,30 @@
         {
           label: "Compressor A",
           data: [80, 82, 80, 85, 80, 88],
-          backgroundColor: "#b2273c",
+          backgroundColor: "#89bfff",
           borderWidth: 2,
-          borderColor: "#b2273c",
+          borderColor: "#89bfff",
         },
         {
           label: "Compressor B",
           data: [90, 89, 93, 87, 88, 82],
-          backgroundColor: "#88726d",
+          backgroundColor: "#003161",
           borderWidth: 2,
-          borderColor: "#88726d",
+          borderColor: "#003161",
         },
         {
           label: "Compressor C",
-          data: [80, 82, 80, 85, 80, 83],
-          backgroundColor: "#B72A29",
+          data: [60, 70, 80, 85, 90, 90],
+          backgroundColor: "#262626",
           borderWidth: 2,
-          borderColor: "#B72A29",
+          borderColor: "#262626",
         },
         {
           label: "Compressor D",
           data: [30, 33, 35, 29, 31, 34],
-          backgroundColor: "#dbc0bf",
+          backgroundColor: "#006A67",
           borderWidth: 2,
-          borderColor: "#dbc0bf",
+          borderColor: "#006A67",
         },
       ];
       Chart.register(window["chartjs-plugin-annotation"]);
@@ -222,7 +242,7 @@
       const chartLinha = new Chart(grafico, {
         type: "line",
         data: {
-          labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+          labels: ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"],
           datasets: todosDados,
         },
         options: {
@@ -234,14 +254,14 @@
                   type: "line",
                   yMin: 50,
                   yMax: 50,
-                  borderColor: " #FFA500",
+                  borderColor: " #ff0000",
                   borderWidth: 2,
                   borderDash: [6, 4],
                   label: {
                     content: "Limite",
                     enabled: true,
 
-                    backgroundColor: " #FFA500",
+                    backgroundColor: " #ff0000",
                     color: "white",
                     position: "end",
                     font: {
@@ -258,12 +278,20 @@
               title: {
                 display: true,
                 text: "Umidade %",
+                color: '0c1326',
+                font:{
+                  weight: 500,
+                }
               },
             },
             x: {
               title: {
                 display: true,
-                text: "Horário",
+                color: '0c1326',
+                text: "Dia da Semana",
+                font:{
+                  weight: 500,
+                }
               },
             },
           },
