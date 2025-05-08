@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="assets/Styles/style1.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <ul class="navbar">
+        <h5 class="agora">
+          <a href="dryflow-index.html">Início</a>
+        </h5>
+        <h5>
+          <a href="dryflow-index.html#sobrenos">Sobre nós</a>
+        </h5>
+        <li><img src="assets/Imgs/logoDryFlow.png" /></li>
+        <h5>
+          <a href="./DryFlow_-_Simulador_Financeiro.html">Simulador Financeiro</a>
+        </h5>
+        <h5>
+          <a href="./dryflow-login.html">Login</a>
+        </h5>
+      </ul>
+    </div>
+  </div>
+  <div class="cadastro">
+    <div class="container">
+      <div class="mens">
+        <h1>Bem-vindo!</h1>
+        <p>
+          Já tem uma conta na Dry Flow? clique no botão abaixo e faça o seu
+          login!
+        </p>
+        <a href="dryflow-login.html"><img class="logo" src="assets/Imgs/botao -login.png" />
+          Login</a>
+      </div>
+
+      <div class="nav">
+        <div class="boxer">
+          <div class="box">
+            <p>Código da Oficina:</p>
+            <input placeholder="Insira o código da oficina" type="text" id="ipt_codigo"/>
+            <p>Nome:</p>
+            <input placeholder="Insira o nome do funcionario" type="text" id="ipt_nome"/>
+            <!-- <p>Telefone:</p> -->
+            <!-- <input placeholder="Insira o número de contato" type="text" id="ipt_telefone" value="(11)12345-6789" /> -->
+            <p>E-mail:</p>
+            <input placeholder="Insira o email para contato" type="text" id="ipt_email"/>
+            <p>Senha:</p>
+            <input placeholder="Crie uma senha" type="text" id="ipt_senha"/>
+            <p>Cargo:</p>
+            <input placeholder="Insira seu cargo" type="text" id="ipt_cargo"/>
+          </div>
+        </div>
+      </div>
+      <div class="nav-botao">
+        <button onclick="cadastro()">Confirmar cadastro</button>
+        <div id="div_mensagem"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <!-- Coluna esquerda -->
+      <div class="footer-col">
+        <p>Dry Flow Solutions</p>
+        <p class="sub-info">Rua Haddock Lobo, 595 - SP</p>
+      </div>
+
+      <!-- Logo central -->
+      <div class="footer-logo">
+        <a href="dryflow-index.html">
+          <img class="logo" src="assets/Imgs/logoDryFlow.png" alt="Logo Dry Flow" />
+        </a>
+      </div>
+
+      <!-- Coluna direita -->
+      <div class="footer-col">
+        <p>Ligue (11)12345-6789</p>
+        <p class="sub-info">
+          <a class="email-link" href="email:dryflow@sptech.school">dryflow@sptech.school</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function cadastro() {
+    var nome = ipt_nome.value;
+    //var telefone = ipt_telefone.value;
+    var email = ipt_email.value;
+    var senha = ipt_senha.value;
+    var codigo = ipt_codigo.value;
+    var cargo = ipt_cargo.value;
+    var idOficinaVincular;
+
+    var mensCadastro;
+
+    var tamanhoSenha = senha.length;
+
+    var terminaCom = email.endsWith(".com") || email.endsWith(".com.br");
+    var indiceArroba = email.indexOf("@");
+    var contemArroba = indiceArroba >= 0;
+
+    //var telefoneValido = telefone.length;
+    //var indiceTraço = telefone.indexOf("-");
+    //var indiceParenteses = telefone.indexOf("(") || telefone.indexOf(")");
+
+    if (
+      codigo == "" ||
+      nome == "" ||
+      //telefone == "" ||
+      email == "" ||
+      senha == "" ||
+      cargo == ""
+    ) {
+      mensCadastro =
+        "<span><br>Todos os campos devem ser preenchidos!</span>";
+    } else if (!terminaCom || !contemArroba) {
+      mensCadastro =
+        "<span><br>O e-mail não é válido. Por favor, insira um e-mail com formato válido (exemplo@sptech.com ou exemplo@sptech.com.br).</span>";
+    } else if (tamanhoSenha < 6) {
+      mensCadastro =
+        "<span><br>A senha deve ter pelo menos 6 caracteres.</span>";
+    } //else if (telefoneValido != 14 || !indiceTraço || !indiceParenteses) {
+      //mensCadastro =
+       // "<span><br>O telefone não é válido. Por favor, insira um telefone com formato válido (exemplo: (11)12345-6789).</span>";
+     else {
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nome,
+          //telefoneServer: telefone,
+          emailServer: email,
+          senhaServer: senha,
+          codigoServer: codigo,
+          cargoServer: cargo,
+          idOficinaVincularServer: idOficinaVincular
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+
+            mensCadastro = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            setTimeout(() => {
+              window.location.href = "dryflow-cadastroSucesso.html";
+
+            }, "2000");
+
+
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+
+      return false;
+    }
+
+
+    div_mensagem.innerHTML = `${mensCadastro}`;
+  }
+</script>
+
+</html>

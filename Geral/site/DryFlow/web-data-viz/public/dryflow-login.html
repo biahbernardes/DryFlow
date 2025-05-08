@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/Styles/style2.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="container">
+        <ul class="navbar">
+          <h5 class="agora">
+            <a href="dryflow-index.html">Início</a>
+          </h5>
+          <h5>
+            <a href="dryflow-index.html#sobrenos">Sobre nós</a>
+          </h5>
+          <li><img src="../DryFlow/Imgs/logoDryFlow.png" /></li>
+          <h5>
+            <a href="./DryFlow_-_Simulador_Financeiro.html"
+              >Simulador Financeiro</a
+            >
+          </h5>
+          <h5>
+            <a href="./dryflow-login.html">Login</a>
+          </h5>
+        </ul>
+      </div>
+    </div>
+
+    <div class="login">
+      <div class="container">
+        <div class="mens">
+          <h1>Que bom tê-lo de volta!</h1>
+        </div>
+
+        <div class="nav">
+          <p>Email:</p>
+          <input
+            placeholder="Insira seu email"
+            type="text"
+            id="ipt_email"
+            value="brandao@sptech.com"
+          />
+          <p>Senha:</p>
+          <input
+            placeholder="Insira sua senha"
+            type="password"
+            id="ipt_senha"
+            value="654321"
+          />
+          <div class="nav-botao">
+            <button id="botaoLogin" onclick="login()">Login</button>
+            <div id="div_mensagem"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <!-- Coluna esquerda -->
+        <div class="footer-col">
+          <p>Dry Flow Solutions</p>
+          <p class="sub-info">Rua Haddock Lobo, 595 - SP</p>
+        </div>
+
+        <!-- Logo central -->
+        <div class="footer-logo">
+          <a href="dryflow-index.html">
+            <img class="logo" src="Imgs/logoDryFlow.png" alt="Logo Dry Flow" />
+          </a>
+        </div>
+
+        <!-- Coluna direita -->
+        <div class="footer-col">
+          <p>Ligue (11)12345-6789</p>
+          <p class="sub-info">
+            <a class="email-link" href="email:dryflow@sptech.school"
+              >dryflow@sptech.school</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var tentativas = 3;
+    function login() {
+      var email = ipt_email.value;
+      var senha = ipt_senha.value;
+
+      var mensLogin;
+
+      var tamanhoSenha = senha.length;
+
+      var terminaCom = email.endsWith(".com") || email.endsWith(".com.br");
+      var indiceArroba = email.indexOf("@");
+      var contemArroba = indiceArroba >= 0;
+
+      if (email == "" || senha == "") {
+            mensLogin = "<span><br>Todos os campos devem ser preenchidos!</span>"
+        }
+        else if (!terminaCom || !contemArroba) {
+            mensLogin = "<span><br>Por favor, insira um e-mail com formato válido <br>(exemplo@sptech.com ou exemplo@sptech.com.br).</span>";
+        }
+        else if (tamanhoSenha <= 5) {
+            mensLogin = '<span><br>Por favor, insira uma senha com mais de 6 caracteres.</span>'
+        }
+        else {
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.idjogador;
+
+                        setTimeout(function () {
+                            window.location = "questionario.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    mensLogin = "<span><br>Email ou Senha incorreta.</span>";
+                    tentativas--
+                    mensLogin += `<span><br>Você ainda tem ${tentativas} tentativa(s)</span>`
+
+                    if (tentativas <= 0) {
+                        mensLogin = ""
+                        mensLogin += `<span><br>Usuário bloquado! Por favor, tente mais tarde.</span>`
+                        btnlogin.disabled = true;
+                    }
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+
+        }
+
+        div_mensagem.innerHTML = `${mensLogin}`
+
+    }
+  </script>
+</html>

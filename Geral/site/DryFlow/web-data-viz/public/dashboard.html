@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>| Dashboard</title>
+    <link rel="stylesheet" href="assets/Styles/dash.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+  </head>
+
+  <body>
+    <div class="kpiData">Última Atualização: <span id="dataHora"></span></div>
+    <div class="container-pai">
+      <div class="sidebar">
+        <div class="profile">
+          <img src="assets/Imgs/account.png" alt="Perfil" />
+
+          <h1>Olá, Brandão!</h1>
+        </div>
+
+        <a href="./dashboard.html">Visão Geral</a>
+        <a href="./detalhes.html">Visão Detalhada</a>
+        <a href="./cadastro-dryflow.html">Cadastrar Novo Usúario</a>
+
+        <a href="../DryFlow/dryflow-index.html" class="logout-btn">
+          Sign-out
+          <img src="./Imgs/logout.png" alt="Logout" class="logout-icon" />
+        </a>
+      </div>
+
+      <div class="graficos">
+        <div class="container">
+          <div class="kpis">
+            <div class="card1">
+              <p>
+                Compressores perto do limite de umidade:<br /><br /><span
+                  id="kpi-perto"
+                  >0</span
+                >
+              </p>
+            </div>
+            <div class="card2">
+              <p>
+                Compressores dentro do limite de umidade:<br /><br /><span
+                  id="kpi-no-limite"
+                  >0</span
+                >
+              </p>
+            </div>
+            <div class="card3">
+              <p>
+                Compressores acima do limite de umidade:<br /><br /><span
+                  id="kpi-acima"
+                  >0</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="graficoLine">
+          <h4>Umidade dos Compressores nas Últimas Horas</h4>
+          <!-- <div class="checkbox-container">
+          <label><input type="checkbox" value="Compressor A" checked> Compressor A</label>
+          <label><input type="checkbox" value="Compressor B" checked> Compressor B</label>
+          <label><input type="checkbox" value="Compressor C" checked> Compressor C</label>
+          <label><input type="checkbox" value="Compressor D" checked> Compressor D</label>
+        </div> -->
+          <div class="charts">
+            <canvas id="myChart2"></canvas>
+          </div>
+        </div>
+        <div class="graficoBarra">
+          <h4>Umidade Atual dos Compressores</h4>
+          <div class="charts">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function atualizarDataHora() {
+        const agora = new Date();
+        const dataHoraFormatada = agora.toLocaleString("pt-BR"); // horario e data brasileiros
+        document.getElementById("dataHora").textContent = dataHoraFormatada;
+      }
+
+      // Atualiza a hora quanto recarrega a pagina
+      atualizarDataHora();
+    </script>
+    <script>
+      function atualizarKPIsBarra(datasets, limite = 50) {
+        let perto = 0;
+        let noLimite = 0;
+        let acima = 0;
+
+        const dados = datasets[0].data;
+
+        dados.forEach((valor) => {
+          if (valor > limite) {
+            acima++;
+          } else if (valor <= limite && valor < limite - 5) {
+            noLimite++;
+          } else if (valor >= limite - 5 && valor <= limite) {
+            perto++;
+          }
+        });
+
+        document.getElementById("kpi-perto").textContent = perto;
+        document.getElementById("kpi-no-limite").textContent = noLimite;
+        document.getElementById("kpi-acima").textContent = acima;
+      }
+    </script>
+
+    <script>
+      const umidadeAtual = [
+        {
+          label: "Umidade Atual",
+          data: [80, 84, 57, 43],
+          backgroundColor: "#b2273c",
+          borderWidth: 1,
+        },
+      ];
+
+      const ctx = document.getElementById("myChart").getContext("2d");
+      Chart.register(window["chartjs-plugin-annotation"]);
+
+      const graficoBar = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            "Compressor A",
+            "Compressor B",
+            "Compressor C",
+            "Compressor D",
+          ],
+          datasets: umidadeAtual,
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            annotation: {
+              annotations: {
+                umidadeIdeal: {
+                  type: "line",
+                  yMin: 50,
+                  yMax: 50,
+                  borderColor: " #FFA500",
+                  borderWidth: 2,
+                  borderDash: [6, 4],
+                  label: {
+                    content: "Limite",
+                    enabled: true,
+
+                    backgroundColor: " #FFA500",
+                    color: "white",
+                    position: "end",
+                    font: {
+                      size: 9,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Umidade %",
+              },
+            },
+            x: {
+              title: {
+                display: true,
+                text: "Compressor",
+              },
+            },
+          },
+        },
+      });
+      atualizarKPIsBarra(graficoBar.data.datasets);
+    </script>
+
+    <script>
+      const grafico = document.getElementById("myChart2");
+
+      const todosDados = [
+        {
+          label: "Compressor A",
+          data: [80, 82, 80, 85, 80, 88],
+          backgroundColor: "#b2273c",
+          borderWidth: 2,
+          borderColor: "#b2273c",
+        },
+        {
+          label: "Compressor B",
+          data: [90, 89, 93, 87, 88, 82],
+          backgroundColor: "#88726d",
+          borderWidth: 2,
+          borderColor: "#88726d",
+        },
+        {
+          label: "Compressor C",
+          data: [80, 82, 80, 85, 80, 83],
+          backgroundColor: "#B72A29",
+          borderWidth: 2,
+          borderColor: "#B72A29",
+        },
+        {
+          label: "Compressor D",
+          data: [30, 33, 35, 29, 31, 34],
+          backgroundColor: "#dbc0bf",
+          borderWidth: 2,
+          borderColor: "#dbc0bf",
+        },
+      ];
+      Chart.register(window["chartjs-plugin-annotation"]);
+
+      const chartLinha = new Chart(grafico, {
+        type: "line",
+        data: {
+          labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+          datasets: todosDados,
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            annotation: {
+              annotations: {
+                umidadeIdeal: {
+                  type: "line",
+                  yMin: 50,
+                  yMax: 50,
+                  borderColor: " #FFA500",
+                  borderWidth: 2,
+                  borderDash: [6, 4],
+                  label: {
+                    content: "Limite",
+                    enabled: true,
+
+                    backgroundColor: " #FFA500",
+                    color: "white",
+                    position: "end",
+                    font: {
+                      size: 9,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Umidade %",
+              },
+            },
+            x: {
+              title: {
+                display: true,
+                text: "Horário",
+              },
+            },
+          },
+        },
+      });
+      document
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((checkbox) => {
+          checkbox.addEventListener("change", () => {
+            const selecionados = Array.from(
+              document.querySelectorAll('input[type="checkbox"]:checked')
+            ).map((cb) => cb.value);
+
+            chartLinha.data.datasets = todosDados.filter((ds) =>
+              selecionados.includes(ds.label)
+            );
+            chartLinha.update();
+          });
+        });
+    </script>
+  </body>
+</html>

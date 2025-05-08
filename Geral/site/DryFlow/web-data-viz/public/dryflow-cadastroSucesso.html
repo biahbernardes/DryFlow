@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro Realizado</title>
+    <link rel="stylesheet" href="assets/Styles/style4.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="container">
+        <ul class="navbar">
+          <h5 class="agora">
+            <a href="dryflow-index.html">Início</a>
+          </h5>
+          <h5>
+            <a href="dryflow-index.html#sobrenos">Sobre nós</a>
+          </h5>
+          <li><img src="../DryFlow/Imgs/logoDryFlow.png" /></li>
+          <h5>
+            <a href="./DryFlow_-_Simulador_Financeiro.html"
+              >Simulador Financeiro</a
+            >
+          </h5>
+          <h5>
+            <a href="./dryflow-login.html">Login</a>
+          </h5>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cadastroSucesso">
+      <div class="container">
+        <div class="mens">
+          <h1>Funcionário cadastrado com sucesso !</h1>
+          <p>
+            Se quiser voltar para a sua dashboard, é só clicar no botão abaixo:
+          </p>
+        </div>
+        <div class="nav-botao">
+          <button id="botaoLogin" onclick="retornoDashboard()">
+            Dashboard
+          </button>
+          <div id="div_mensagem"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <!-- Coluna esquerda -->
+        <div class="footer-col">
+          <p>Dry Flow Solutions</p>
+          <p class="sub-info">Rua Haddock Lobo, 595 - SP</p>
+        </div>
+
+        <!-- Logo central -->
+        <div class="footer-logo">
+          <a href="dryflow-index.html">
+            <img class="logo" src="Imgs/logoDryFlow.png" alt="Logo Dry Flow" />
+          </a>
+        </div>
+
+        <!-- Coluna direita -->
+        <div class="footer-col">
+          <p>Ligue (11)12345-6789</p>
+          <p class="sub-info">
+            <a class="email-link" href="email:dryflow@sptech.school"
+              >dryflow@sptech.school</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  function retornoDashboard() {
+    window.location.href = "dashboard.html";
+  }
+</script>
