@@ -167,6 +167,7 @@
       var cidade = ipt_cidade.value;
       var cep = ipt_cep.value;
       var logradouro = ipt_logradouro.value;
+      var idOficinaVincular = "1";
 
       var mensCadastro;
 
@@ -222,11 +223,11 @@
           body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
-            cpfServer: cpfVar,
-            idEmpresaVincularServer: idEmpresaVincular,
+            nomeServer: nomeEmpresa,
+            emailServer: email,
+            senhaServer: senha,
+            cpfServer: cnpj,
+            idEmpresaVincularServer: idOficinaVincular,
           }),
         })
           .then(function (resposta) {
