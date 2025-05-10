@@ -52,14 +52,14 @@
                 placeholder="Insira o nome da sua empresa"
                 type="text"
                 id="ipt_nomeEmpresa"
-                value="Oficina Brandão Car's"
+                value="Funcionario1"
               />
               <p>CNPJ:</p>
               <input
                 placeholder="Insira o cnpf da sua empresa"
                 type="text"
                 id="ipt_cnpj"
-                value="12345678912345"
+                value="40432544000147"
               />
               <p>Telefone:</p>
               <input
@@ -169,7 +169,8 @@
       var cidade = ipt_cidade.value;
       var cep = ipt_cep.value;
       var logradouro = ipt_logradouro.value;
-      var idOficinaVincular = "1";
+      var idOficinaVincular = 1;
+      var cargo = "Gerente";
 
       var mensCadastro;
 
@@ -186,12 +187,6 @@
       var indiceParenteses = telefone.indexOf("(") || telefone.indexOf(")");
 
       var cepValido = cep.length;
-
-      console.log(nomeEmpresa);
-      console.log(email);
-      console.log(senha);
-      console.log(cnpj);
-      console.log(idOficinaVincular);
 
       if (
         nomeEmpresa == "" ||
@@ -224,6 +219,12 @@
       }
       // Enviando o valor da nova input
 
+      console.log(nomeEmpresa);
+      console.log(email);
+      console.log(senha);
+      console.log(cnpj);
+      console.log(idOficinaVincular);
+
       fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
@@ -232,10 +233,11 @@
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
+
           nomeServer: nomeEmpresa,
           emailServer: email,
           senhaServer: senha,
-          cpfServer: cnpj,
+          cargoServer: cargo,
           idOficinaVincularServer: idOficinaVincular,
         }),
       })
