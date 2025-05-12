@@ -115,12 +115,15 @@ insert into endereco (rua, numero, cidade, bairro, estado, cep, fkEndOficina, fk
 
 -- Inserir Funcionários
 insert into funcionario (nome, email, senha, cargo, fkOficina) values
+('Feranado Brandao', 'brandao@sptech.com', '654321', 'Supervisor', 1),
+('Hector Silva', 'hector@empresaA.com', 'senha123', 'Gerente', 1),
 ('João Silva', 'joao@empresaA.com', 'senha123', 'Técnico', 1),
 ('Maria Oliveira', 'maria@empresaB.com', 'senha123', 'Gerente', 2),
 ('Carlos Souza', 'carlos@empresaC.com', 'senha123', 'Supervisor', 3),
 ('Ana Costa', 'ana@empresaD.com', 'senha123', 'Técnico', 4),
-('Roberta Marinho', 'roberta@empresaD.com', 'senha123', 'Técnico', 5),
-('Hector Silva', 'hector@empresaA.com', 'senha123', 'Gerente', 1);
+('Roberta Marinho', 'roberta@empresaD.com', 'senha123', 'Técnico', 5);
+
+
 
 -- Inserir Telefones
 insert into telefone (numero, fkTelFuncionario, fkTelEmpresa, fkTelOficina) values
