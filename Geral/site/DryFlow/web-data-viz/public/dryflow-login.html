@@ -101,73 +101,69 @@
       var contemArroba = indiceArroba >= 0;
 
       if (email == "" || senha == "") {
-            mensLogin = "<span><br>Todos os campos devem ser preenchidos!</span>"
-        }
-        else if (!terminaCom || !contemArroba) {
-            mensLogin = "<span><br>Por favor, insira um e-mail com formato válido <br>(exemplo@sptech.com ou exemplo@sptech.com.br).</span>";
-        }
-        else if (tamanhoSenha <= 5) {
-            mensLogin = '<span><br>Por favor, insira uma senha com mais de 6 caracteres.</span>'
-        }
-        else {
+        mensLogin = "<span><br>Todos os campos devem ser preenchidos!</span>";
+      } else if (!terminaCom || !contemArroba) {
+        mensLogin =
+          "<span><br>Por favor, insira um e-mail com formato válido <br>(exemplo@sptech.com ou exemplo@sptech.com.br).</span>";
+      } else if (tamanhoSenha <= 5) {
+        mensLogin =
+          "<span><br>Por favor, insira uma senha com mais de 6 caracteres.</span>";
+      } else {
+        fetch("/usuarios/autenticar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            emailServer: email,
+            senhaServer: senha,
+          }),
+        })
+          .then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!");
 
-            fetch("/usuarios/autenticar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    emailServer: email,
-                    senhaServer: senha
-                })
-            }).then(function (resposta) {
-                console.log("ESTOU NO THEN DO entrar()!")
+            if (resposta.ok) {
+              // Lucas colocou um redirecionamento para dashboard, não é a versao final
+              window.location.href = "dashboard.html";
+              console.log(resposta);
 
-                if (resposta.ok) {
-                    console.log(resposta);
+              resposta.json().then((json) => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.idjogador;
 
-                    resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
-                        sessionStorage.ID_USUARIO = json.idjogador;
+                setTimeout(function () {
+                  window.location = "questionario.html";
+                }, 1000); // apenas para exibir o loading
+              });
+            } else {
+              console.log("Houve um erro ao tentar realizar o login!");
 
-                        setTimeout(function () {
-                            window.location = "questionario.html";
-                        }, 1000); // apenas para exibir o loading
+              mensLogin = "<span><br>Email ou Senha incorreta.</span>";
+              tentativas--;
+              mensLogin += `<span><br>Você ainda tem ${tentativas} tentativa(s)</span>`;
 
-                    });
+              if (tentativas <= 0) {
+                mensLogin = "";
+                mensLogin += `<span><br>Usuário bloquado! Por favor, tente mais tarde.</span>`;
+                btnlogin.disabled = true;
+              }
 
-                } else {
+              resposta.text().then((texto) => {
+                console.error(texto);
+              });
+            }
+          })
+          .catch(function (erro) {
+            console.log(erro);
+          });
 
-                    console.log("Houve um erro ao tentar realizar o login!");
+        return false;
+      }
 
-                    mensLogin = "<span><br>Email ou Senha incorreta.</span>";
-                    tentativas--
-                    mensLogin += `<span><br>Você ainda tem ${tentativas} tentativa(s)</span>`
-
-                    if (tentativas <= 0) {
-                        mensLogin = ""
-                        mensLogin += `<span><br>Usuário bloquado! Por favor, tente mais tarde.</span>`
-                        btnlogin.disabled = true;
-                    }
-
-                    resposta.text().then(texto => {
-                        console.error(texto);
-                    });
-                }
-
-            }).catch(function (erro) {
-                console.log(erro);
-            })
-
-            return false;
-
-        }
-
-        div_mensagem.innerHTML = `${mensLogin}`
-
+      div_mensagem.innerHTML = `${mensLogin}`;
     }
   </script>
 </html>
