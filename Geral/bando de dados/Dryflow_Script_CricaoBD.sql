@@ -11,6 +11,7 @@ email varchar(50) not null
 create table oficina (
 idOficina int primary key auto_increment,
 nomeOficina varchar(45) not null,
+codigo_ativacao varchar(45),
 fkEmpresa int not null,
 constraint fk_empresa foreign key (fkEmpresa) references empresa(idEmpresa)
 );
@@ -91,12 +92,12 @@ insert into empresa (cnpj, nomeFantasia, email) values
 ('22233344000102', 'Empresa D', 'contato@empresaD.com');
 
 -- Inserir Oficinas (Empresa A tem 1 oficina a mais)
-insert into oficina (nomeOficina, fkEmpresa) values
-('Oficina A', 1), 
-('Oficina B', 2), 
-('Oficina C', 3),
-('Oficina D', 4),
-('Oficina E', 1);
+insert into oficina (nomeOficina, fkEmpresa, codigo_ativacao) values
+('Oficina A', 1, 'AAAAA'), 
+('Oficina B', 2, 'BBBBB'), 
+('Oficina C', 3, 'CCCCC'),
+('Oficina D', 4, 'DDDDD'),
+('Oficina E', 1, 'EEEEE');
 
 -- Inserir Endereços para Empresas (sem associar à oficina)
 insert into endereco (rua, numero, cidade, bairro, estado, cep, fkEndOficina, fkEndEmpresa) values
