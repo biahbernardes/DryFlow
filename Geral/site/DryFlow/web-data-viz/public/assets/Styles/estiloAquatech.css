@@ -1,17 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
+  font-family: "Barlow", "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+  background-color: #ffffff;
 }
 
 :root {
   --tamanho-header: 80px;
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-banner: calc(
+    100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
+  );
+  --tamanho-simulador: calc(
+    100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
+  );
+  --tamanho-login: calc(
+    100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
+  );
   --tamanho-footer: 65px;
 }
 
@@ -65,7 +72,7 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-image: url("../assets/imgs/bg-jelly-fish-para-home.png");
   background-size: cover;
 }
 
@@ -140,9 +147,12 @@ body {
 /* LOGIN */
 
 .login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
+  /* height: var(--tamanho-login); */
+  height: 100vh;
+  width: 100vh;
+  /* background-image: url("../Imgs/carro.png.png"); */
+  /* background-size: cover; */
+  background-color: #ffffff;
 }
 
 .login .container {
@@ -152,7 +162,8 @@ body {
 }
 
 .card {
-  width: 50%;
+  /* width: 50%; */
+  width: 100%;
   background-color: #e5e5e5;
   border-radius: 10px;
   display: flex;
@@ -214,7 +225,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   color: #fff;
-  background-color: #ED145B;
+  background-color: #ed145b;
   width: 120px;
   height: 30px;
   align-self: center;
@@ -232,12 +243,12 @@ body {
 }
 
 #div_erros_login {
-  display: none
+  display: none;
 }
 
 /* FORMULARIO */
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -249,12 +260,12 @@ body {
   width: 230px;
   position: fixed;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #ed145b 3px solid;
   padding: 10px;
   margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
 }
@@ -285,7 +296,7 @@ input {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #ED145B;
+  background-color: #ed145b;
   width: 120px;
   align-self: center;
   margin-top: 5px;
@@ -310,7 +321,7 @@ input {
 
 .simulador .container {
   flex-direction: column;
-  overflow: scroll; 
+  overflow: scroll;
   height: var(--tamanho-simulador);
 }
 
@@ -348,15 +359,120 @@ input {
   height: 48px;
   animation-name: bell;
   animation-duration: 4s;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+  background-image: url("https://cdn-icons-png.flaticon.com/512/1157/1157000.png");
   background-size: cover;
   animation-iteration-count: infinite;
 }
 
 @keyframes bell {
-  0%   {transform: rotate(25deg)}
-  25%  {transform: rotate(-25deg)}
-  50%  {transform: rotate(25deg)}
-  75%  {transform: rotate(-25deg)}
-  100% {transform: rotate(25deg)}
+  0% {
+    transform: rotate(25deg);
+  }
+  25% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+  75% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
+/* CONFIGURAÇÔES PAGINA DA DASHBOARD */
+
+.sidebar {
+  width: 150px;
+  background-color: #b72a29;
+  padding: 20px;
+  color: #fff;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: rgba(0, 0, 0, 0.354) 0px 0px 12px 0px;
+}
+
+.sidebar h1 {
+  font-size: 1.02em;
+  font-weight: 200;
+  /* margin-bottom: 11.5px; */
+  text-align: center;
+  padding-left: 5px;
+}
+
+.sidebar a {
+  font-size: 1em;
+  text-decoration: none;
+  color: #ffffffb7;
+  background-color: rgba(0, 0, 0, 0.166);
+  /* background-color: #625a589e; */
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 10px 0;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #87060689;
+  color: #fff;
+}
+
+.sidebar a:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.7);
+}
+
+.sidebar .profile img {
+  width: 45px;
+  height: 45px;
+}
+
+.sidebar .profile {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.sidebar .logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* quase a mesma coisa q o padding */
+  margin-top: 200px;
+  background-color: rgba(0, 0, 0, 0.166);
+  cursor: pointer;
+}
+
+.sidebar_cadastro {
+  display: flex;
+  flex-direction: row;
+  width: 100vh;
+}
+
+.sidebar .logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* quase a mesma coisa q o padding */
+  margin-top: 200px;
+  background-color: rgba(0, 0, 0, 0.166);
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #87060689;
+}
+
+.logout-icon {
+  width: 18px;
+  height: 18px;
 }
