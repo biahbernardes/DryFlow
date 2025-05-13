@@ -1,182 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AquaTech | Cadastro</title>
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css" />
+    <link rel="icon" href="./assets/icon/favicon2.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro</title>
-  <link rel="stylesheet" href="assets/Styles/style1.css" />
-</head>
-
-<body>
-  <div class="header">
-    <div class="container">
-      <ul class="navbar">
-        <h5 class="agora">
-          <a href="dryflow-index.html">Início</a>
-        </h5>
-        <h5>
-          <a href="dryflow-index.html#sobrenos">Sobre nós</a>
-        </h5>
-        <li><img src="assets/Imgs/logoDryFlow.png" /></li>
-        <h5>
-          <a href="./DryFlow_-_Simulador_Financeiro.html">Simulador Financeiro</a>
-        </h5>
-        <h5>
-          <a href="./dryflow-login.html">Login</a>
-        </h5>
-      </ul>
-    </div>
-  </div>
-  <div class="cadastro">
-    <div class="container">
-      <div class="mens">
-        <h1>Bem-vindo!</h1>
-        <p>
-          Já tem uma conta na Dry Flow? clique no botão abaixo e faça o seu
-          login!
-        </p>
-        <a href="dryflow-login.html"><img class="logo" src="assets/Imgs/botao -login.png" />
-          Login</a>
+  <body onload="listar()">
+    <!--header inicio-->
+    <div class="header">
+      <div class="container">
+        <h1 class="titulo">AquaTech</h1>
+        <ul class="navbar">
+          <li>
+            <a href="index.html">Inicial</a>
+          </li>
+          <li>
+            <a href="simulador.html">Simulador</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li class="agora">
+            <a href="#">Cadastro</a>
+          </li>
+        </ul>
       </div>
+    </div>
+    <!--header fim-->
 
-      <div class="nav">
-        <div class="boxer">
-          <div class="box">
-            <p>Código da Oficina:</p>
-            <input placeholder="Insira o código da oficina" type="text" id="ipt_codigo"/>
-            <p>Nome:</p>
-            <input placeholder="Insira o nome do funcionario" type="text" id="ipt_nome"/>
-            <!-- <p>Telefone:</p> -->
-            <!-- <input placeholder="Insira o número de contato" type="text" id="ipt_telefone" value="(11)12345-6789" /> -->
-            <p>E-mail:</p>
-            <input placeholder="Insira o email para contato" type="text" id="ipt_email"/>
-            <p>Senha:</p>
-            <input placeholder="Crie uma senha" type="text" id="ipt_senha"/>
-            <p>Cargo:</p>
-            <input placeholder="Insira seu cargo" type="text" id="ipt_cargo"/>
-          </div>
+    <div class="login">
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
         </div>
       </div>
-      <div class="nav-botao">
-        <button onclick="cadastro()">Confirmar cadastro</button>
-        <div id="div_mensagem"></div>
+      <div class="container">
+        <div class="card card-cadastro">
+          <h2>Bem-vindo!</h2>
+          <div class="formulario">
+            <!--
+                         Para inserir mais um campo, copie uma das inputs abaixo.
+                         Assim que inserir vá para o script abaixo.
+                     -->
+            <div class="campo">
+              <span>Código de ativação:</span>
+              <input
+                id="codigo_input"
+                type="text"
+                placeholder="Insira aqui seu código"
+              />
+            </div>
+            <div class="campo">
+              <span>Nome:</span>
+              <input id="nome_input" type="text" placeholder="Seu nome" />
+            </div>
+            <div class="campo">
+              <span>E-mail:</span>
+              <input
+                id="email_input"
+                type="text"
+                placeholder="meuemail@provedor.com"
+              />
+            </div>
+            <!-- <div class="cpf">
+              <span>CPF:</span>
+              <input id="cpf_input" type="text" placeholder="12345678910" />
+            </div> -->
+            <div class="campo">
+              <span>Senha:</span>
+              <input id="senha_input" type="password" placeholder="******" />
+            </div>
+            <div class="campo">
+              <span>Confirmação da Senha:</span>
+              <input
+                id="confirmacao_senha_input"
+                type="password"
+                placeholder="******"
+              />
+            </div>
+            <div class="campo">
+              <span>Cargo:</span>
+              <input id="cargo_input" type="text" placeholder="Técnico" />
+            </div>
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
+          </div>
+          <div id="div_aguardar" class="loading-div">
+            <img src="./assets/circle-loading.gif" id="loading-gif" />
+          </div>
+
+          <div id="div_erros_login"></div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
 
-  <div class="footer">
-    <div class="container">
-      <!-- Coluna esquerda -->
-      <div class="footer-col">
-        <p>Dry Flow Solutions</p>
-        <p class="sub-info">Rua Haddock Lobo, 595 - SP</p>
-      </div>
-
-      <!-- Logo central -->
-      <div class="footer-logo">
-        <a href="dryflow-index.html">
-          <img class="logo" src="assets/Imgs/logoDryFlow.png" alt="Logo Dry Flow" />
-        </a>
-      </div>
-
-      <!-- Coluna direita -->
-      <div class="footer-col">
-        <p>Ligue (11)12345-6789</p>
-        <p class="sub-info">
-          <a class="email-link" href="email:dryflow@sptech.school">dryflow@sptech.school</a>
-        </p>
+    <!--footer inicio-->
+    <div class="footer">
+      <div class="container">
+        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+        <span class="version">v1.0.0</span>
       </div>
     </div>
-  </div>
-</body>
+    <!--footer fim-->
+  </body>
+</html>
+
 <script>
-  function cadastro() {
-    var nome = ipt_nome.value;
-    //var telefone = ipt_telefone.value;
-    var email = ipt_email.value;
-    var senha = ipt_senha.value;
-    var codigo = ipt_codigo.value;
-    var cargo = ipt_cargo.value;
-    var idOficinaVincular;
+  // Array para armazenar empresas cadastradas para validação de código de ativação
+  let listaEmpresasCadastradas = [];
 
-    var mensCadastro;
+  function cadastrar() {
+    // aguardar();
 
-    var tamanhoSenha = senha.length;
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var codigoVar = codigo_input.value;
+    var idEmpresaVincular;
+    var cpfVar = cpf_input.value;
+    var cargoVar = cargo_input.value;
 
-    var terminaCom = email.endsWith(".com") || email.endsWith(".com.br");
-    var indiceArroba = email.indexOf("@");
-    var contemArroba = indiceArroba >= 0;
-
-    //var telefoneValido = telefone.length;
-    //var indiceTraço = telefone.indexOf("-");
-    //var indiceParenteses = telefone.indexOf("(") || telefone.indexOf(")");
-
+    // Verificando se há algum campo em branco
     if (
-      codigo == "" ||
-      nome == "" ||
-      //telefone == "" ||
-      email == "" ||
-      senha == "" ||
-      cargo == ""
+      nomeVar == "" ||
+      emailVar == "" ||
+      cpfVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      cargoVar == "" ||
+      codigoVar == ""
     ) {
-      mensCadastro =
-        "<span><br>Todos os campos devem ser preenchidos!</span>";
-    } else if (!terminaCom || !contemArroba) {
-      mensCadastro =
-        "<span><br>O e-mail não é válido. Por favor, insira um e-mail com formato válido (exemplo@sptech.com ou exemplo@sptech.com.br).</span>";
-    } else if (tamanhoSenha < 6) {
-      mensCadastro =
-        "<span><br>A senha deve ter pelo menos 6 caracteres.</span>";
-    } //else if (telefoneValido != 14 || !indiceTraço || !indiceParenteses) {
-      //mensCadastro =
-       // "<span><br>O telefone não é válido. Por favor, insira um telefone com formato válido (exemplo: (11)12345-6789).</span>";
-     else {
-      fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nome,
-          //telefoneServer: telefone,
-          emailServer: email,
-          senhaServer: senha,
-          codigoServer: codigo,
-          cargoServer: cargo,
-          idOficinaVincularServer: idOficinaVincular
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
 
-          if (resposta.ok) {
-
-            mensCadastro = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-            setTimeout(() => {
-              window.location.href = "dryflow-cadastroSucesso.html";
-
-            }, "2000");
-
-
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-
+      finalizarAguardar();
       return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
     }
 
+    // Verificando se nome tem mais de 1 caractere
+    if (nomeVar.length <= 1) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Nome tem que ter mais de 1 caractere)";
 
-    div_mensagem.innerHTML = `${mensCadastro}`;
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se email contém "@" e "."
+    if (
+      emailVar.indexOf("@") == undefined ||
+      emailVar.indexOf(".") == undefined
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Email tem que ter os caracteres '@' e '.')";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se o código de ativação é de alguma empresa cadastrada
+    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+        idEmpresaVincular = listaEmpresasCadastradas[i].id;
+        console.log("Código de ativação válido.");
+        break;
+      } else {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+        finalizarAguardar();
+      }
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        cpfServer: cpfVar,
+        idEmpresaVincularServer: idEmpresaVincular,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  // Listando empresas cadastradas
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresasCadastradas.push(empresa);
+
+            console.log("listaEmpresasCadastradas");
+            console.log(listaEmpresasCadastradas[0].codigo_ativacao);
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
   }
 </script>
-
-</html>
