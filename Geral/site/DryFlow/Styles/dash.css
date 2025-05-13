@@ -51,24 +51,32 @@ body {
 }
 
 
-.container-pai .graficos {
+ .graficos {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-    padding: 20px;
+    padding-top: 24px;
 
-    width: 100vw;
-    top: 6px;
+    width:80%;
     align-items: center;
 }
 
+.main .container .graficos caption {
+    background-color: var(--cor-terciaria);
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 0;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
 .charts>canvas {
-    display: flex;
+   
     min-width: 50vw;
-    min-height: 50vh;
+    min-height: 45vh;
     padding: 5px;
-    /* width: 100% !important; */
+     width: 100% !important; 
 }
 
 .graficoBarra {
@@ -279,7 +287,6 @@ body {
     width: 10vw;
     text-align: center;
     /* background-color: var(--cor-terciaria); */
-
     border-radius: 8px;
     padding: 15px;
     background-color: var(--cor-terciaria);
