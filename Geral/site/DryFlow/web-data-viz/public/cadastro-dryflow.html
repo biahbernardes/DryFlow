@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AquaTech | Cadastro</title>
     <script src="./js/sessao.js"></script>
-    <link rel="stylesheet" href="./css/estilo.css" />
+    <!-- <link rel="stylesheet" href="./css/estilo.css" /> -->
+    <link rel="stylesheet" href="./assets/Styles/style1.css" />
     <link rel="icon" href="./assets/icon/favicon2.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
   </head>
@@ -126,14 +127,14 @@
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var codigoVar = codigo_input.value;
     var idEmpresaVincular;
-    var cpfVar = cpf_input.value;
+    //var cpfVar = cpf_input.value;
     var cargoVar = cargo_input.value;
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
-      cpfVar == "" ||
+      // cpfVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
       cargoVar == "" ||
@@ -173,11 +174,11 @@
     } else {
       setInterval(sumirMensagem, 5000);
     }
-
+    console.log("lista de empresas cadastradas" + listaEmpresasCadastradas);
     // Verificando se o código de ativação é de alguma empresa cadastrada
     for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
       if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id;
+        idEmpresaVincular = listaEmpresasCadastradas[i].idOficina;
         console.log("Código de ativação válido.");
         break;
       } else {
@@ -186,6 +187,7 @@
         finalizarAguardar();
       }
     }
+    console.log("idEmpresaVincular: " + idEmpresaVincular);
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -199,8 +201,9 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        cpfServer: cpfVar,
-        idEmpresaVincularServer: idEmpresaVincular,
+        //cpfServer: cpfVar,
+        cargoServer: cargoVar,
+        idOficinaVincularServer: idEmpresaVincular,
       }),
     })
       .then(function (resposta) {
