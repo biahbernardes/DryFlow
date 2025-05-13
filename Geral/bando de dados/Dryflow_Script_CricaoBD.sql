@@ -36,7 +36,8 @@ nome varchar(45) not null,
 email varchar(45) not null,
 senha varchar(45) not null,
 cargo varchar(45) not null,
-fkOficina int not null
+fkOficina int not null,
+constraint fk_funcOficina foreign key (fkOficina) references oficina(idOficina)
 );
 
 create table telefone (
