@@ -57,18 +57,22 @@ body {
     justify-content: space-around;
     position: relative;
     padding-top: 24px;
-
     width:80%;
     align-items: center;
 }
 
-.main .container .graficos caption {
-    background-color: var(--cor-terciaria);
-    color: #fff;
-    font-size: 14px;
-    padding: 5px 0;
-    border-radius: 5px;
-    margin-bottom: 5px;
+ .container .graficos .legenda {
+    /* background-color:#e0e0e0; */
+    color: #000000;
+    font-size: 20px;
+    text-align: left;
+     width: 81.5%; 
+    border-radius: 2px;
+    display: flex;
+   
+    /* min-height: 5vh; */
+    
+   
 }
 
 .charts>canvas {
@@ -220,8 +224,9 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 20px;
-    padding: 20px;
+    /* gap: 20px; */
+    padding-top: 5px;
+    padding-bottom: 20px;
     background-color: #ffffff;
     border-radius: 10px;
     width: 100%;
@@ -235,7 +240,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-bottom: 12px;
-    padding-top: 1px;
+    
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
     height: 13vh;
     width: 15vw;
@@ -366,6 +371,7 @@ body {
     display: flex;
     justify-content: space-around;
     width: 80%;
+    margin-bottom: 30px;
 }
 
 .main .container .cardsInfo .card {
