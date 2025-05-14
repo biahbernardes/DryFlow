@@ -80,8 +80,9 @@
         
           </div> 
        
-            <h3>Compressores da Oficina Brandão Car's</h3>
+          
             <div class="filtro">
+             <div style="width: 70%; text-align: center;"><h3>Compressores da Oficina Brandão Car's</h3></div> 
               <div style="display: flex; flex-direction: column; margin-top: 0%;">
              <p> Filtrar Compressores:</p>
               <select name="fitro_compressor" id="fitro_compressor">
@@ -92,6 +93,7 @@
               </select>
             </div>
             </div>
+            <p style="color: #343030ae; font-size: 12px; margin-bottom: 14px;">Clique em um compressor para ver mais informações.</p>
             <div class="cardsInfo">
                 <div class="card">
                     <h4>Compressor A</h4>
@@ -293,7 +295,7 @@
     dados.forEach((valor) => {
       if (valor > limite) {
         acima++;
-      } else if (valor <= limite && valor < limite - 5) {
+      } else if (valor < limite && valor < limite - 5) {
         noLimite++;
       } else if (valor >= limite - 5 && valor <= limite) {
         perto++;
