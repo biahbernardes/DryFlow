@@ -1,5 +1,7 @@
 # DryFlow
 
+![Logo](./Geral/site/DryFlow/web-data-viz/public/assets/Imgs/logocompleta.jpg)
+
 Monitoramento preventivo de umidade em compressores de ar em peqeunas oficinas especializadas em pintura automotiva.
 
 ## 📋 Objetivo do Projeto
