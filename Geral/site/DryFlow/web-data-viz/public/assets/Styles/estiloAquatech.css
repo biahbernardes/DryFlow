@@ -169,7 +169,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: #1E5290;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -469,7 +469,7 @@ input {
 }
 
 .logout-btn:hover {
-  background-color: #87060689;
+  background-color: #89bfff;
 }
 
 .logout-icon {
