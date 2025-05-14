@@ -20,7 +20,7 @@
             </div>
       
             <a href="../DryFlow/dashboard.html">Visão Geral</a>
-            <a href="../DryFlow/detalhes.html">Visão Detalhada</a>
+            <a href="../DryFlow/detalhes.html">Histórico de Alertas</a>
             <a href="../DryFlow/cadastro-dryflow.html">Cadastrar Novo Usúario</a>
       
             <a href="../DryFlow/dryflow-index.html" class="logout-btn">
@@ -29,6 +29,7 @@
             </a>
           </div>
         <div class="container">
+         
           <div class="graficos">
 
             <!-- <span class="legenda">Parâmetros para Alertas</span> -->
@@ -42,7 +43,7 @@
                 </p>
               </div>
               <div class="card">
-                <div class="segunda">50%</div>
+                <div class="segunda">Em 50%</div>
                 <!-- <h4 >Limite de Umidade</h4>
                 <span>50%</span> -->
                 <p>
@@ -76,8 +77,21 @@
                 </p>
               </div>
             </div>-->
+        
           </div> 
+       
             <h3>Compressores da Oficina Brandão Car's</h3>
+            <div class="filtro">
+              <div style="display: flex; flex-direction: column; margin-top: 0%;">
+             <p> Filtrar Compressores:</p>
+              <select name="fitro_compressor" id="fitro_compressor">
+                <option value="todos">Todos</option>
+                <option value="riscoAlto">Nível de Risco Alto</option>
+                <option value="riscoMedio">Nível de Risco Médio</option>
+                <option value="riscoBaixo">Nível de Risco Baixo</option>
+              </select>
+            </div>
+            </div>
             <div class="cardsInfo">
                 <div class="card">
                     <h4>Compressor A</h4>
@@ -97,7 +111,7 @@
                     <h4>Compressor C</h4>
                     <p>ID Compressor: 3</p>
                     <p>Oficina: Brandão Car's</p>
-                    <p>Umidade Atual: 57%</p>
+                    <p>Umidade Atual: 47%</p>
                     <p>Nível de Risco: <span class="medio">Médio</span> </p>
                 </div>
                 <div class="card">
@@ -129,7 +143,7 @@
                   <h4>Compressor G</h4>
                   <p>ID Compressor: 3</p>
                   <p>Oficina: Brandão Car's</p>
-                  <p>Umidade Atual: 57%</p>
+                  <p>Umidade Atual: 47%</p>
                   <p>Nível de Risco: <span class="medio">Médio</span> </p>
               </div>
               <div class="card">
@@ -140,6 +154,37 @@
                   <p>Nível de Risco: <span class="baixo">Baixo</span> </p>
               </div>
             </div>
+            <div class="cardsInfo">
+              <div class="card">
+                  <h4>Compressor I</h4>
+                  <p>ID Compressor: 1</p>
+                  <p>Oficina: Brandão Car's</p>
+                  <p>Umidade Atual: 80%</p>
+                  <p>Nível de Risco: <span class="alto">Alto</span> </p>
+              </div>
+              <div class="card">
+                  <h4>Compressor J</h4>
+                  <p>ID Compressor: 2</p>
+                  <p>Oficina: Brandão Car's</p>
+                  <p>Umidade Atual: 84%</p>
+                  <p>Nível de Risco: <span class="alto">Alto</span> </p>
+              </div>
+              <div class="card">
+                  <h4>Compressor K</h4>
+                  <p>ID Compressor: 3</p>
+                  <p>Oficina: Brandão Car's</p>
+                  <p>Umidade Atual: 47%</p>
+                  <p>Nível de Risco: <span class="medio">Médio</span> </p>
+              </div>
+              <div class="card">
+                  <h4>Compressor L</h4>
+                  <p>ID Compressor: 4</p>
+                  <p>Oficina: Brandão Car's</p>
+                  <p>Umidade Atual: 43%</p>
+                  <p>Nível de Risco: <span class="baixo">Baixo</span> </p>
+              </div>
+              </div>
+
 
             <!-- TABELA DE ALERTAS
              <tr> == linha
@@ -265,7 +310,7 @@
 
 <script>
    // dados sem estar no gráfico
-   const dadosUmidade = [80, 84, 57, 43];
+   const dadosUmidade = [80, 84, 47, 43];
    // atualiza as KPIs com base nos dados inseridos manualmente, não os dados do gráfico
    atualizarKPIs(dadosUmidade);
 </script>
