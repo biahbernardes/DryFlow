@@ -140,13 +140,11 @@ body{
 
 .valores{
     height: 500px;
-
     background-image: url("../Imgs/valores.png");
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;  
-
     padding-bottom: 10px;
 
 }
@@ -219,7 +217,7 @@ body{
 
   .sensores{
     background-color: #E0E0E0;
-    height: 450px;
+    height: 380px;
     justify-content: center;
     align-items: center;
     display: flex;
