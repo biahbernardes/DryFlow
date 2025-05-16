@@ -1,7 +1,8 @@
 var database = require("../database/config");
 
+/* Imaginando  */
 function buscarAquariosPorEmpresa(empresaId) {
-  var instrucaoSql = `SELECT * FROM oficina a WHERE idOficina = ${empresaId}`;
+  var instrucaoSql = `SELECT * FROM compressor a WHERE fkOficina = ${empresaId}`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
