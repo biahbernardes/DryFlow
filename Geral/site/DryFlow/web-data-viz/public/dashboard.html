@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
     <link rel="stylesheet" href="./assets/Styles/dash.css" />
   </head>
-  <body>
+  <body onload="exibirAquarios()">
     <div class="kpiData">Última Atualização: <span id="dataHora"></span></div>
 
     <div class="main">
@@ -107,6 +107,9 @@
         <p style="color: #343030ae; font-size: 12px; margin-bottom: 14px">
           Clique em um compressor para ver mais informações.
         </p>
+
+        <div class="cards" id="cardAquarios"></div>
+
         <div class="cardsInfo">
           <div class="card">
             <h4>Compressor A</h4>
@@ -138,7 +141,7 @@
           </div>
         </div>
 
-        <div class="cardsInfo">
+        <!-- <div class="cardsInfo">
           <div class="card">
             <h4>Compressor E</h4>
             <p>ID Compressor: 1</p>
@@ -197,7 +200,7 @@
             <p>Umidade Atual: 43%</p>
             <p>Nível de Risco: <span class="baixo">Baixo</span></p>
           </div>
-        </div>
+        </div> -->
 
         <!-- TABELA DE ALERTAS
              <tr> == linha
@@ -321,4 +324,25 @@
   const dadosUmidade = [80, 84, 47, 43];
   // atualiza as KPIs com base nos dados inseridos manualmente, não os dados do gráfico
   atualizarKPIs(dadosUmidade);
+</script>
+
+<script>
+  /* SCRIPT do WEBDATAVIZ (cards.html) para gerar os cards de alerta de umidade */
+  function exibirAquarios() {
+    JSON.parse(sessionStorage.AQUARIOS).forEach((item) => {
+      document.getElementById("cardAquarios").innerHTML += `
+                  <div class="card-aquario">
+                      <div class="title-aquario">
+                          <h1>${item.modelo}</h1>
+                      </div>
+                      <div class="desc-aquario">
+                      <div class="temperatura">
+                          <p id="temp_aquario_${item.idCompressor}">-°C</p>
+                      </div>
+                      <div class="cor-alerta" id="card_${item.idCompressor}"></div>
+                  </div>
+                  </div>
+                  `;
+    });
+  }
 </script>
