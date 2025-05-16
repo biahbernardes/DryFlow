@@ -468,3 +468,50 @@ tbody {
 .table td span.alerta {
   color: #dc1919;
 }
+
+/* Lucas: Estilização cards que chegam do sessionStorage */
+
+.cardAquarios {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+.cardDinamico {
+  border: 1px solid #4f484843;
+  border-radius: 5px;
+  width: 170px;
+  background-color: #ffffffd8;
+  /* background: #d53232; */
+  color: #000000;
+  font-size: smaller;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  /* background: linear-gradient(90deg,rgb(183, 41, 41) 0%, rgba(183, 41, 41, 1) 50%, rgba(135, 6, 6, 0.558) 100%); */
+}
+
+.cardDinamico p {
+  padding-left: 10px;
+  text-align: justify;
+  font-weight: 100;
+}
+
+.cardDinamico p span.alto {
+  color: rgb(197, 18, 9);
+}
+
+.cardDinamico p span.baixo {
+  color: #195621;
+}
+
+.cardDinamico p span.medio {
+  color: rgb(244, 136, 12);
+}
+
+.cardDinamico h4 {
+  color: var(--cor-terciaria);
+  text-align: center;
+  font-size: medium;
+}
+/* Lucas: Fim Estilização cards que chegam do sessionStorage */

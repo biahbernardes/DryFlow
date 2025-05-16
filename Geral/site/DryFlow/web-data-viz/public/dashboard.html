@@ -331,17 +331,14 @@
   function exibirAquarios() {
     JSON.parse(sessionStorage.AQUARIOS).forEach((item) => {
       document.getElementById("cardAquarios").innerHTML += `
-                  <div class="card-aquario">
-                      <div class="title-aquario">
-                          <h1>${item.modelo}</h1>
-                      </div>
-                      <div class="desc-aquario">
-                      <div class="temperatura">
-                          <p id="temp_aquario_${item.idCompressor}">-°C</p>
-                      </div>
-                      <div class="cor-alerta" id="card_${item.idCompressor}"></div>
+                  <div class="cardDinamico">
+                    <h4>${item.modelo}</h4>
+                    <p>ID Compressor: ${item.idCompressor}</p>
+                    <p>Oficina: Brandão Car's</p>
+                    <p>Umidade Atual: 80%</p>
+                    <p>Nível de Risco: <span class="alto">Alto</span></p>
                   </div>
-                  </div>
+                  <br>
                   `;
     });
   }
