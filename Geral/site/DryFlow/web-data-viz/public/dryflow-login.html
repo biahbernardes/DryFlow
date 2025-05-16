@@ -70,7 +70,11 @@
         <!-- Logo central -->
         <div class="footer-logo">
           <a href="index.html">
-            <img class="logo" src="assets/Imgs/logoDryFlow.png" alt="Logo Dry Flow" />
+            <img
+              class="logo"
+              src="assets/Imgs/logoDryFlow.png"
+              alt="Logo Dry Flow"
+            />
           </a>
         </div>
 
@@ -123,8 +127,6 @@
             console.log("ESTOU NO THEN DO entrar()!");
 
             if (resposta.ok) {
-              // Lucas colocou um redirecionamento para dashboard, não é a versao final
-              window.location.href = "dashboard.html";
               console.log(resposta);
 
               resposta.json().then((json) => {
@@ -132,10 +134,11 @@
                 console.log(JSON.stringify(json));
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.idjogador;
+                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
 
                 setTimeout(function () {
-                  window.location = "questionario.html";
+                  window.location = "dashboard.html";
                 }, 1000); // apenas para exibir o loading
               });
             } else {
