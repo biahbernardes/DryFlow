@@ -19,7 +19,7 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
       user: "apiOficina1",
       password: "Dry#2025",
       database: "dryflow",
-      port: 3307,
+      port: 3306,
     })
     .promise();
 
@@ -67,7 +67,7 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
       if (HABILITAR_OPERACAO_INSERIR) {
         // este insert irá inserir os dados na tabela "medida"
         await poolBancoDados.execute(
-          "INSERT INTO registro_sensor (umidadeRegistrada, dtHrRegistrada, fksensor) VALUES (?, current_timestamp, 1)",
+          "INSERT INTO registrosensor (umidadeRegistrada, dtHrRegistrada, fksensor) VALUES (?, current_timestamp, 1)",
           [sensorUmidade]
         );
         console.log(

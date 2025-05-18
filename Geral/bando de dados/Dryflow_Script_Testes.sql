@@ -11,6 +11,8 @@ SELECT * FROM compressor;
 SELECT * FROM sensor;
 SELECT * FROM registroSensor;
 
+
+
 /*
 -- Apagar os registros captados pelo sensor caso tenha a tabela alerta
 SELECT * FROM information_schema.referential_constraints where constraint_schema = 'dryflow' AND table_name = 'alerta';
@@ -115,3 +117,21 @@ FROM compressor
 INNER JOIN sensor ON fkCompressor = idCompressor
 INNER JOIN registroSensor ON fkSensor = idSensor
 WHERE umidadeRegistrada > capacidadeUmiMax;
+
+-- buscar últimas medidas
+SELECT  
+        umidadeRegistrada as umidade,
+        dtHrRegistrada,
+					DATE_FORMAT(dtHrRegistrada,'%H:%i:%s') as momento_grafico
+                    FROM registroSensor
+                    WHERE fkSensor = 1
+                    ORDER BY idRegistro DESC LIMIT 7;
+
+-- buscar últimas medidas em tempo real
+
+                    SELECT 
+        umidadeRegistrada as umidade,
+                        DATE_FORMAT(dtHrRegistrada,'%H:%i:%s') as momento_grafico,
+                        fkSensor
+                        FROM registroSensor WHERE fkSensor = 1 
+                    ORDER BY idRegistro DESC LIMIT 1;
