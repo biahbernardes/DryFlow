@@ -514,4 +514,7 @@ tbody {
   text-align: center;
   font-size: medium;
 }
+.cardDinamico :hover {
+  cursor: pointer;
+}
 /* Lucas: Fim Estilização cards que chegam do sessionStorage */

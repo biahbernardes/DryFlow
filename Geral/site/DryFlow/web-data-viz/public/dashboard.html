@@ -23,7 +23,7 @@
         <a href="./detalhes.html">Histórico de Alertas</a>
         <a href="./cadastro-dryflow.html">Cadastrar Novo Usúario</a>
 
-        <a href="./dryflow-index.html" class="logout-btn">
+        <a href="./index.html" class="logout-btn">
           Sign-out
           <img
             src="./assets/Imgs/logout.png"
@@ -108,7 +108,16 @@
           Clique em um compressor para ver mais informações.
         </p>
 
-        <div class="cards" id="cardAquarios"></div>
+        <div class="cards" id="cardAquarios">
+          <div class="cardDinamico" onclick="verCompressorEspecifico()">
+            <h4>${item.modelo}</h4>
+            <p>ID Compressor: ${item.idCompressor}</p>
+            <p>Oficina: Brandão Car's</p>
+            <p>Umidade Atual: 80%</p>
+            <p>Nível de Risco: <span class="alto">Alto</span></p>
+          </div>
+          <br />
+        </div>
 
         <div class="cardsInfo">
           <div class="card">
@@ -341,5 +350,8 @@
                   <br>
                   `;
     });
+  }
+  function verCompressorEspecifico() {
+    window.location = "compressorDetalhes.html";
   }
 </script>
