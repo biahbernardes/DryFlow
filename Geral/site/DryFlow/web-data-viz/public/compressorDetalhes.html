@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
     <link rel="stylesheet" href="./assets/Styles/dash.css" />
   </head>
-  <body>
+  <body onload="atualizarDataHora()">
     <div class="kpiData">Última Atualização: <span id="dataHora"></span></div>
 
     <div class="main">
@@ -32,7 +32,26 @@
           />
         </a>
       </div>
-      <div class="container">teste</div>
+      <div class="container">
+        <div class="graficoLine">
+          <h4>Umidade dos Compressores nas Últimas Horas</h4>
+          <!-- <div class="checkbox-container">
+              <label><input type="checkbox" value="Compressor A" checked> Compressor A</label>
+              <label><input type="checkbox" value="Compressor B" checked> Compressor B</label>
+              <label><input type="checkbox" value="Compressor C" checked> Compressor C</label>
+              <label><input type="checkbox" value="Compressor D" checked> Compressor D</label>
+            </div> -->
+          <div class="charts">
+            <canvas id="myChart2"></canvas>
+          </div>
+        </div>
+        <div class="graficoBarra">
+          <h4>Umidade Atual dos Compressores</h4>
+          <div class="charts">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
@@ -42,56 +61,171 @@
     const dataHoraFormatada = agora.toLocaleString("pt-BR"); // horario e data brasileiros
     document.getElementById("dataHora").textContent = dataHoraFormatada;
   }
-
-  // Atualiza a hora quanto recarrega a pagina
-  atualizarDataHora();
 </script>
-<script>
-  function atualizarKPIs(dados, limite = 50) {
-    let perto = 0;
-    let noLimite = 0;
-    let acima = 0;
 
-    dados.forEach((valor) => {
-      if (valor > limite) {
-        acima++;
-      } else if (valor < limite && valor < limite - 5) {
-        noLimite++;
-      } else if (valor >= limite - 5 && valor <= limite) {
-        perto++;
-      }
+<script>
+  /* Geração gráfico 1 */
+  const umidadeAtual = [
+    {
+      label: "Umidade Atual",
+      data: [80, 84, 57, 43],
+      backgroundColor: "#b2273c",
+      borderWidth: 1,
+    },
+  ];
+
+  const ctx = document.getElementById("myChart").getContext("2d");
+  Chart.register(window["chartjs-plugin-annotation"]);
+
+  const graficoBar = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Compressor A", "Compressor B", "Compressor C", "Compressor D"],
+      datasets: umidadeAtual,
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        annotation: {
+          annotations: {
+            umidadeIdeal: {
+              type: "line",
+              yMin: 50,
+              yMax: 50,
+              borderColor: " #FFA500",
+              borderWidth: 2,
+              borderDash: [6, 4],
+              label: {
+                content: "Limite",
+                enabled: true,
+
+                backgroundColor: " #FFA500",
+                color: "white",
+                position: "end",
+                font: {
+                  size: 9,
+                },
+              },
+            },
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: "Umidade %",
+          },
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Compressor",
+          },
+        },
+      },
+    },
+  });
+</script>
+
+<script>
+  /* Geração gráfico 2 */
+
+  const grafico = document.getElementById("myChart2");
+
+  const todosDados = [
+    {
+      label: "Compressor A",
+      data: [80, 82, 80, 85, 80, 88],
+      backgroundColor: "#b2273c",
+      borderWidth: 2,
+      borderColor: "#b2273c",
+    },
+    {
+      label: "Compressor B",
+      data: [90, 89, 93, 87, 88, 82],
+      backgroundColor: "#88726d",
+      borderWidth: 2,
+      borderColor: "#88726d",
+    },
+    {
+      label: "Compressor C",
+      data: [80, 82, 80, 85, 80, 83],
+      backgroundColor: "#B72A29",
+      borderWidth: 2,
+      borderColor: "#B72A29",
+    },
+    {
+      label: "Compressor D",
+      data: [30, 33, 35, 29, 31, 34],
+      backgroundColor: "#dbc0bf",
+      borderWidth: 2,
+      borderColor: "#dbc0bf",
+    },
+  ];
+  Chart.register(window["chartjs-plugin-annotation"]);
+
+  const chartLinha = new Chart(grafico, {
+    type: "line",
+    data: {
+      labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+      datasets: todosDados,
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        annotation: {
+          annotations: {
+            umidadeIdeal: {
+              type: "line",
+              yMin: 50,
+              yMax: 50,
+              borderColor: " #FFA500",
+              borderWidth: 2,
+              borderDash: [6, 4],
+              label: {
+                content: "Limite",
+                enabled: true,
+
+                backgroundColor: " #FFA500",
+                color: "white",
+                position: "end",
+                font: {
+                  size: 9,
+                },
+              },
+            },
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: "Umidade %",
+          },
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Horário",
+          },
+        },
+      },
+    },
+  });
+  document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      const selecionados = Array.from(
+        document.querySelectorAll('input[type="checkbox"]:checked')
+      ).map((cb) => cb.value);
+
+      chartLinha.data.datasets = todosDados.filter((ds) =>
+        selecionados.includes(ds.label)
+      );
+      chartLinha.update();
     });
-
-    document.getElementById("kpi-perto").textContent = perto;
-    document.getElementById("kpi-no-limite").textContent = noLimite;
-    document.getElementById("kpi-acima").textContent = acima;
-  }
-</script>
-
-<script>
-  // dados sem estar no gráfico
-  const dadosUmidade = [80, 84, 47, 43];
-  // atualiza as KPIs com base nos dados inseridos manualmente, não os dados do gráfico
-  atualizarKPIs(dadosUmidade);
-</script>
-
-<script>
-  /* SCRIPT do WEBDATAVIZ (cards.html) para gerar os cards de alerta de umidade */
-  function exibirAquarios() {
-    JSON.parse(sessionStorage.AQUARIOS).forEach((item) => {
-      document.getElementById("cardAquarios").innerHTML += `
-                  <div class="cardDinamico">
-                    <h4>${item.modelo}</h4>
-                    <p>ID Compressor: ${item.idCompressor}</p>
-                    <p>Oficina: Brandão Car's</p>
-                    <p>Umidade Atual: 80%</p>
-                    <p>Nível de Risco: <span class="alto">Alto</span></p>
-                  </div>
-                  <br>
-                  `;
-    });
-  }
-  function verCompressorEspecifico() {
-    window.location = "compressorDetalhes.html";
-  }
+  });
 </script>
