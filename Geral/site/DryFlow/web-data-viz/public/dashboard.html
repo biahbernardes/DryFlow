@@ -331,7 +331,7 @@
   function exibirAquarios() {
     JSON.parse(sessionStorage.AQUARIOS).forEach((item) => {
       document.getElementById("cardAquarios").innerHTML += `
-                  <div class="cardDinamico">
+                  <div class="cardDinamico" onclick="verCompressorEspecifico(${item.idCompressor})">
                     <h4>${item.modelo}</h4>
                     <p>ID Compressor: ${item.idCompressor}</p>
                     <p>Oficina: Brandão Car's</p>
@@ -342,7 +342,12 @@
                   `;
     });
   }
-  function verCompressorEspecifico() {
-    window.location = "compressorDetalhes.html";
+  function verCompressorEspecifico(idCompressor) {
+    console.log("clicou");
+    /* Ao iniciar a função verCompressorEspecifico(idCompressor), eu armazendo o idCompressor em algum campo da SessionStorage, 
+    assim, ao ser redirecionado para essa página do compressor específico, terei o idCompressor, 
+    depois crio uma rota para pegar o registro somente daquele compressor */
+    sessionStorage.COMPRESSOR_SELECIONADO = idCompressor;
+    window.location.href = "compressorDetalhes.html";
   }
 </script>
