@@ -33,7 +33,9 @@
         </a>
       </div>
       <div class="container">
-        <div id="graficos"></div>
+        <div id="graficos">
+          <canvas id="myChartCanvas0"></canvas>
+        </div>
         <!-- 
         Geraçao gráfico para testes
         <div class="graficoLine">
@@ -231,7 +233,7 @@
 
 <script>
   /* SCRIPT DO WEB DATA VIZ PARA GERACAO DE GRAFICOS */
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  //b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
   let proximaAtualizacao;
 
@@ -301,13 +303,6 @@
           borderColor: "rgb(75, 192, 192)",
           tension: 0.1,
         },
-        {
-          label: "Temperatura",
-          data: [],
-          fill: false,
-          borderColor: "rgb(199, 52, 52)",
-          tension: 0.1,
-        },
       ],
     };
 
@@ -321,8 +316,9 @@
     for (i = 0; i < resposta.length; i++) {
       var registro = resposta[i];
       labels.push(registro.momento_grafico);
+      console.log("Momentos:" + registro.momento_grafico);
       dados.datasets[0].data.push(registro.umidade);
-      dados.datasets[1].data.push(registro.temperatura);
+      console.log("Valores de umidade:" + registro.umidade);
     }
 
     console.log("----------------------------------------------");
@@ -340,12 +336,9 @@
     };
 
     // Adicionando gráfico criado em div na tela
-    let myChart = new Chart(
-      document.getElementById(`myChartCanvas${idAquario}`),
-      config
-    );
+    let myChart = new Chart(document.getElementById(`myChartCanvas0`), config);
 
-    setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
   }
 
   // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
