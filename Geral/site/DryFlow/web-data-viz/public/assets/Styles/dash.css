@@ -517,4 +517,11 @@ tbody {
 .cardDinamico :hover {
   cursor: pointer;
 }
+
+#cardAquarios {
+  display: flex;
+  width: 85%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
 /* Lucas: Fim Estilização cards que chegam do sessionStorage */
