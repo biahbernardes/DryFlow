@@ -151,7 +151,11 @@ insert into compressor (modelo, capacidadeUmiMax, status, fkOficina) values
 ('Modelo B', 75, 'ativo', 2),
 ('Modelo C', 50, 'inativo', 3),
 ('Modelo D', 80, 'ativo', 4),
-('Modelo E', 87, 'ativo', 5);
+('Modelo E', 87, 'ativo', 5),
+('Modelo F', 60, 'ativo', 1),
+('Modelo G', 75, 'ativo', 1),
+('Modelo H', 58, 'ativo', 1),
+('Modelo I', 62, 'ativo', 1);
 
 -- Inserir Sensores
 insert into sensor (fkCompressor) values
@@ -159,7 +163,11 @@ insert into sensor (fkCompressor) values
 (2),
 (3),
 (4),
-(5);
+(5),
+(6),
+(7),
+(8),
+(9);
 
 -- Inserir Registros de Sensor
 insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
@@ -169,7 +177,11 @@ insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
 (80, '2025-04-07 09:00:00', 2),
 (40, '2025-04-07 10:00:00', 3),
 (85, '2025-04-07 11:00:00', 4),
-(88, '2025-04-07 12:00:00', 5);
+(88, '2025-04-07 12:00:00', 5),
+(81, '2025-04-07 12:00:00', 6),
+(74, '2025-04-07 12:00:00', 7),
+(55, '2025-04-07 12:00:00', 8),
+(18, '2025-04-07 12:00:00', 9);
 
 /*
 -- Inserir Alertas (Comentei para não usarmos ela)
