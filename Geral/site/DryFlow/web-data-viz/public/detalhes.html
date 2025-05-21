@@ -1,122 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/Styles/dash.css" />
-  </head>
-  <body>
-    <div class="main">
-      <div class="sidebar">
-        <div class="profile">
-          <img src="./assets/Imgs/account.png" alt="Perfil" />
 
-          <h1>Olá, Brandão!</h1>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/Styles/dash.css" />
+</head>
 
-        <a href="./dashboard.html">Visão Geral</a>
-        <a href="./detalhes.html">Histórico de Alertas</a>
-        <a href="./cadastro-dryflow.html">Cadastrar Novo Usúario</a>
+<body>
+  <div class="main">
+    <div class="sidebar">
+      <div class="profile">
+        <img src="./assets/Imgs/account.png" alt="Perfil" />
 
-        <a href="./index.html" class="logout-btn">
-          Sign-out
-          <img
-            src="./assets/Imgs/logout.png"
-            alt="Logout"
-            class="logout-icon"
-          />
-        </a>
+        <h1>Olá, Brandão!</h1>
       </div>
-      <div class="container">
-        <h3>Compressores da Oficina Brandão Car's</h3>
 
-        <!-- TABELA DE ALERTAS
-             <tr> == linha
-              <td> == coluna -->
-        <table class="table">
-          <caption>
-            Alertas
-          </caption>
+      <a href="./dashboard.html">Visão Geral</a>
+      <a href="./detalhes.html">Histórico de Alertas</a>
+      <a href="./cadastro-dryflow.html">Cadastrar Novo Usúario</a>
 
-          <tbody>
-            <!-- scroll no css  -->
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 50%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">
-                Compressor B está acima do limite de umidade! Necessário
-                Manutenção!
-              </td>
-
-              <td>| Umidade: 84%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-              <td class="text">
-                Compressor A está próximo ao limite de umidade! Faça uma
-                Manutenção Preventiva.
-              </td>
-
-              <td>| Umidade: 45%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">
-                Compressor C está próximo ao limite de umidade! Faça uma
-                Manutenção Preventiva.
-              </td>
-
-              <td>| Umidade: 42%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A precisa de Manutenção!</td>
-
-              <td>| Umidade: 80%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 52%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">
-                Atenção! Compressor D está quase atingindo o limite de umidade!
-              </td>
-
-              <td>| Umidade: 47%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 51%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 80%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <a href="./index.html" class="logout-btn">
+        Sign-out
+        <img src="./assets/Imgs/logout.png" alt="Logout" class="logout-icon" />
+      </a>
     </div>
-  </body>
+    <div class="container">
+      <h3>Compressores da Oficina Brandão Car's</h3>
+
+      <!-- TABELA DE ALERTAS
+             <tr> == linha
+               <td> == coluna -->
+      <div id="divMensagem"></div>
+      <table class="table">
+        <caption>
+          Alertas
+        </caption>
+
+        <tbody>
+          <!-- scroll no css  -->
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">Compressor A atingiu o limite de umidade!</td>
+
+            <td>| Umidade: 50%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">
+              Compressor B está acima do limite de umidade! Necessário
+              Manutenção!
+            </td>
+
+            <td>| Umidade: 84%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+            <td class="text">
+              Compressor A está próximo ao limite de umidade! Faça uma
+              Manutenção Preventiva.
+            </td>
+
+            <td>| Umidade: 45%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">
+              Compressor C está próximo ao limite de umidade! Faça uma
+              Manutenção Preventiva.
+            </td>
+
+            <td>| Umidade: 42%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">Compressor A precisa de Manutenção!</td>
+
+            <td>| Umidade: 80%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">Compressor A atingiu o limite de umidade!</td>
+
+            <td>| Umidade: 52%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">
+              Atenção! Compressor D está quase atingindo o limite de umidade!
+            </td>
+
+            <td>| Umidade: 47%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">Compressor A atingiu o limite de umidade!</td>
+
+            <td>| Umidade: 51%</td>
+          </tr>
+          <tr>
+            <td class="text"><span class="alerta">Alerta:</span></td>
+
+            <td class="text">Compressor A atingiu o limite de umidade!</td>
+
+            <td>| Umidade: 80%</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
 </html>
+<script>
+  fetch("/medidas/alertas")
+    .then(res => res.json())
+    .then(data => {
+
+      data.forEach((alerta) => {
+        const umidade = alerta.umidadeRegistrada;
+        const nomeModelo = alerta.modelo;
+        const horaRegistro = alerta.dtHrRegistrada;
+
+
+        if (umidade >= 45 && umidade <= 49) {
+          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está próximo ao limite de umidade! Faça uma Manutenção Preventiva.	| Umidade: ${umidade} | Horário: ${horaRegistro}%<br>`
+        } else if (umidade == 50) {
+          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} atingiu o limite de umidade!	| Umidade: ${umidade}% | Horário: ${horaRegistro}<br>`
+        } else if (umidade > 50) {
+          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção!	| Umidade: ${umidade}% | Horário: ${horaRegistro}<br>`
+        }
+      });
+    });
+</script>

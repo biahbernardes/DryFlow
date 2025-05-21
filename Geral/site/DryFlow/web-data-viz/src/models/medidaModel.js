@@ -40,7 +40,20 @@ function buscarMedidasEmTempoReal(idAquario) {
   return database.executar(instrucaoSql);
 }
 
+function alertas() {
+    const instrucaoSql = `
+        SELECT c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
+        FROM sensor s
+        INNER JOIN registroSensor rs ON s.fkCompressor = rs.fkSensor
+        INNER JOIN compressor c ON c.idcompressor = s.fkCompressor
+        ORDER BY rs.dtHrRegistrada;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarUltimasMedidas,
   buscarMedidasEmTempoReal,
+  alertas
 };
