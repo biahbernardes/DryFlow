@@ -42,7 +42,7 @@ function buscarMedidasEmTempoReal(idAquario) {
 
 function alertas() {
     const instrucaoSql = `
-        SELECT c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
+        SELECT c.modelo, rs.umidadeRegistrada, DATE_FORMAT(rs.dtHrRegistrada, "Data: %Y-%m-%d | Horario: %H:%i:%s") as dtHrRegistrada
         FROM sensor s
         INNER JOIN registroSensor rs ON s.fkCompressor = rs.fkSensor
         INNER JOIN compressor c ON c.idcompressor = s.fkCompressor
