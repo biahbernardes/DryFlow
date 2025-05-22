@@ -133,11 +133,11 @@
 
 
         if (umidade >= 45 && umidade <= 49) {
-          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está próximo ao limite de umidade! Faça uma Manutenção Preventiva.	| Umidade: ${umidade} | Horário: ${horaRegistro}%<br>`
+          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está próximo ao limite de umidade! Faça uma Manutenção Preventiva.	| Umidade: ${umidade} | ${horaRegistro}%<br>`
         } else if (umidade == 50) {
-          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} atingiu o limite de umidade!	| Umidade: ${umidade}% | Horário: ${horaRegistro}<br>`
+          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} atingiu o limite de umidade!	| Umidade: ${umidade}% | ${horaRegistro}<br>`
         } else if (umidade > 50) {
-          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção!	| Umidade: ${umidade}% | Horário: ${horaRegistro}<br>`
+          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção!	| Umidade: ${umidade}% | ${horaRegistro}<br>`
         }
       });
     });
