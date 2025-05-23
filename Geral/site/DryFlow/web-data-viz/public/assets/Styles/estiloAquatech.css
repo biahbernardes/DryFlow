@@ -7,229 +7,118 @@ body {
     sans-serif;
   background-color: #ffffff;
 }
-
-:root {
-  --tamanho-header: 80px;
-  --tamanho-banner: calc(
-    100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
-  );
-  --tamanho-simulador: calc(
-    100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
-  );
-  --tamanho-login: calc(
-    100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px
-  );
-  --tamanho-footer: 65px;
-}
-
-.container {
-  display: flex;
-  width: 80%;
-  margin: auto;
-}
-
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
-}
-
-.header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  color: #e3b062;
-}
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-/* BANNER */
-
-.banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url("../assets/imgs/bg-jelly-fish-para-home.png");
-  background-size: cover;
-}
-
-.banner .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
-
-.banner .container span {
-  font-weight: 800;
-}
-
-/* MISSÃO VISÃO VALORES */
-
-.social {
-  background-color: #e5e5e5;
-  display: flex;
-}
-
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-}
-
-.social p {
-  text-align: center;
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* FOOTER */
-
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
+:root{
+   --cor-principal: #4a82c4;
+  --cor-secundaria: #89bfff;
+  --cor-terciaria: #1e5290;
+  --cor-azul-escuro: #0c1326;
+  --cor-cinza-claro: #e0e0e0;
+  --cor-cinza-escuro: #262626;
 }
 
 /* LOGIN */
 
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 170px; 
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f0f4f8;
+}
+
 .login {
-  /* height: var(--tamanho-login); */
-  height: 100vh;
-  width: 100vh;
-  /* background-image: url("../Imgs/carro.png.png"); */
-  /* background-size: cover; */
-  background-color: #ffffff;
+  background-color: #f5f5f5;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(30, 82, 144);
+  width: 500px;       
+  max-width: 90vw;    /* responsivo */
+  max-height: 80vh;   /* limita a altura */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .login .container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  width: 500px;
 }
 
-.card {
-  /* width: 50%; */
-  width: 100%;
-  background-color: #e5e5e5;
-  border-radius: 10px;
+.card-cadastro {
+  width: 500px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 40px 50px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
+  box-sizing: border-box;
   color: #1E5290;
-  flex-direction: column;
-  height: fit-content;
-  padding: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 90vw;    
+  max-height: 80vh;   
 }
+
 
 .card h2 {
   margin: 0;
   font-size: 30px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .formulario {
   display: flex;
-  height: 90%;
-  width: 80%;
-  justify-content: space-around;
   flex-direction: column;
+  width: 500px; 
+  height: auto; 
+  justify-content: flex-start;
+  gap: 12px; 
 }
 
 .formulario span {
   font-size: 15px;
   font-weight: 800;
-}
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-bottom: 6px;
+  display: block;
 
-.formulario input {
-  border: 2px solid #32b9cd;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-}
-
-.formulario select {
-  border: 2px solid #32b9cd;
-  background-color: white;
-  color: gray;
-  height: 36px;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
 }
 
 .campo {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  padding: 5px 0;
+  width: 120%; 
+  
 }
 
 .botao {
   cursor: pointer;
   font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 12px 20px;
   color: #fff;
-  background-color: #ed145b;
-  width: 120px;
-  height: 30px;
-  align-self: center;
+  background: linear-gradient(#4a82c4, #1e5290);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
   margin-top: 20px;
+  width: 200px;
+  align-self: center;
+}
+
+.botao:hover {
+  background: linear-gradient(#1e5290, #4a82c4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .loading-div {
@@ -275,31 +164,25 @@ body {
   font-weight: 600 !important;
 }
 
-.formulario {
-  display: flex;
-  flex-direction: column;
+.formulario input,
+.formulario select {
+  width: 80%; 
+  border: 2px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 15px;
+  margin: 0; 
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  text-align: left;
+  box-sizing: border-box; 
 }
 
-input {
-  margin-bottom: 10px;
-  border: 2px solid #32b9cd;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.btn {
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #ed145b;
-  width: 120px;
-  align-self: center;
-  margin-top: 5px;
+.formulario input:focus,
+.formulario select:focus {
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 6px rgba(74, 130, 196, 0.3);
 }
 
 .loading-div {
@@ -384,18 +267,22 @@ input {
 
 /* CONFIGURAÇÔES PAGINA DA DASHBOARD */
 
+
 .sidebar {
   width: 150px;
-  background-color: #b72a29;
+  background-color: var(--cor-terciaria);
   padding: 20px;
   color: #fff;
   height: 100vh;
+  position: fixed;
+  /* <-- Fixa na tela */
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   box-shadow: rgba(0, 0, 0, 0.354) 0px 0px 12px 0px;
+  z-index: 1000;
 }
 
 .sidebar h1 {
@@ -404,6 +291,7 @@ input {
   /* margin-bottom: 11.5px; */
   text-align: center;
   padding-left: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .sidebar a {
@@ -417,10 +305,11 @@ input {
   margin: 10px 0;
   text-align: center;
   transition: background-color 0.3s;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .sidebar a:hover {
-  background-color: #87060689;
+  background-color: var(--cor-azul-escuro);
   color: #fff;
 }
 
@@ -449,27 +338,6 @@ input {
   margin-top: 200px;
   background-color: rgba(0, 0, 0, 0.166);
   cursor: pointer;
-}
-
-.sidebar_cadastro {
-  display: flex;
-  flex-direction: row;
-  width: 100vh;
-}
-
-.sidebar .logout-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  /* quase a mesma coisa q o padding */
-  margin-top: 200px;
-  background-color: rgba(0, 0, 0, 0.166);
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background-color: #89bfff;
 }
 
 .logout-icon {
