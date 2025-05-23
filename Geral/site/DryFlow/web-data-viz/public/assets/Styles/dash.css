@@ -458,8 +458,7 @@ body {
 }
 
 .table tbody tr {
-  border-bottom: 1px solid #100f0f;
-  /* linha */
+  border-bottom: 1px solid #100f0f; /* linha */
 }
 
 tbody {
