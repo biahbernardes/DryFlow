@@ -5,7 +5,7 @@ body {
   padding: 0;
   font-family: "Barlow", "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana,
     sans-serif;
-  background-color: #ffffff;
+  background-color: white;
 }
 :root{
    --cor-principal: #4a82c4;
@@ -27,7 +27,7 @@ body {
   padding-left: 170px; 
   min-height: 100vh;
   box-sizing: border-box;
-  background-color: #f0f4f8;
+  background-color: white;
 }
 
 .login {
@@ -61,9 +61,10 @@ body {
   align-items: center;
   box-sizing: border-box;
   color: #1E5290;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   max-width: 90vw;    
   max-height: 80vh;   
+  position: relative;
+  overflow: hidden;   /* impede que crie rolagem para fora */
 }
 
 
@@ -147,16 +148,20 @@ body {
   background-color: #fff;
   color: black;
   width: 230px;
-  position: fixed;
+  position: absolute;
+  top: 20px;
+  right: 10px; /* posiciona dentro da caixa */
   border-radius: 4px;
-  border: #ed145b 3px solid;
+  border: #4a82c4 3px solid;
   padding: 10px;
-  margin-right: 10%;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .formulario .tipo_campo {
