@@ -447,22 +447,22 @@ body {
   padding: 5px 0;
   border-radius: 5px;
   margin-bottom: 5px;
+  
 }
 
 .table td {
-  padding: 5px;
+  padding: 10px;
 }
 
 .table tbody tr {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #100f0f;
   /* linha */
 }
 
 tbody {
   display: block;
-  overflow-y: scroll;
-  /*isso que deixa rolar p baixo na tabela*/
-  height: 200px;
+  overflow-y: scroll; /*isso que deixa rolar p baixo na tabela*/
+  height: 80vh;
 }
 
 .table td span.alerta {
@@ -525,3 +525,9 @@ tbody {
   justify-content: space-evenly;
 }
 /* Lucas: Fim Estilização cards que chegam do sessionStorage */
+
+/* Estilização alertas */
+.alertas{
+  font-size: 14px;
+  
+}

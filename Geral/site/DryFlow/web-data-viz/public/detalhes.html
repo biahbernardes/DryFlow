@@ -27,27 +27,22 @@
       </a>
     </div>
     <div class="container">
-      <h3>Compressores da Oficina Brandão Car's</h3>
+
 
       <!-- TABELA DE ALERTAS
              <tr> == linha
                <td> == coluna -->
-      <div id="divMensagem"></div>
+      <!-- <div id="divMensagem"></div> -->
       <table class="table">
         <caption>
           Alertas
         </caption>
 
-        <tbody>
+        <tbody id="divMensagem" class="alertas">
           <!-- scroll no css  -->
-          <tr>
-            <td class="text"><span class="alerta">Alerta:</span></td>
 
-            <td class="text">Compressor A atingiu o limite de umidade!</td>
 
-            <td>| Umidade: 50%</td>
-          </tr>
-          <tr>
+          <!-- <tr>
             <td class="text"><span class="alerta">Alerta:</span></td>
 
             <td class="text">
@@ -112,7 +107,7 @@
             <td class="text">Compressor A atingiu o limite de umidade!</td>
 
             <td>| Umidade: 80%</td>
-          </tr>
+          </tr> -->
 
         </tbody>
       </table>
@@ -130,15 +125,41 @@
         const umidade = alerta.umidadeRegistrada;
         const nomeModelo = alerta.modelo;
         const horaRegistro = alerta.dtHrRegistrada;
+       
 
 
+        let corFundo = "";
+        var mensagem = "";
         if (umidade >= 45 && umidade <= 49) {
-          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está próximo ao limite de umidade! Faça uma Manutenção Preventiva.	| Umidade: ${umidade} | ${horaRegistro}%<br>`
+
+          corFundo = "#fff3cd"; // amarelo claro
+          mensagem = ` Compressor ${nomeModelo} está próximo ao limite de umidade! Faça uma Manutenção Preventiva.	| Umidade: ${umidade} | ${horaRegistro}%<br>`
+          divMensagem.innerHTML += `
+          <tr>
+            <td style="background-color: ${corFundo};"><strong>Alerta:</strong></td>
+            <td>${mensagem}</td>
+            
+        `;
         } else if (umidade == 50) {
-          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} atingiu o limite de umidade!	| Umidade: ${umidade}% | ${horaRegistro}<br>`
+          corFundo = "rgba(244, 136, 12, 0.63)"; // laranja no limite
+          mensagem = ` Compressor ${nomeModelo} atingiu o limite de umidade!	 | Umidade: ${umidade}% | ${horaRegistro}<br>`
+          divMensagem.innerHTML += `
+          <tr>
+            <td style="background-color: ${corFundo};"><strong>Alerta:</strong></td>
+            <td>${mensagem}</td>
+            
+        `;
         } else if (umidade > 50) {
-          divMensagem.innerHTML += `Alerta:	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção!	| Umidade: ${umidade}% | ${horaRegistro}<br>`
+          corFundo = "#dc19198b"; // vermelho claro
+          mensagem = `	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção!	 | Umidade: ${umidade}% | ${horaRegistro}<br>`
+          divMensagem.innerHTML += `
+          <tr>
+            <td style="background-color: ${corFundo};"><strong>Alerta:</strong></td>
+            <td>${mensagem}</td>
+            
+        `;
         }
+
       });
     });
 </script>
