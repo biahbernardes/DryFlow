@@ -452,6 +452,9 @@ body {
 
 .table td {
   padding: 10px;
+  width: 80vw;
+ 
+  overflow-x: none;
 }
 
 .table tbody tr {
@@ -465,9 +468,7 @@ tbody {
   height: 80vh;
 }
 
-.table td span.alerta {
-  color: #dc1919;
-}
+
 
 /* Lucas: Estilização cards que chegam do sessionStorage */
 
@@ -530,4 +531,14 @@ tbody {
 .alertas{
   font-size: 14px;
   
+}
+
+.alertas .dtEhora{
+  font-size: 12px;
+  color: #484343;
+  padding-left: 20px;
+
+ 
+
+
 }
