@@ -453,7 +453,7 @@ body {
 .table td {
   padding: 10px;
   width: 80vw;
- 
+ margin-top: 0;
   overflow-x: none;
 }
 
@@ -463,9 +463,10 @@ body {
 }
 
 tbody {
-  display: block;
+  display: flex;
   overflow-y: scroll; /*isso que deixa rolar p baixo na tabela*/
   height: 80vh;
+  flex-direction: column-reverse;
 }
 
 
