@@ -1,22 +1,23 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
-  /* var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`; */
-  var instrucaoSql = `SELECT  
-        umidadeRegistrada as umidade,
-        dtHrRegistrada,
-                        DATE_FORMAT(dtHrRegistrada,'%H:%i:%s') as momento_grafico
-                    FROM registroSensor
-                    WHERE fkSensor = ${idAquario}
-                    ORDER BY idRegistro DESC LIMIT ${limite_linhas}`;
-
+function buscarUltimasMedidas() {
+   const instrucaoSql = `
+    SELECT 
+      c.modelo, 
+      c.idCompressor,
+      rs.umidadeRegistrada, 
+      rs.dtHrRegistrada
+    FROM compressor c
+    JOIN sensor s ON s.fkCompressor = c.idCompressor
+    JOIN registroSensor rs ON rs.fkSensor = s.idSensor
+    WHERE rs.idRegistro = (
+      SELECT MAX(rs2.idRegistro)
+      FROM sensor s2
+      JOIN registroSensor rs2 ON rs2.fkSensor = s2.idSensor
+      WHERE s2.fkCompressor = c.idCompressor
+    )
+    ORDER BY rs.dtHrRegistrada DESC;
+  `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
