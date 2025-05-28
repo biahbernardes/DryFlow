@@ -426,6 +426,12 @@ body {
   font-size: medium;
 }
 
+.main .container canvas{
+  display: flex;
+  margin-top: 65px;
+  height: 400px;
+}
+
 .text {
   text-align: left;
 }
