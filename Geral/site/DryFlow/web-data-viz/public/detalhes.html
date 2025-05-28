@@ -133,7 +133,7 @@
         if (umidade >= 45 && umidade <= 49) {
           cor = "rgb(244, 178, 12)"; // amarelo 
           mensagem = ` Compressor ${nomeModelo} está próximo ao limite de 
-          umidade! Faça uma Manutenção Preventiva.	| Umidade:<span style="color: ${cor};">${umidade}% </span>
+          umidade! Faça uma Manutenção Preventiva.	| Umidade:<span style="color: ${cor};"> ${umidade}% </span>
           | <span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`
           divMensagem.innerHTML += `
           <tr>
@@ -144,7 +144,7 @@
         } else if (umidade == 50) {
           cor = "rgb(244, 136, 12)"; // laranja no limite
           mensagem = ` Compressor ${nomeModelo} atingiu o limite de umidade!	
-           | Umidade:<span style="color: ${cor};">${umidade}% </span>|
+           | Umidade:<span style="color: ${cor};"> ${umidade}% </span>|
             <span class="dtEhora"><i class="fa-solid fa-clock"></i>  ${horaRegistro}</span><br>`
           divMensagem.innerHTML += `
           <tr>
