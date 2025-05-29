@@ -236,13 +236,14 @@ body {
   background-color: white;
   height: auto;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
 }
 .diagrama img {
-  width: 60%;
+  width: 80%;
 }
 
 .diagrama h2 {
   color: #4682b4;
   margin-bottom: 30px;
+  margin-top: 40px;
 }
