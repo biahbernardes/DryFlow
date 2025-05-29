@@ -169,6 +169,10 @@
     //var cpfVar = cpf_input.value;
     var cargoVar = cargo_input.value;
 
+    var terminaCom = emailVar.endsWith(".com") || emailVar.endsWith(".com.br");
+    var indiceArroba = emailVar.indexOf("@");
+    var contemArroba = indiceArroba >= 0;
+
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
@@ -200,13 +204,17 @@
       setInterval(sumirMensagem, 5000);
     }
 
-    // Verificando se email contém "@" e "."
-    if (
-      emailVar.indexOf("@") == undefined ||
-      emailVar.indexOf(".") == undefined
-    ) {
+    if (confirmacaoSenhaVar !== senhaVar) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Email tem que ter os caracteres '@' e '.')";
+      mensagem_erro.innerHTML = "(As senhas devem ser iguais!)";
+
+      finalizarAguardar();
+      return false;
+    }
+    // Verificando se email contém "@" e "."
+    if (!terminaCom || !contemArroba) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Por favor, insira um e-mail com formato válido <br>(exemplo@sptech.com ou exemplo@sptech.com.br).)";
 
       finalizarAguardar();
       return false;
