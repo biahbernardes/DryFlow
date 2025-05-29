@@ -119,14 +119,15 @@
                 />
               </div>
               <div class="campo">
-                <span>Cargo:</span>
-                <input
-                  id="cargo_input"
-                  type="text"
-                  placeholder="Técnico"
-                  value="Gerente"
-                />
-              </div>
+          <span>Cargo:</span>
+          <select id="cargo_input">
+          <option value="gerente">Gerente</option>
+          <option value="tecnico">Técnico</option>
+          <option value="supervisor">Supervisor</option>
+          <option value="analista">Analista</option>
+          <option value="assistente">Assistente</option>
+              </select>
+          </div>
               <button class="botao" onclick="cadastrar()">Cadastrar</button>
             </div>
             <div id="div_aguardar" class="loading-div">
