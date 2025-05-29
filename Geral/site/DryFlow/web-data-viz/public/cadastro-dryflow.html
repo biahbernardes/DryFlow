@@ -158,7 +158,7 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Mensagem de erro para todos os campos em branco";
 
       finalizarAguardar();
       return false;
@@ -169,7 +169,7 @@
     // Verificando se nome tem mais de 1 caractere
     if (nomeVar.length <= 1) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Nome tem que ter mais de 1 caractere)";
+      mensagem_erro.innerHTML = "Nome tem que ter mais de 1 caractere";
 
       finalizarAguardar();
       return false;
@@ -179,7 +179,7 @@
 
     if (senhaVar.length <= 5) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(A senha deve conter mais de 6 caracteres)";
+      mensagem_erro.innerHTML = "A senha deve conter mais de 6 caracteres";
 
       finalizarAguardar();
       return false;
@@ -189,7 +189,7 @@
 
     if (confirmacaoSenhaVar !== senhaVar) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(As senhas devem ser iguais)";
+      mensagem_erro.innerHTML = "As senhas devem ser iguais";
 
       finalizarAguardar();
       return false;
@@ -197,7 +197,7 @@
     // Verificando se email contém "@" e "."
     if (!terminaCom || !contemArroba) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Por favor, insira um e-mail com formato válido <br>(exemplo@sptech.com ou exemplo@sptech.com.br).)";
+      mensagem_erro.innerHTML = "Por favor, insira um e-mail com formato válido <br>(exemplo@sptech.com ou exemplo@sptech.com.br).";
 
       finalizarAguardar();
       return false;
@@ -253,7 +253,7 @@
           finalizarAguardar();
         } else {
           cardErro.style.display = "block";
-          mensagem_erro.innerHTML = "(Email já cadastrado!)";
+          mensagem_erro.innerHTML = "Email já cadastrado!";
 
           finalizarAguardar();
           return false;
