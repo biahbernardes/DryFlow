@@ -252,7 +252,13 @@
           limparFormulario();
           finalizarAguardar();
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML = "(Email já cadastrado!)";
+
+          finalizarAguardar();
+          return false;
+
+          setInterval(sumirMensagem, 5000);
         }
       })
       .catch(function (resposta) {
