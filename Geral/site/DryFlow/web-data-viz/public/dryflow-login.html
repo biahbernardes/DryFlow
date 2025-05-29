@@ -144,13 +144,13 @@
             } else {
               console.log("Houve um erro ao tentar realizar o login!");
 
-              mensLogin = "<span><br>Email ou Senha incorreta.</span>";
+              div_mensagem.innerHTML = "<span><br>Email ou Senha incorreta.</span>";
               tentativas--;
-              mensLogin += `<span><br>Você ainda tem ${tentativas} tentativa(s)</span>`;
+              div_mensagem.innerHTML += `<span><br>Você ainda tem ${tentativas} tentativa(s)</span>`;
 
               if (tentativas <= 0) {
-                mensLogin = "";
-                mensLogin += `<span><br>Usuário bloquado! Por favor, tente mais tarde.</span>`;
+                div_mensagem.innerHTML = "";
+                div_mensagem.innerHTML += `<span><br>Usuário bloquado! Por favor, tente mais tarde.</span>`;
                 botaoLogin.disabled = true;
               }
 
