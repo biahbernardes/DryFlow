@@ -453,27 +453,28 @@ body {
   padding: 5px 0;
   border-radius: 5px;
   margin-bottom: 5px;
+  
 }
 
 .table td {
-  padding: 5px;
+  padding: 10px;
+  width: 80vw;
+ margin-top: 0;
+  overflow-x: none;
 }
 
 .table tbody tr {
-  border-bottom: 1px solid #999;
-  /* linha */
+  border-bottom: 1px solid #100f0f; /* linha */
 }
 
 tbody {
-  display: block;
-  overflow-y: scroll;
-  /*isso que deixa rolar p baixo na tabela*/
-  height: 200px;
+  display: flex;
+  overflow-y: scroll; /*isso que deixa rolar p baixo na tabela*/
+  height: 80vh;
+  flex-direction: column-reverse;
 }
 
-.table td span.alerta {
-  color: #dc1919;
-}
+
 
 /* Lucas: Estilização cards que chegam do sessionStorage */
 
@@ -493,7 +494,8 @@ tbody {
   color: #000000;
   font-size: smaller;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+  margin-bottom: 30px;
+  cursor: pointer;
   /* background: linear-gradient(90deg,rgb(183, 41, 41) 0%, rgba(183, 41, 41, 1) 50%, rgba(135, 6, 6, 0.558) 100%); */
 }
 
@@ -529,5 +531,22 @@ tbody {
   width: 85%;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  
 }
 /* Lucas: Fim Estilização cards que chegam do sessionStorage */
+
+/* Estilização alertas */
+.alertas{
+  font-size: 14px;
+  
+}
+
+.alertas .dtEhora{
+  font-size: 12px;
+  color: #484343;
+  padding-left: 20px;
+
+ 
+
+
+}

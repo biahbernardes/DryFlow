@@ -1,116 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
-    <link rel="stylesheet" href="./assets/Styles/dash.css" />
-  </head>
-  <body onload="exibirAquarios()">
-    <div class="kpiData">Última Atualização: <span id="dataHora"></span></div>
 
-    <div class="main">
-      <div class="sidebar">
-        <div class="profile">
-          <img src="./assets/Imgs/account.png" alt="Perfil" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+  <link rel="stylesheet" href="./assets/Styles/dash.css" />
+</head>
 
-          <h1>Olá, Brandão!</h1>
-        </div>
+<body onload="exibirAquarios()">
+  <div class="kpiData">Última Atualização: <span id="dataHora"></span></div>
 
-        <a href="./dashboard.html">Visão Geral</a>
-        <a href="./detalhes.html">Histórico de Alertas</a>
-        <a href="./cadastro-dryflow.html">Cadastrar Novo Usuário</a>
+  <div class="main">
+    <div class="sidebar">
+      <div class="profile">
+        <img src="./assets/Imgs/account.png" alt="Perfil" />
 
-        <a href="./index.html" class="logout-btn">
-          Sign-out
-          <img
-            src="./assets/Imgs/logout.png"
-            alt="Logout"
-            class="logout-icon"
-          />
-        </a>
+        <h1>Olá, <span id="b_usuario"></span></h1>
       </div>
-      <div class="container">
-        <div class="graficos">
-          <!-- <span class="legenda">Parâmetros para Alertas</span> -->
-          <div class="info-limites">
-            <div class="card">
-              <div class="primeira">Entre 45% e 49%</div>
-              <!-- <h4 >Próximo ao Limite de Umidade</h4>
+
+      <a href="./dashboard.html">Visão Geral</a>
+      <a href="./detalhes.html">Histórico de Alertas</a>
+      <a href="./cadastro-dryflow.html">Cadastrar Novo Usúario</a>
+
+      <a href="./index.html" class="logout-btn">
+        Sign-out
+        <img src="./assets/Imgs/logout.png" alt="Logout" class="logout-icon" />
+      </a>
+    </div>
+    <div class="container">
+      <div class="graficos">
+        <!-- <span class="legenda">Parâmetros para Alertas</span> -->
+        <div class="info-limites">
+          <div class="card">
+            <div class="primeira">Entre 45% e 49%</div>
+            <!-- <h4 >Próximo ao Limite de Umidade</h4>
                 <span >Entre 45% e 49%</span> -->
-              <p>
-                Compressores perto do limite de umidade:<br /><br /><span
-                  id="kpi-perto"
-                  >0</span
-                >
-              </p>
-            </div>
-            <div class="card">
-              <div class="segunda">Em 50%</div>
-              <!-- <h4 >Limite de Umidade</h4>
+            <p>
+              Compressores perto do limite de umidade:<br /><br /><span id="kpi-perto">0</span>
+            </p>
+          </div>
+          <div class="card">
+            <div class="segunda">Em 50%</div>
+            <!-- <h4 >Limite de Umidade</h4>
                 <span>50%</span> -->
-              <p>
-                Compressores no limite de umidade:<br /><br /><span
-                  id="kpi-no-limite"
-                  >0</span
-                >
-              </p>
-            </div>
-            <div class="card">
-              <div class="terceira">Maior que 50%</div>
-              <!-- <h4 >Acima do Limite de Umidade</h4>
-                <span>Maior que 50%</span> -->
-              <p>
-                Compressores acima do limite de umidade:<br /><br /><span
-                  id="kpi-acima"
-                  >0</span
-                >
-              </p>
-            </div>
+            <p>
+              Compressores no limite de umidade:<br /><br /><span id="kpi-no-limite">0</span>
+            </p>
           </div>
-          <!-- KPIs -->
-          <!-- <div class="kpis-container">
-              <div class="card1">
-                <p>
-                  Compressores perto do limite de umidade:<br /><br /><span id="kpi-perto">0</span>
-                </p>
-              </div>
-              <div class="card2">
-                <p>
-                  Compressores dentro do limite de umidade:<br /><br /><span id="kpi-no-limite">0</span>
-                </p>
-              </div>
-              <div class="card3">
-                <p>
-                  Compressores acima do limite de umidade:<br /><br /><span id="kpi-acima">0</span>
-                </p>
-              </div>
-            </div>-->
-        </div>
-
-        <div class="filtro">
-          <div style="width: 70%; text-align: center">
-            <h3>Compressores da Oficina Brandão Car's</h3>
-          </div>
-          <div style="display: flex; flex-direction: column; margin-top: 0%">
-            <p>Filtrar Compressores:</p>
-            <select name="fitro_compressor" id="fitro_compressor">
-              <option value="todos">Todos</option>
-              <option value="riscoAlto">Nível de Risco Alto</option>
-              <option value="riscoMedio">Nível de Risco Médio</option>
-              <option value="riscoBaixo">Nível de Risco Baixo</option>
-            </select>
+          <div class="card">
+            <div class="terceira">Maior que 50%</div>
+          
+            <p>
+              Compressores acima do limite de umidade:<br /><br /><span id="kpi-acima">0</span>
+            </p>
           </div>
         </div>
-        <p style="color: #343030ae; font-size: 12px; margin-bottom: 14px">
-          Clique em um compressor para ver mais informações.
-        </p>
 
-        <div class="cards" id="cardAquarios"></div>
+      </div>
 
-        <!-- <div class="cardsInfo">
+      <div class="filtro">
+        <div style="width: 70%; text-align: center">
+          <h3>Compressores da Oficina Brandão Cars</h3>
+        </div>
+        <div style="display: flex; flex-direction: column; margin-top: 0%">
+          <p>Filtrar Compressores:</p>
+          <select name="fitro_compressor" id="fitro_compressor">
+            <option value="todos">Todos</option>
+            <option value="riscoAlto">Nível de Risco Alto</option>
+            <option value="riscoMedio">Nível de Risco Médio</option>
+            <option value="riscoBaixo">Nível de Risco Baixo</option>
+          </select>
+        </div>
+      </div>
+      <p style="color: #343030ae; font-size: 12px; margin-bottom: 14px">
+        Clique em um compressor para ver mais informações.
+      </p>
+
+      <div class="cards" id="cardAquarios"></div>
+
+      <!-- <div class="cardsInfo">
           <div class="card">
             <h4>Compressor A</h4>
             <p>ID Compressor: 1</p>
@@ -141,7 +113,7 @@
           </div>
         </div>
  -->
-        <!-- <div class="cardsInfo">
+      <!-- <div class="cardsInfo">
           <div class="card">
             <h4>Compressor E</h4>
             <p>ID Compressor: 1</p>
@@ -202,90 +174,10 @@
           </div>
         </div> -->
 
-        <!-- TABELA DE ALERTAS
-             <tr> == linha
-              <td> == coluna 
-            <table class="table">
-                <caption>Alertas</caption>
-            
-               <tbody> scroll no css  
-                 <tr>
-                    <td class="text"><span class="alerta">Alerta:</span></td>
-
-                   <td class="text">Compressor A atingiu o limite de umidade! </td>
-                  
-                   <td> | Umidade: 50%</td>
-                 </tr>
-                 <tr>
-                    <td class="text"> <span  class="alerta">Alerta:</span></td>
-
-                    <td class="text">Compressor B está acima do limite de umidade! Necessário Manutenção! </td>
-                  
-                    <td> | Umidade: 84%</td>
-                  
-                 </tr>
-                 <tr>
-                    <td class="text"><span class="alerta">Alerta:</span></td>
-                    <td class="text">Compressor A está próximo ao limite de umidade! Faça uma Manutenção Preventiva.</td>
-                  
-                    <td> | Umidade: 45%</td>
-                  
-                 </tr>
-                 <tr>
-                    <td class="text"><span  class="alerta">Alerta:</span></td>
-
-                    <td class="text">Compressor C está próximo ao limite de umidade! Faça uma Manutenção Preventiva. </td>
-                  
-                    <td> | Umidade: 42%</td>
-                  
-                 </tr>
-                 <tr>
-                    <td class="text"><span class="alerta">Alerta:</span></td>
-
-                    <td class="text">Compressor A precisa de Manutenção! </td>
-                  
-                    <td> | Umidade: 80%</td>
-                  
-                 </tr>
-                 <tr>
-                    <td class="text"><span class="alerta">Alerta:</span></td>
-
-                    <td class="text">Compressor A atingiu o limite de umidade! </td>
-                  
-                    <td> | Umidade: 52%</td>
-                  
-                 </tr>
-                 <tr>
-                    <td class="text"><span class="alerta">Alerta:</span></td>
-
-                    <td class="text">Atenção! Compressor D está quase atingindo o limite de umidade! </td>
-                  
-                    <td> | Umidade: 47%</td>
-                  
-                 </tr>
-                 <tr>
-                    <td class="text"><span class="alerta">Alerta:</span></td>
-
-                    <td class="text">Compressor A atingiu o limite de umidade! </td>
-                  
-                    <td> | Umidade: 51%</td>
-                    
-                  
-                 </tr>
-                 <tr>
-                    <td class="text"><span class="alerta">Alerta:</span></td>
-
-                    <td class="text">Compressor A atingiu o limite de umidade! </td>
-                  
-                    <td> | Umidade: 80%</td>
-                  
-                 </tr>
-             
-               </tbody>
-             </table> -->
-      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 <script>
   function atualizarDataHora() {
@@ -298,17 +190,37 @@
   atualizarDataHora();
 </script>
 <script>
-  function atualizarKPIs(dados, limite = 50) {
+
+  function carregarKPIs() {
+    fetch('/medidas/ultimas')
+      .then(res => res.json())
+      .then(dados => {
+        const umidades = dados.map(item => item.umidadeRegistrada);
+        atualizarKPIs(umidades);
+      })
+      .catch(err => {
+        console.error('Erro ao buscar KPIs:', err);
+      });
+  }
+  carregarKPIs();
+
+  // document.getElementById("kpi-perto").textContent = perto;
+  // document.getElementById("kpi-no-limite").textContent = noLimite;
+  // document.getElementById("kpi-acima").textContent = acima;
+
+</script>
+<script>
+  function atualizarKPIs(umidades) {
     let perto = 0;
     let noLimite = 0;
     let acima = 0;
 
-    dados.forEach((valor) => {
-      if (valor > limite) {
+    umidades.forEach((umidade) => {
+      if (umidade > 50) {
         acima++;
-      } else if (valor < limite && valor < limite - 5) {
+      } else if (umidade == 50) {
         noLimite++;
-      } else if (valor >= limite - 5 && valor <= limite) {
+      } else if (umidade >= 45 && umidade <= 49) {
         perto++;
       }
     });
@@ -319,28 +231,41 @@
   }
 </script>
 
-<script>
-  // dados sem estar no gráfico
-  const dadosUmidade = [80, 84, 47, 43];
-  // atualiza as KPIs com base nos dados inseridos manualmente, não os dados do gráfico
-  atualizarKPIs(dadosUmidade);
-</script>
+
 
 <script>
   /* SCRIPT do WEBDATAVIZ (cards.html) para gerar os cards de alerta de umidade */
   function exibirAquarios() {
-    JSON.parse(sessionStorage.AQUARIOS).forEach((item) => {
-      document.getElementById("cardAquarios").innerHTML += `
-                  <div class="cardDinamico" onclick="verCompressorEspecifico(${item.idCompressor})">
-                    <h4>${item.modelo}</h4>
-                    <p>ID Compressor: ${item.idCompressor}</p>
-                    <p>Oficina: Brandão Car's</p>
-                    <p>Umidade Atual: 80%</p>
-                    <p>Nível de Risco: <span class="alto">Alto</span></p>
-                  </div>
-                  <br>
-                  `;
-    });
+    fetch('/medidas/ultimas')
+      .then(res => res.json())
+      .then(dados => {
+        document.getElementById("cardAquarios").innerHTML = ""; // limpa antes de inserir
+        dados.forEach((item) => {
+          let nivel = "";
+          let classe = "";
+          if (item.umidadeRegistrada >= 50) {
+            nivel = "Alto";
+            classe = "alto";
+          } else if (item.umidadeRegistrada >= 45) {
+            nivel = "Médio";
+            classe = "medio";
+          } else {
+            nivel = "Baixo";
+            classe = "baixo";
+          } // pega a ultima umidade e filtra se o nível dela é alto, baixo ou médio
+
+          document.getElementById("cardAquarios").innerHTML += `
+          <div class="cardDinamico" onclick="verCompressorEspecifico(${item.idCompressor})">
+            <h4>${item.modelo}</h4>
+            <p>ID Compressor: ${item.idCompressor}</p>
+            
+            <p>Umidade Atual: ${item.umidadeRegistrada}%</p>
+            <p>Nível de Risco: <span class="${classe}">${nivel}</span></p>
+          </div>
+          <br>
+        `;
+        });
+      });
   }
   function verCompressorEspecifico(idCompressor) {
     console.log("clicou");
