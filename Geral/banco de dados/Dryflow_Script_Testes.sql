@@ -1,6 +1,105 @@
 -- Testes
 USE dryflow;
 
+-- INSERÇÃO DE DADOS
+-- Inserir Empresas
+insert into empresa (cnpj, nomeFantasia, email) values
+('12345678000195', 'Empresa A', 'contato@empresaA.com'),
+('98765432000198', 'Empresa B', 'contato@empresaB.com'),
+('11122233000181', 'Empresa C', 'contato@empresaC.com'),
+('22233344000102', 'Empresa D', 'contato@empresaD.com');
+
+-- Inserir Oficinas (Empresa A tem 1 oficina a mais)
+insert into oficina (nomeOficina, fkEmpresa, codigo_ativacao) values
+('Oficina A', 1, 'AAAAA'), 
+('Oficina B', 2, 'BBBBB'), 
+('Oficina C', 3, 'CCCCC'),
+('Oficina D', 4, 'DDDDD'),
+('Oficina E', 1, 'EEEEE');
+
+-- Inserir Endereços para Empresas (sem associar à oficina)
+insert into endereco (rua, numero, cidade, bairro, estado, cep, fkEndOficina, fkEndEmpresa) values
+('Av. Central', 100, 'São Paulo', 'Bairro A','São Paulo', '01001000', NULL, 1), 
+('Av. Paulista', 200, 'São Paulo', 'Bairro B','São Paulo','01002000', NULL, 2),
+('Rua das Flores', 300, 'Rio de Janeiro','Bairro C','Rio de Janeiro','20001000', NULL, 3),
+('Rua das Pedras', 400, 'Belo Horizonte', 'Bairro D','Minas Gerais','30001000', NULL, 4);
+
+-- Inserir Endereços para Oficinas (sem associar à empresa)
+insert into endereco (rua, numero, cidade, bairro, estado, cep, fkEndOficina, fkEndEmpresa) values
+('Av. Tropical', 101, 'São Paulo','Bairro D','São Paulo', '01001001', 1, NULL),
+('Rua do Sol', 202, 'São Paulo','Bairro E','São Paulo', '01002001', 2, NULL),
+('Rua das Flores', 303, 'Rio de Janeiro','Bairro F','Rio de Janeiro', '20001001', 3, NULL),
+('Rua das Pedras', 404, 'Belo Horizonte','Bairro G','Minas Gerais', '30001001', 4, NULL),
+('Rua dos Diamantes', 505, 'Belo Horizonte','Bairro H','Minas Gerais', '40001001', 5, NULL);
+
+-- Inserir Funcionários
+insert into funcionario (nome, email, senha, cargo, fkOficina) values
+('Feranado Brandao', 'brandao@sptech.com', '654321', 'Supervisor', 1),
+('Hector Silva', 'hector@empresaA.com', 'senha123', 'Gerente', 1),
+('João Silva', 'joao@empresaA.com', 'senha123', 'Técnico', 1),
+('Maria Oliveira', 'maria@empresaB.com', 'senha123', 'Gerente', 2),
+('Carlos Souza', 'carlos@empresaC.com', 'senha123', 'Supervisor', 3),
+('Ana Costa', 'ana@empresaD.com', 'senha123', 'Técnico', 4),
+('Roberta Marinho', 'roberta@empresaD.com', 'senha123', 'Técnico', 5);
+
+
+
+-- Inserir Telefones
+insert into telefone (numero, fkTelFuncionario, fkTelEmpresa, fkTelOficina) values
+('1112345678', 1, NULL, NULL), 
+('11987654321', 2, NULL, NULL),
+('21387654321', 3, NULL, NULL),
+('31987654321', 4, NULL, NULL),
+('45687654321', 5, NULL, NULL),
+('78887654321', 6, NULL, NULL),
+('1123456789', NULL, 1, NULL), 
+('1122334455', NULL, 2, NULL),
+('2133445566', NULL, 3, NULL),
+('3198877665', NULL, 4, NULL),
+('1198887777', NULL, NULL, 1),
+('2133222333', NULL, NULL, 2),
+('3199988777', NULL, NULL, 3),
+('2199999888', NULL, NULL, 4),
+('2145679888', NULL, NULL, 5);
+
+-- Inserir Compressores
+insert into compressor (modelo, capacidadeUmiMax, status, fkOficina) values
+('Modelo A', 60, 'ativo', 1),
+('Modelo B', 75, 'ativo', 2),
+('Modelo C', 50, 'inativo', 3),
+('Modelo D', 80, 'ativo', 4),
+('Modelo E', 87, 'ativo', 5),
+('Modelo F', 60, 'ativo', 1),
+('Modelo G', 75, 'ativo', 1),
+('Modelo H', 58, 'ativo', 1),
+('Modelo I', 62, 'ativo', 1);
+
+-- Inserir Sensores
+insert into sensor (fkCompressor) values
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9);
+
+-- Inserir Registros de Sensor
+insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
+(55, '2025-04-07 08:00:00', 1),
+(60, '2025-04-07 09:00:00', 1),
+(64, '2025-04-07 10:00:00', 1),
+(80, '2025-04-07 09:00:00', 2),
+(40, '2025-04-07 10:00:00', 3),
+(85, '2025-04-07 11:00:00', 4),
+(88, '2025-04-07 12:00:00', 5),
+(81, '2025-04-07 12:00:00', 6),
+(74, '2025-04-07 12:00:00', 7),
+(55, '2025-04-07 12:00:00', 8),
+(18, '2025-04-07 12:00:00', 9);
+
 -- Teste das tabelas
 SELECT * FROM oficina;
 SELECT * FROM empresa;
@@ -10,6 +109,8 @@ SELECT * FROM telefone;
 SELECT * FROM compressor;
 SELECT * FROM sensor;
 SELECT * FROM registroSensor;
+
+
 
 
 
@@ -135,3 +236,80 @@ SELECT
                         fkSensor
                         FROM registroSensor WHERE fkSensor = 1 
                     ORDER BY idRegistro DESC LIMIT 1;
+
+
+-- Apagar os registros captados pelo sensor
+TRUNCATE registroSensor;
+-- Contador quantidade de vezes compressor passou dos 50% no dia do compressor selecionado
+
+SELECT TIME(current_timestamp());
+SELECT * FROM registroSensor WHERE TIME(dtHrRegistrada) LIKE ("%%:00:00");
+SELECT DISTINCT COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50" FROM registroSensor 
+INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
+INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
+WHERE umidadeRegistrada > 50 
+AND DATE(registroSensor.dtHrRegistrada) = CURDATE() 
+AND sensor.fkCompressor = compressor.idCompressor
+AND TIME(registroSensor.dtHrRegistrada) LIKE ("%%:00:00");
+
+-- Inserir Registros de Sensor PARA TESTES DE Contador de vezes que passou da umidade nas últimas 24 horas
+insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
+(20, '2025-06-03 00:00:00', 1),
+(20, '2025-06-03 01:00:00', 1),
+(20, '2025-06-03 02:00:00', 1),
+(20, '2025-06-03 03:00:00', 1),
+(20, '2025-06-03 04:00:00', 1),
+(20, '2025-06-03 05:00:00', 1),
+(20, '2025-06-03 06:00:00', 1),
+(25, '2025-06-03 07:00:00', 1),
+(45, '2025-06-03 08:00:00', 1),
+(51, '2025-06-03 09:00:00', 1), -- Passou da umidade
+(51, '2025-06-03 09:30:00', 1), -- Passou da umidade
+(55, '2025-06-03 10:00:00', 1), -- Passou da umidade
+(55, '2025-06-03 10:30:00', 1), -- Passou da umidade
+(60, '2025-06-03 11:00:00', 1), -- Passou da umidade
+(60, '2025-06-03 11:30:00', 1), -- Passou da umidade
+(60, '2025-06-03 11:31:00', 1), -- Passou da umidade
+(60, '2025-06-03 11:32:00', 1), -- Passou da umidade
+(60, '2025-06-03 11:33:00', 1), -- Passou da umidade
+(60, '2025-06-03 11:54:00', 1), -- Passou da umidade
+(60, '2025-06-03 11:30:00', 1), -- Passou da umidade
+(20, '2025-06-03 12:00:00', 1),
+(22, '2025-06-03 13:00:00', 1),
+(24, '2025-06-03 14:00:00', 1),
+(34, '2025-06-03 15:00:00', 1),
+(64, '2025-06-03 16:00:00', 1), -- Passou da umidade
+(75, '2025-06-03 17:00:00', 1), -- Passou da umidade
+(20, '2025-06-03 18:00:00', 1),
+(20, '2025-06-03 19:00:00', 1),
+(47, '2025-06-03 20:00:00', 1), 
+(59, '2025-06-03 21:00:00', 1), -- Passou da umidade
+(20, '2025-06-03 22:00:00', 1),
+(20, '2025-06-03 23:00:00', 1),
+(20, '2025-06-04 00:00:00', 1),
+(20, '2025-06-04 01:00:00', 1),
+(20, '2025-06-04 02:00:00', 1),
+(20, '2025-06-04 03:00:00', 1),
+(20, '2025-06-04 04:00:00', 1),
+(20, '2025-06-04 05:00:00', 1),
+(20, '2025-06-04 06:00:00', 1),
+(25, '2025-06-04 07:00:00', 1),
+(45, '2025-06-04 08:00:00', 1),
+(51, '2025-06-04 09:00:00', 1), -- Passou da umidade
+(55, '2025-06-04 10:00:00', 1), -- Passou da umidade
+(60, '2025-06-04 11:00:00', 1), -- Passou da umidade
+(20, '2025-06-04 12:00:00', 1),
+(22, '2025-06-04 13:00:00', 1),
+(24, '2025-06-04 14:00:00', 1),
+(34, '2025-06-04 15:00:00', 1),
+(64, '2025-06-04 16:00:00', 1), -- Passou da umidade
+(75, '2025-06-04 17:00:00', 1), -- Passou da umidade
+(20, '2025-06-04 18:00:00', 1),
+(20, '2025-06-04 19:00:00', 1),
+(47, '2025-06-04 20:00:00', 1), -- Passou da umidade
+(59, '2025-06-04 21:00:00', 1), -- Passou da umidade
+(20, '2025-06-04 22:00:00', 1),
+(20, '2025-06-04 23:00:00', 1),
+(51, '2025-06-03 21:00:00', 2), -- Passou da umidade
+(51, '2025-06-03 22:00:00', 2), -- Passou da umidade
+(51, '2025-06-03 23:00:00', 2); -- Passou da umidade
