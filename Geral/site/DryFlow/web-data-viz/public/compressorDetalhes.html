@@ -39,9 +39,6 @@
           <div id="kpiQuantidadeCompressorPassou50nodia">
             <p>Quantidade de Horas que compressor A passou dos 50 Hoje:</p>
             <span id="contadorPassou50"></span>
-            <button onclick="contadorPassagemDos50UmidadeDia()">
-              Teste Contador
-            </button>
           </div>
         </div>
         <div id="graficos">
@@ -435,6 +432,8 @@
   }
 </script>
 <script>
+  window.onload = contadorPassagemDos50UmidadeDia();
+
   let contadorUmidadeMaior50Nas24Horas;
 
   function contadorPassagemDos50UmidadeDia() {
