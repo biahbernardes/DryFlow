@@ -1,122 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/Styles/dash.css" />
-  </head>
-  <body>
-    <div class="main">
-      <div class="sidebar">
-        <div class="profile">
-          <img src="./assets/Imgs/account.png" alt="Perfil" />
 
-          <h1>Olá, Brandão!</h1>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alertas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/Styles/dash.css" />
+</head>
 
-        <a href="./dashboard.html">Visão Geral</a>
-        <a href="./detalhes.html">Histórico de Alertas</a>
-        <a href="./cadastro-dryflow.html">Cadastrar Novo Usúario</a>
+<body>
+  <div class="main">
+    <div class="sidebar">
+      <div class="profile">
+        <img src="./assets/Imgs/account.png" alt="Perfil" />
 
-        <a href="./index.html" class="logout-btn">
-          Sign-out
-          <img
-            src="./assets/Imgs/logout.png"
-            alt="Logout"
-            class="logout-icon"
-          />
-        </a>
+        <h1>Olá, Brandão!</h1>
       </div>
-      <div class="container">
-        <h3>Compressores da Oficina Brandão Car's</h3>
 
-        <!-- TABELA DE ALERTAS
-             <tr> == linha
-              <td> == coluna -->
-        <table class="table">
-          <caption>
-            Alertas
-          </caption>
+      <a href="./dashboard.html">Visão Geral</a>
+      <a href="./detalhes.html">Histórico de Alertas</a>
+      <a href="./cadastro-dryflow.html">Cadastrar Novo Usuário</a>
 
-          <tbody>
-            <!-- scroll no css  -->
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 50%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">
-                Compressor B está acima do limite de umidade! Necessário
-                Manutenção!
-              </td>
-
-              <td>| Umidade: 84%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-              <td class="text">
-                Compressor A está próximo ao limite de umidade! Faça uma
-                Manutenção Preventiva.
-              </td>
-
-              <td>| Umidade: 45%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">
-                Compressor C está próximo ao limite de umidade! Faça uma
-                Manutenção Preventiva.
-              </td>
-
-              <td>| Umidade: 42%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A precisa de Manutenção!</td>
-
-              <td>| Umidade: 80%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 52%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">
-                Atenção! Compressor D está quase atingindo o limite de umidade!
-              </td>
-
-              <td>| Umidade: 47%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 51%</td>
-            </tr>
-            <tr>
-              <td class="text"><span class="alerta">Alerta:</span></td>
-
-              <td class="text">Compressor A atingiu o limite de umidade!</td>
-
-              <td>| Umidade: 80%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <a href="./index.html" class="logout-btn">
+        Sign-out
+        <img src="./assets/Imgs/logout.png" alt="Logout" class="logout-icon" />
+      </a>
     </div>
-  </body>
+    <div class="container">
+
+
+      <!-- TABELA DE ALERTAS-->
+      <table class="table">
+        <caption>
+          Alertas
+        </caption>
+        <tbody id="divMensagem" class="alertas">
+          <!-- scroll no css  -->
+
+
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
 </html>
+<script>
+  fetch("/medidas/alertas")
+    .then(res => res.json())
+    .then(data => {
+
+      data.forEach((alerta) => {
+        const umidade = alerta.umidadeRegistrada;
+        const nomeModelo = alerta.modelo;
+        const horaRegistro = alerta.dtHrRegistrada;
+        let cor = "";
+        var mensagem = "";
+        if (umidade >= 45 && umidade <= 49) {
+          cor = "rgb(244, 178, 12)"; // amarelo 
+          mensagem = ` Compressor ${nomeModelo} está próximo ao limite de 
+          umidade! Faça uma Manutenção Preventiva.	| Umidade:<span style="color: ${cor};"> ${umidade}% </span>
+          | <span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`
+          divMensagem.innerHTML += `
+          <tr>
+            <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
+            ${mensagem}</td>
+            
+        `;
+        } else if (umidade == 50) {
+          cor = "rgb(244, 136, 12)"; // laranja no limite
+          mensagem = ` Compressor ${nomeModelo} atingiu o limite de umidade! Necessário manutenção!	
+           | Umidade:<span style="color: ${cor};"> ${umidade}% </span>|
+            <span class="dtEhora"><i class="fa-solid fa-clock"></i>  ${horaRegistro}</span><br>`
+          divMensagem.innerHTML += `
+          <tr>
+            <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
+            ${mensagem}</td>
+            
+        `;
+        } else if (umidade > 50) {
+          cor = "#dc1919"; // vermelho claro
+          mensagem = `	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção! | Umidade: <span style="color: ${cor};">${umidade}% </span>
+           |<span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`
+          divMensagem.innerHTML += `
+          <tr>
+            <td ><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
+            ${mensagem}</td>
+            
+        `;
+        }
+
+      });
+    });
+</script>

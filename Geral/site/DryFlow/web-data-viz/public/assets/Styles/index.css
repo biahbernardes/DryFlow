@@ -117,41 +117,51 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-
   padding: 20px;
   height: auto;
 }
 
-.box h3 {
+.box img {
+    margin-top: 15px;
+    width:30%;
+}
+
+.box-valores img {
+    margin-top: 15px;
+    width: 160px;
+}
+
+/*.box h3 {
   color: #1e5290;
   margin-bottom: 0px;
   font-size: large;
   margin-bottom: 16px;
-}
+}*/
 
 .valores {
   height: 380px;
-  background-image: url("../Imgs/valores.png");
+  /*background-image: url("../Imgs/valores.png");*/
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
+  background-color: #e0e0e0;
 }
 
 .valores h3 {
   color: white;
   font-size: 24px;
   margin-bottom: 16px;
+
 }
 
 .valores p {
-  color: white;
-
+  color: black;
   font-size: 16px;
-
+  font-weight: bold;
   line-height: 1.6;
-  max-width: 450px;
+  max-width: 400px;
 }
 
 .footer {
@@ -226,12 +236,14 @@ body {
   background-color: white;
   height: auto;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
 }
 .diagrama img {
-  width: 60%;
+  width: 80%;
 }
 
 .diagrama h2 {
   color: #4682b4;
+  margin-bottom: 30px;
+  margin-top: 40px;
 }
