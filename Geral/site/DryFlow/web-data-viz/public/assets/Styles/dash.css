@@ -426,7 +426,7 @@ body {
   font-size: medium;
 }
 
-.main .container canvas{
+.main .container canvas {
   display: flex;
   margin-top: 65px;
   height: 400px;
@@ -453,13 +453,12 @@ body {
   padding: 5px 0;
   border-radius: 5px;
   margin-bottom: 5px;
-  
 }
 
 .table td {
   padding: 10px;
   width: 80vw;
- margin-top: 0;
+  margin-top: 0;
   overflow-x: none;
 }
 
@@ -473,8 +472,6 @@ tbody {
   height: 80vh;
   flex-direction: column-reverse;
 }
-
-
 
 /* Lucas: Estilização cards que chegam do sessionStorage */
 
@@ -531,22 +528,37 @@ tbody {
   width: 85%;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  
 }
 /* Lucas: Fim Estilização cards que chegam do sessionStorage */
 
 /* Estilização alertas */
-.alertas{
+.alertas {
   font-size: 14px;
-  
 }
 
-.alertas .dtEhora{
+.alertas .dtEhora {
   font-size: 12px;
   color: #484343;
   padding-left: 20px;
+}
 
- 
+/* LUCAS - KPIs dos compressores individuais */
 
+.div_cardsGraficoLinha {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
+#kpiQuantidadeCompressorPassou50nodia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+
+  text-align: center;
+  border-radius: 15px;
+  border: #000000 solid 3px;
 }

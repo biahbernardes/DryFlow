@@ -35,28 +35,37 @@
         </a>
       </div>
       <div class="container">
+        <div class="div_cardsGraficoLinha">
+          <div id="kpiQuantidadeCompressorPassou50nodia">
+            <p>Quantidade de Horas que compressor A passou dos 50 Hoje:</p>
+            <span id="contadorPassou50"></span>
+            <button onclick="contadorPassagemDos50UmidadeDia()">
+              Teste Contador
+            </button>
+          </div>
+        </div>
         <div id="graficos">
           <canvas id="myChartCanvas0"></canvas>
         </div>
         <div>
           <p id="avisoCaptura" style="color: #000000"></p>
         </div>
-        <!-- 
-        Geraçao gráfico para testes
+
+        <!-- Geraçao gráfico para testes
         <div class="graficoLine">
           <h4>Umidade dos Compressores nas Últimas Horas</h4>
-        
+
           <div class="charts">
             <canvas id="myChart2"></canvas>
           </div>
-        </div>
-        <div class="graficoBarra">
+        </div> -->
+
+        <!-- <div class="graficoBarra">
           <h4>Umidade Atual dos Compressores</h4>
           <div class="charts">
             <canvas id="myChart"></canvas>
           </div>
-        </div> 
-        -->
+        </div> -->
       </div>
     </div>
   </body>
@@ -68,7 +77,7 @@
     document.getElementById("dataHora").textContent = dataHoraFormatada;
   }
 
-  atualizarDataHora()
+  atualizarDataHora();
 </script>
 
 <script>
@@ -416,6 +425,38 @@
             () => atualizarGrafico(idAquario, dados, myChart),
             2000
           );
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
+</script>
+<script>
+  let contadorUmidadeMaior50Nas24Horas;
+
+  function contadorPassagemDos50UmidadeDia() {
+    idAquario = sessionStorage.COMPRESSOR_SELECIONADO;
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas24Horas/${idAquario}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            contadorUmidadeMaior50Nas24Horas = resposta[0].Quantidade_Passou_50;
+            console.log(
+              "Quantidade de registros do compressor com umidade maior que 50: " +
+                contadorUmidadeMaior50Nas24Horas
+            );
+            contadorPassou50.innerHTML = contadorUmidadeMaior50Nas24Horas;
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
         }
       })
       .catch(function (error) {
