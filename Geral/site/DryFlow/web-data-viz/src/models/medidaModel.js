@@ -89,6 +89,7 @@ function buscarMedidasEsteMes(idAquario) {
         AND MONTH(registroSensor.dtHrRegistrada) = MONTH(CURDATE()) 
         AND YEAR(registroSensor.dtHrRegistrada) = YEAR(CURDATE())
         AND sensor.fkCompressor = ${idAquario}
+        AND TIME(registroSensor.dtHrRegistrada) LIKE ("%%:%%:00")
 
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
