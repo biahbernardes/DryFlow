@@ -105,7 +105,7 @@ function ultimasTodosCompressoresUmidadeMaior() {
         WHERE rs.dtHrRegistrada = (SELECT MAX(dtHrRegistrada) FROM registroSensor)
         GROUP BY c.idCompressor, c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
         ORDER BY rs.umidadeRegistrada 
-        LIMIT 5;;
+        LIMIT 5;
 
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

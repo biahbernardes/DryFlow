@@ -135,16 +135,19 @@
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.OFICINA_USUARIO = json.oficinaId;
+                sessionStorage.CARGO_USUARIO = json.cargo;
                 sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
 
                 setTimeout(function () {
                   window.location = "dashboard.html";
-                }, ); // apenas para exibir o loading
+                }); // apenas para exibir o loading
               });
             } else {
               console.log("Houve um erro ao tentar realizar o login!");
 
-              div_mensagem.innerHTML = "<span><br>Email ou Senha incorreta.</span>";
+              div_mensagem.innerHTML =
+                "<span><br>Email ou Senha incorreta.</span>";
               tentativas--;
               div_mensagem.innerHTML += `<span><br>Você ainda tem ${tentativas} tentativa(s)</span>`;
 
