@@ -240,18 +240,6 @@ SELECT
 
 -- Apagar os registros captados pelo sensor
 TRUNCATE registroSensor;
--- Contador quantidade de vezes compressor passou dos 50% no dia do compressor selecionado
-
-SELECT TIME(current_timestamp());
-SELECT * FROM registroSensor WHERE TIME(dtHrRegistrada) LIKE ("%%:00:00");
-SELECT DISTINCT COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50" FROM registroSensor 
-INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
-INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
-WHERE umidadeRegistrada > 50 
-AND DATE(registroSensor.dtHrRegistrada) = CURDATE() 
-AND sensor.fkCompressor = compressor.idCompressor
-AND TIME(registroSensor.dtHrRegistrada) LIKE ("%%:00:00");
-
 -- Inserir Registros de Sensor PARA TESTES DE Contador de vezes que passou da umidade nas últimas 24 horas
 insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
 (20, '2025-06-03 00:00:00', 1),
@@ -306,10 +294,40 @@ insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
 (75, '2025-06-04 17:00:00', 1), -- Passou da umidade
 (20, '2025-06-04 18:00:00', 1),
 (20, '2025-06-04 19:00:00', 1),
-(47, '2025-06-04 20:00:00', 1), -- Passou da umidade
+(47, '2025-06-04 20:00:00', 1), 
 (59, '2025-06-04 21:00:00', 1), -- Passou da umidade
 (20, '2025-06-04 22:00:00', 1),
 (20, '2025-06-04 23:00:00', 1),
-(51, '2025-06-03 21:00:00', 2), -- Passou da umidade
+(51, '2025-06-03 08:00:00', 2), -- Passou da umidade
 (51, '2025-06-03 22:00:00', 2), -- Passou da umidade
-(51, '2025-06-03 23:00:00', 2); -- Passou da umidade
+(51, '2025-06-03 23:00:00', 2), -- Passou da umidade
+(51, '2025-07-03 08:00:00', 1), -- Passou da umidade
+(51, '2025-07-03 22:00:00', 1), -- Passou da umidade
+(51, '2025-07-03 23:00:00', 1); -- Passou da umidade
+-- Contador quantidade de vezes compressor passou dos 50% no dia do compressor selecionado
+
+SELECT TIME(current_timestamp());
+SELECT * FROM registroSensor WHERE TIME(dtHrRegistrada) LIKE ("%%:%%:00");
+SELECT COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50" FROM registroSensor 
+INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
+INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
+WHERE umidadeRegistrada > 50 
+AND DATE(registroSensor.dtHrRegistrada) = CURDATE() 
+AND sensor.fkCompressor = compressor.idCompressor
+AND TIME(registroSensor.dtHrRegistrada) LIKE ("%%:%%:00");
+
+-- Horário que iniciou a umidade a ficar mais de 50% de umidade hoje
+SELECT MIN(TIME(dtHrRegistrada)) AS "HorarioHoje_Inicio_umidadeMaior50" FROM registroSensor
+INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
+INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
+WHERE umidadeRegistrada > 50 AND DATE(registroSensor.dtHrRegistrada) = CURDATE() AND sensor.fkCompressor = compressor.idCompressor;
+
+-- Contagem total de registros que passou de 50% de umidade no ultimo mes
+
+SELECT  COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50_Mes" FROM registroSensor 
+        INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
+        INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
+        WHERE umidadeRegistrada > 50 
+        AND MONTH(registroSensor.dtHrRegistrada) = MONTH(CURDATE()) 
+        AND YEAR(registroSensor.dtHrRegistrada) = YEAR(CURDATE())
+        AND sensor.fkCompressor = compressor.idCompressor;
