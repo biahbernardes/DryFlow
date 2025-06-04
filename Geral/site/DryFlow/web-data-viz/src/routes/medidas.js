@@ -33,4 +33,11 @@ router.get("/ultimasTodosCompressoresUmidadeMaior", function (req, res) {
   medidaController.ultimasTodosCompressoresUmidadeMaior(req, res);
 });
 
+router.get(
+  "/ultimasCompressoresOficina/:oficinaDoUsuario",
+  function (req, res) {
+    medidaController.ultimasCompressoresOficina(req, res);
+  }
+);
+
 module.exports = router;
