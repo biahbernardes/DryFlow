@@ -16,17 +16,18 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
   let poolBancoDados = mysql
     .createPool({
       /* CONEXÃO PARA MÀQUINA LOCAL */
-      host: "127.0.0.1",
-      user: "apiOficina1",
-      password: "Dry#2025",
-      database: "dryflow",
-      port: 3306,
-      /* CONEXÃO PARA MÀQUINA REMOTA LUBUNTU (SPRINT 3) */
-      // host: "10.18.32.28",
+      // host: "127.0.0.1",
       // user: "apiOficina1",
       // password: "Dry#2025",
       // database: "dryflow",
-      // port: 3307,
+      // port: 3306
+
+      // CONEXÃO PARA MÀQUINA REMOTA LUBUNTU (SPRINT 3) */
+      host: "10.18.32.33",
+      user: "aluno",
+      password: "Sptech#2024",
+      database: "dryflow",
+      port: 3307,
     })
     .promise();
 
