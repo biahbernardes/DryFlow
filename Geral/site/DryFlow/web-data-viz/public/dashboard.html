@@ -123,7 +123,8 @@
 </script>
 <script>
   function carregarKPIs() {
-    fetch("/medidas/ultimas")
+    var oficinaDoUsuario = sessionStorage.OFICINA_USUARIO;
+    fetch(`/medidas/ultimasCompressoresOficina/${oficinaDoUsuario}`)
       .then((res) => res.json())
       .then((dados) => {
         const umidades = dados.map((item) => item.umidadeRegistrada);
