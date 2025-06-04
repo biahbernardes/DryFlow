@@ -21,4 +21,12 @@ router.get("/ultimas24Horas/:idAquario", function (req, res) {
   medidaController.buscarMedidas24Horas(req, res);
 });
 
+router.get("/horarioInicioUmidade50Hoje/:idAquario", function (req, res) {
+  medidaController.horarioInicioUmidade50Hoje(req, res);
+});
+
+router.get("/ultimoMes/:idAquario", function (req, res) {
+  medidaController.buscarMedidasEsteMes(req, res);
+});
+
 module.exports = router;

@@ -548,16 +548,18 @@ tbody {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  width: 80%;
 }
 
-#kpiQuantidadeCompressorPassou50nodia {
+.kpiGraficoLinhaCompressorEspecifico {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 250px;
-  height: 250px;
-
+  width: 125px;
+  height: 125px;
+  padding: 2%;
+  margin: 2%;
   text-align: center;
   border-radius: 15px;
   border: #000000 solid 3px;

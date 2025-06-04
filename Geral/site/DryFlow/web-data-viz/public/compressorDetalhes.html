@@ -40,12 +40,29 @@
       </div>
       <div class="container">
         <div class="div_cardsGraficoLinha">
-          <div id="kpiQuantidadeCompressorPassou50nodia">
+          <div
+            class="kpiGraficoLinhaCompressorEspecifico"
+            id="kpiQuantidadeCompressorPassou50nodia"
+          >
             <p>
-              Quantidade de Horas que o compressor passou dos 50% de umidade
+              Quantidade de minutos que o compressor passou dos 50% de umidade
               hoje:
             </p>
             <span id="contadorPassou50"></span>
+          </div>
+          <div
+            class="kpiGraficoLinhaCompressorEspecifico"
+            id="kpiHorarioInicioUmidadeMaior50Hoje"
+          >
+            <p>Horário do primeiro registro com umidade acima do 50% hoje:</p>
+            <span id="horarioInicioPassou50"></span>
+          </div>
+          <div
+            class="kpiGraficoLinhaCompressorEspecifico"
+            id="kpiMinutosTotalUmidadeMaior50NesseMes"
+          >
+            <p>Quantidade de minutos umidade maior que 50 neste mês:</p>
+            <span id="umidadePassou50NesseMes"></span>
           </div>
         </div>
         <div id="graficos">
@@ -64,12 +81,12 @@
           </div>
         </div> -->
 
-        <!-- <div class="graficoBarra">
+        <div class="graficoBarra">
           <h4>Umidade Atual dos Compressores</h4>
           <div class="charts">
             <canvas id="myChart"></canvas>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </body>
@@ -460,6 +477,77 @@
                 contadorUmidadeMaior50Nas24Horas
             );
             contadorPassou50.innerHTML = contadorUmidadeMaior50Nas24Horas;
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
+</script>
+<script>
+  window.onload = horarioInicioPassagemDos50UmidadeDia();
+
+  let horarioInicioUmidadeMaior50Hoje;
+
+  function horarioInicioPassagemDos50UmidadeDia() {
+    idAquario = sessionStorage.COMPRESSOR_SELECIONADO;
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/horarioInicioUmidade50Hoje/${idAquario}`, {
+      cache: "no-store",
+    })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            horarioInicioUmidadeMaior50Hoje =
+              resposta[0].HorarioHoje_Inicio_umidadeMaior50;
+            console.log(
+              "Horário de início do compressor com umidade maior que 50: " +
+                horarioInicioUmidadeMaior50Hoje
+            );
+            horarioInicioPassou50.innerHTML = horarioInicioUmidadeMaior50Hoje;
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
+</script>
+<script>
+  window.onload = contadorPassagemDos50UmidadeMes();
+
+  let contadorUmidadeMaior50Mes;
+
+  function contadorPassagemDos50UmidadeMes() {
+    idAquario = sessionStorage.COMPRESSOR_SELECIONADO;
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimoMes/${idAquario}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            contadorUmidadeMaior50Mes = resposta[0].Quantidade_Passou_50_Mes;
+            console.log(
+              "Quantidade de registros do compressor com umidade maior que 50 neste mês: " +
+                contadorUmidadeMaior50Mes
+            );
+            umidadePassou50NesseMes.innerHTML = contadorUmidadeMaior50Mes;
           });
         } else {
           console.error("Nenhum dado encontrado ou erro na API");

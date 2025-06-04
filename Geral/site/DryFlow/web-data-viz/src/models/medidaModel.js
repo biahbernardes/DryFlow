@@ -55,13 +55,40 @@ function alertas() {
 
 function buscarMedidas24Horas(idAquario) {
   const instrucaoSql = `
-        SELECT DISTINCT COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50" FROM registroSensor 
+        SELECT COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50" FROM registroSensor 
         INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
         INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
         WHERE umidadeRegistrada > 50 
         AND DATE(registroSensor.dtHrRegistrada) = CURDATE() 
         AND sensor.fkCompressor = ${idAquario}
-        AND TIME(registroSensor.dtHrRegistrada) LIKE ("%%:00:00")
+        AND TIME(registroSensor.dtHrRegistrada) LIKE ("%%:%%:00")
+
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function horarioInicioUmidade50Hoje(idAquario) {
+  const instrucaoSql = `
+        SELECT MIN(TIME(dtHrRegistrada)) AS "HorarioHoje_Inicio_umidadeMaior50" FROM registroSensor
+        INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
+        INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
+        WHERE umidadeRegistrada > 50 AND DATE(registroSensor.dtHrRegistrada) = CURDATE() AND sensor.fkCompressor = ${idAquario}
+
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEsteMes(idAquario) {
+  const instrucaoSql = `
+        SELECT  COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50_Mes" FROM registroSensor 
+        INNER JOIN sensor ON registroSensor.fkSensor = sensor.idSensor
+        INNER JOIN compressor ON sensor.fkCompressor = compressor.idCompressor
+        WHERE umidadeRegistrada > 50 
+        AND MONTH(registroSensor.dtHrRegistrada) = MONTH(CURDATE()) 
+        AND YEAR(registroSensor.dtHrRegistrada) = YEAR(CURDATE())
+        AND sensor.fkCompressor = ${idAquario}
 
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -73,4 +100,6 @@ module.exports = {
   buscarMedidasEmTempoReal,
   alertas,
   buscarMedidas24Horas,
+  horarioInicioUmidade50Hoje,
+  buscarMedidasEsteMes,
 };
