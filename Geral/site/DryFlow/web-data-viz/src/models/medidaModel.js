@@ -96,6 +96,22 @@ function buscarMedidasEsteMes(idAquario) {
   return database.executar(instrucaoSql);
 }
 
+function ultimasTodosCompressoresUmidadeMaior() {
+  const instrucaoSql = `
+        SELECT c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
+        FROM compressor c
+        INNER JOIN sensor s ON c.idCompressor = s.fkCompressor
+        INNER JOIN registroSensor rs ON rs.fkSensor = s.idSensor
+        WHERE rs.dtHrRegistrada = (SELECT MAX(dtHrRegistrada) FROM registroSensor)
+        GROUP BY c.idCompressor, c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
+        ORDER BY rs.umidadeRegistrada 
+        LIMIT 5;;
+
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarUltimasMedidas,
   buscarMedidasEmTempoReal,
@@ -103,4 +119,5 @@ module.exports = {
   buscarMedidas24Horas,
   horarioInicioUmidade50Hoje,
   buscarMedidasEsteMes,
+  ultimasTodosCompressoresUmidadeMaior,
 };

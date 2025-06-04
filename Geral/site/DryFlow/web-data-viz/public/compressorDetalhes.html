@@ -68,6 +68,7 @@
         </div>
         <div id="graficos">
           <canvas id="myChartCanvas0"></canvas>
+          <canvas id="myChartCanvas5"></canvas>
         </div>
         <div>
           <p id="avisoCaptura" style="color: #000000"></p>
@@ -559,5 +560,88 @@
           `Erro na obtenção dos dados p/ gráfico: ${error.message}`
         );
       });
+  }
+</script>
+<script>
+
+window.onload = obterDadosGraficoBarra();
+
+  function obterDadosGraficoBarra() {
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimasTodosCompressoresUmidadeMaior`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos para plotar grafico barra: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            plotarGraficoTodosCompressoresUmidadeMaior(resposta);
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
+
+  function plotarGraficoTodosCompressoresUmidadeMaior(resposta, idAquario) {
+    console.log("iniciando plotagem do gráfico de barras Lucas keniti...");
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Compressor",
+          data: [],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    };
+
+    console.log("----------------------------------------------");
+    console.log(
+      'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+    );
+    console.log(resposta);
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      labels.push(registro.modelo);
+      console.log("Momentos:" + registro.momento_grafico);
+      dados.datasets[0].data.push(registro.umidadeRegistrada);
+      console.log("Valores de umidade:" + registro.umidade);
+    }
+
+    console.log("----------------------------------------------");
+    console.log("O gráfico será plotado com os respectivos valores:");
+    console.log("Labels:");
+    console.log(labels);
+    console.log("Dados:");
+    console.log(dados.datasets);
+    console.log("----------------------------------------------");
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: "bar",
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(document.getElementById(`myChartCanvas5`), config);
+
   }
 </script>

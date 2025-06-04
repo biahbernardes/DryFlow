@@ -29,4 +29,8 @@ router.get("/ultimoMes/:idAquario", function (req, res) {
   medidaController.buscarMedidasEsteMes(req, res);
 });
 
+router.get("/ultimasTodosCompressoresUmidadeMaior", function (req, res) {
+  medidaController.ultimasTodosCompressoresUmidadeMaior(req, res);
+});
+
 module.exports = router;
