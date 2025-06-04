@@ -68,10 +68,12 @@
         </div>
         <div id="graficos">
           <canvas id="myChartCanvas0"></canvas>
-          <canvas id="myChartCanvas5"></canvas>
         </div>
         <div>
           <p id="avisoCaptura" style="color: #000000"></p>
+        </div>
+        <div id="graficos">
+          <canvas id="myChartCanvas5"></canvas>
         </div>
 
         <!-- Geraçao gráfico para testes
@@ -563,19 +565,26 @@
   }
 </script>
 <script>
-
-window.onload = obterDadosGraficoBarra();
+  window.onload = obterDadosGraficoBarra();
 
   function obterDadosGraficoBarra() {
     if (proximaAtualizacao != undefined) {
       clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimasTodosCompressoresUmidadeMaior`, { cache: "no-store" })
+    var oficinaDoUsuario = sessionStorage.OFICINA_USUARIO;
+
+    fetch(`/medidas/ultimasTodosCompressoresUmidadeMaior/${oficinaDoUsuario}`, {
+      cache: "no-store",
+    })
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
-            console.log(`Dados recebidos para plotar grafico barra: ${JSON.stringify(resposta)}`);
+            console.log(
+              `Dados recebidos para plotar grafico barra: ${JSON.stringify(
+                resposta
+              )}`
+            );
             resposta.reverse();
 
             plotarGraficoTodosCompressoresUmidadeMaior(resposta);
@@ -642,6 +651,5 @@ window.onload = obterDadosGraficoBarra();
 
     // Adicionando gráfico criado em div na tela
     let myChart = new Chart(document.getElementById(`myChartCanvas5`), config);
-
   }
 </script>
