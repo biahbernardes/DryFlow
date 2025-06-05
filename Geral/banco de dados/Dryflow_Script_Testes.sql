@@ -88,17 +88,17 @@ insert into sensor (fkCompressor) values
 
 -- Inserir Registros de Sensor
 insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
-(55, '2025-04-07 08:00:00', 1),
-(60, '2025-04-07 09:00:00', 1),
-(64, '2025-04-07 10:00:00', 1),
-(80, '2025-04-07 09:00:00', 2),
-(40, '2025-04-07 10:00:00', 3),
-(85, '2025-04-07 11:00:00', 4),
-(88, '2025-04-07 12:00:00', 5),
-(81, '2025-04-07 12:00:00', 6),
-(74, '2025-04-07 12:00:00', 7),
-(55, '2025-04-07 12:00:00', 8),
-(18, '2025-04-07 12:00:00', 9);
+(55, '2025-06-04 14:45:30', 1),
+(60, '2025-06-04 14:45:31', 1),
+(64, '2025-06-04 14:45:32', 1),
+(80, '2025-06-04 14:45:30', 2),
+(40, '2025-06-04 14:45:30', 3),
+(85, '2025-06-04 14:45:30', 4),
+(88, '2025-06-04 14:45:30', 5),
+(81, '2025-06-04 14:45:30', 6),
+(74, '2025-06-04 14:45:30', 7),
+(55, '2025-06-04 14:45:30', 8),
+(18, '2025-06-04 14:45:30', 9);
 
 -- Teste das tabelas
 SELECT * FROM oficina;
@@ -331,3 +331,39 @@ SELECT  COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50_Mes" FR
         AND MONTH(registroSensor.dtHrRegistrada) = MONTH(CURDATE()) 
         AND YEAR(registroSensor.dtHrRegistrada) = YEAR(CURDATE())
         AND sensor.fkCompressor = compressor.idCompressor;
+        
+        -- Gráfico de barras (Fazer ajustes colocando massas de dados mockados só para ficar bonito na apresentação)
+        SELECT * FROM compressor;
+        SELECT c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
+        FROM compressor c
+        INNER JOIN sensor s ON c.idCompressor = s.fkCompressor
+        INNER JOIN registroSensor rs ON rs.fkSensor = s.idSensor
+--        WHERE rs.dtHrRegistrada = (SELECT MAX(dtHrRegistrada) FROM registroSensor) (Na verdade tem que ser esse, mas fazer registro fixo para apresentação)
+        WHERE rs.dtHrRegistrada = '2025-06-04 14:45:30'
+        AND c.fkOficina = 1
+        GROUP BY c.idCompressor, c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
+        ORDER BY rs.umidadeRegistrada 
+        LIMIT 5;
+        
+-- Código para pegar somente compressores daquela oficina
+        SELECT 
+      c.modelo, 
+      c.idCompressor,
+      rs.umidadeRegistrada, 
+      rs.dtHrRegistrada
+    FROM compressor c
+    JOIN sensor s ON s.fkCompressor = c.idCompressor
+    JOIN registroSensor rs ON rs.fkSensor = s.idSensor
+    WHERE rs.idRegistro = (
+      SELECT MAX(rs2.idRegistro)
+      FROM sensor s2
+      JOIN registroSensor rs2 ON rs2.fkSensor = s2.idSensor
+      WHERE s2.fkCompressor = c.idCompressor
+    )
+    AND c.fkOficina = 1
+    ORDER BY rs.dtHrRegistrada DESC;
+    
+    SELECT * FROM funcionario;
+    SELECT * FROM registroSensor;
+    SELECT * FROM sensor;
+    SELECT * FROM compressor;
