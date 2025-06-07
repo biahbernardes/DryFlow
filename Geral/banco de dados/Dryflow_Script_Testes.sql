@@ -133,7 +133,7 @@ endereco.rua AS Rua,
 endereco.numero AS Número, 
 endereco.cidade AS Cidade, 
 endereco.cep AS CEP FROM empresa 
-INNER JOIN endereco ON endereco.fkEndEmpresa = empresa.idEmpresa;
+INNER JOIN endereco ON endereco.idEndereco = empresa.fkEndEmpresa;
 
 -- Mostrar oficina e seu endereço
 SELECT 
@@ -142,7 +142,7 @@ endereco.rua AS Rua,
 endereco.numero AS Número, 
 endereco.cidade AS Cidade, 
 endereco.cep AS CEP FROM oficina 
-INNER JOIN endereco ON endereco.fkEndOficina = oficina.idOficina;
+INNER JOIN endereco ON endereco.idEndereco = oficina.fkEndOficina;
 
 -- Mostrar Oficina e seus funcionários
 SELECT
@@ -161,7 +161,7 @@ email AS EMAIL_FUNCIONÁRIO,
 cargo AS CARGO_FUNCIONÁRIO
 FROM oficina 
 INNER JOIN funcionario ON idOficina = fkOficina
-WHERE nomeOficina = 'Oficina A';
+WHERE nomeOficina = 'Amor Por Carros';
 
 -- Mostrar compressor e seu respectivo endereço e empresa
 SELECT 
