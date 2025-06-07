@@ -106,7 +106,7 @@ function ultimasTodosCompressoresUmidadeMaior(idOficina) {
         WHERE rs.dtHrRegistrada = '2025-06-11 09:00:00'
         AND c.fkOficina = ${idOficina}
         GROUP BY c.idCompressor, c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
-        ORDER BY rs.umidadeRegistrada 
+        ORDER BY rs.umidadeRegistrada DESC
         LIMIT 5
 
     `;
