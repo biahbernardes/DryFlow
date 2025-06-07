@@ -96,6 +96,7 @@ function buscarMedidasEsteMes(idAquario) {
   return database.executar(instrucaoSql);
 }
 /* OBS: Essa função alterei a parte  rs.dtHrRegistrada de "currente date time" para rs.dtHrRegistrada = '2025-06-11 09:00:00' para facilitar na hora da apresentação*/
+/* WHERE rs.dtHrRegistrada = (SELECT MAX(dtHrRegistrada) FROM registroSensor) (Na verdade tem que ser esse, mas fazer registro fixo para apresentação) */
 function ultimasTodosCompressoresUmidadeMaior(idOficina) {
   const instrucaoSql = `
         SELECT c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
