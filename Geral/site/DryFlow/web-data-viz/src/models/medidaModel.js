@@ -95,14 +95,14 @@ function buscarMedidasEsteMes(idAquario) {
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
-
+/* OBS: Essa função alterei a parte  rs.dtHrRegistrada de "currente date time" para rs.dtHrRegistrada = '2025-06-11 09:00:00' para facilitar na hora da apresentação*/
 function ultimasTodosCompressoresUmidadeMaior(idOficina) {
   const instrucaoSql = `
         SELECT c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
         FROM compressor c
         INNER JOIN sensor s ON c.idCompressor = s.fkCompressor
         INNER JOIN registroSensor rs ON rs.fkSensor = s.idSensor
-        WHERE rs.dtHrRegistrada = '2025-06-04 14:45:30'
+        WHERE rs.dtHrRegistrada = '2025-06-11 09:00:00'
         AND c.fkOficina = ${idOficina}
         GROUP BY c.idCompressor, c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
         ORDER BY rs.umidadeRegistrada 
