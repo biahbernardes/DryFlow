@@ -222,28 +222,59 @@ SELECT  COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50_Mes" FR
         ORDER BY rs.umidadeRegistrada DESC
         LIMIT 5;
         
--- Código para pegar somente compressores daquela oficina
+        -- selecionar os registros das últimas 24 horas (00:00, 01:00, 02:00 ... ) com base no compressor selecionado
         SELECT 
-      c.modelo, 
-      c.idCompressor,
-      rs.umidadeRegistrada, 
-      rs.dtHrRegistrada
-    FROM compressor c
-    JOIN sensor s ON s.fkCompressor = c.idCompressor
-    JOIN registroSensor rs ON rs.fkSensor = s.idSensor
-    WHERE rs.idRegistro = (
-      SELECT MAX(rs2.idRegistro)
-      FROM sensor s2
-      JOIN registroSensor rs2 ON rs2.fkSensor = s2.idSensor
-      WHERE s2.fkCompressor = c.idCompressor
-    )
-    AND c.fkOficina = 1
-    ORDER BY rs.dtHrRegistrada DESC;
-    
-    SELECT * FROM funcionario;
-    SELECT * FROM registroSensor;
-    SELECT * FROM sensor;
-    SELECT * FROM compressor;
-    SELECT * FROM registroSensor WHERE fkSensor = 1;
-    
-    TRUNCATE registroSensor;
+        umidadeRegistrada as umidade,
+        DATE_FORMAT(dtHrRegistrada,'%H:%i:%s') as momento_grafico, 
+        fkSensor 
+        FROM registroSensor rs
+        INNER JOIN sensor s ON rs.fkSensor = s.idSensor
+        INNER JOIN compressor c ON s.fkCompressor = c.idCompressor
+        WHERE idCompressor = 3
+        AND DATE_FORMAT(dtHrRegistrada,'%H:%i:%s') LIKE ('%%:00:00')
+        ORDER BY idRegistro DESC 
+        LIMIT 24;
+        
+        -- Teste de insert compressor 2
+        
+        insert into registroSensor (umidadeRegistrada, dtHrRegistrada, fkSensor) values
+        (19, '2025-06-07 09:00:00', 2),
+(54, '2025-06-07 10:00:00', 2),
+(71, '2025-06-07 11:00:00', 2),
+(3, '2025-06-07 12:00:00', 2),
+(25, '2025-06-07 13:00:00', 2),
+(33, '2025-06-07 14:00:00', 2),
+(35, '2025-06-07 15:00:00', 2),
+(50, '2025-06-07 16:00:00', 2),
+(100, '2025-06-07 17:00:00', 2),
+(5, '2025-06-07 18:00:00', 2),
+(42, '2025-06-07 19:00:00', 2),
+(10, '2025-06-07 20:00:00', 2),
+(36, '2025-06-07 21:00:00', 2),
+(42, '2025-06-07 22:00:00', 2),
+(37, '2025-06-07 23:00:00', 2),
+(69, '2025-06-08 00:00:00', 2),
+(32, '2025-06-08 01:00:00', 2),
+(94, '2025-06-08 02:00:00', 2),
+(63, '2025-06-08 03:00:00', 2),
+(82, '2025-06-08 04:00:00', 2),
+(47, '2025-06-08 05:00:00', 2),
+(6, '2025-06-08 06:00:00', 2),
+(83, '2025-06-08 07:00:00', 2),
+(74, '2025-06-08 08:00:00', 2),
+(59, '2025-06-08 09:00:00', 2),
+(39, '2025-06-08 10:00:00', 2);
+
+
+        
+
+-- Ver todos registros cada tabela
+SELECT * FROM oficina;
+SELECT * FROM empresa;
+SELECT * FROM endereco;
+SELECT * FROM funcionario;
+SELECT * FROM telefone;
+SELECT * FROM compressor;
+SELECT * FROM sensor;
+SELECT * FROM registroSensor;
+
