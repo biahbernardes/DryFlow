@@ -375,6 +375,4 @@ SELECT * FROM compressor;
 SELECT * FROM sensor;
 SELECT * FROM registroSensor;
 
--- apagar registros
 
-TRUNCATE registroSensor;

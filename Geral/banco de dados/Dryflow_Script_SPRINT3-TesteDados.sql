@@ -219,7 +219,7 @@ SELECT  COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50_Mes" FR
         WHERE rs.dtHrRegistrada = '2025-06-11 09:00:00'
         AND c.fkOficina = 1
         GROUP BY c.idCompressor, c.modelo, rs.umidadeRegistrada, rs.dtHrRegistrada
-        ORDER BY rs.umidadeRegistrada 
+        ORDER BY rs.umidadeRegistrada DESC
         LIMIT 5;
         
 -- Código para pegar somente compressores daquela oficina
@@ -244,3 +244,6 @@ SELECT  COUNT(registroSensor.umidadeRegistrada) AS "Quantidade_Passou_50_Mes" FR
     SELECT * FROM registroSensor;
     SELECT * FROM sensor;
     SELECT * FROM compressor;
+    SELECT * FROM registroSensor WHERE fkSensor = 1;
+    
+    TRUNCATE registroSensor;
