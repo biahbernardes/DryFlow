@@ -72,6 +72,10 @@
         <div>
           <p id="avisoCaptura" style="color: #000000"></p>
         </div>
+        <h1>Compressor Selecionado nas últimas 24 horas</h1>
+        <div id="graficos">
+          <canvas id="myChartCanvasUltimas24Horas"></canvas>
+        </div>
         <h1>Os 5 compressores com maior umidade hoje</h1>
         <div id="graficos">
           <canvas id="myChartCanvas5"></canvas>
@@ -652,5 +656,91 @@
 
     // Adicionando gráfico criado em div na tela
     let myChart = new Chart(document.getElementById(`myChartCanvas5`), config);
+  }
+</script>
+<script>
+  var compressorEspecifico = JSON.parse(sessionStorage.COMPRESSOR_SELECIONADO);
+
+  window.onload = obterDadosGraficoLinhaUltimas24Horas(compressorEspecifico);
+
+  function obterDadosGraficoLinhaUltimas24Horas(compressorEspecifico) {
+    fetch(`/medidas/ultimas24HorasLinha/${compressorEspecifico}`, {
+      cache: "no-store",
+    })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            plotarGraficoLinhaUltimas24Horas(resposta, idAquario);
+          });
+        } else {
+          console.error("Nenhum dado encontrado ou erro na API");
+        }
+      })
+      .catch(function (error) {
+        console.error(
+          `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+        );
+      });
+  }
+
+  function plotarGraficoLinhaUltimas24Horas(resposta, compressorEspecifico) {
+    console.log("iniciando plotagem do gráfico...");
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Umidade",
+          data: [],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    };
+
+    console.log("----------------------------------------------");
+    console.log(
+      'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+    );
+    console.log(resposta);
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      labels.push(registro.momento_grafico);
+      console.log("Momentos:" + registro.momento_grafico);
+      dados.datasets[0].data.push(registro.umidade);
+      console.log("Valores de umidade:" + registro.umidade);
+    }
+
+    console.log("----------------------------------------------");
+    console.log("O gráfico será plotado com os respectivos valores:");
+    console.log("Labels:");
+    console.log(labels);
+    console.log("Dados:");
+    console.log(dados.datasets);
+    console.log("----------------------------------------------");
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: "line",
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+      document.getElementById(`myChartCanvasUltimas24Horas`),
+      config
+    );
+
+    //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000); Essa parte não precisa para esse gráfico
   }
 </script>

@@ -138,6 +138,25 @@ function ultimasCompressoresOficina(idOficina) {
   return database.executar(instrucaoSql);
 }
 
+function buscarMedidas24HorasLinha(compressorEspecifico) {
+  const instrucaoSql = `
+        SELECT 
+        umidadeRegistrada as umidade,
+        DATE_FORMAT(dtHrRegistrada,'%H:%i:%s') as momento_grafico, 
+        fkSensor 
+        FROM registroSensor rs
+        INNER JOIN sensor s ON rs.fkSensor = s.idSensor
+        INNER JOIN compressor c ON s.fkCompressor = c.idCompressor
+        WHERE idCompressor = ${compressorEspecifico}
+        AND DATE_FORMAT(dtHrRegistrada,'%H:%i:%s') LIKE ('%%:00:00')
+        ORDER BY idRegistro DESC 
+        LIMIT 24;
+
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarUltimasMedidas,
   buscarMedidasEmTempoReal,
@@ -147,4 +166,5 @@ module.exports = {
   buscarMedidasEsteMes,
   ultimasTodosCompressoresUmidadeMaior,
   ultimasCompressoresOficina,
+  buscarMedidas24HorasLinha,
 };

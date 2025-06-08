@@ -43,4 +43,8 @@ router.get(
   }
 );
 
+router.get("/ultimas24HorasLinha/:compressorEspecifico", function (req, res) {
+  medidaController.buscarMedidas24HorasLinha(req, res);
+});
+
 module.exports = router;
