@@ -41,12 +41,13 @@ function buscarMedidasEmTempoReal(idAquario) {
   return database.executar(instrucaoSql);
 }
 
-function alertas() {
+function alertas(oficinaDaSessao) {
   const instrucaoSql = `
         SELECT c.modelo, rs.umidadeRegistrada, DATE_FORMAT(rs.dtHrRegistrada, "Data: %Y-%m-%d | Horario: %H:%i:%s") as dtHrRegistrada
         FROM sensor s
         INNER JOIN registroSensor rs ON s.fkCompressor = rs.fkSensor
         INNER JOIN compressor c ON c.idcompressor = s.fkCompressor
+        WHERE c.fkOficina = ${oficinaDaSessao}
         ORDER BY rs.dtHrRegistrada;
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alertas</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/Styles/dash.css" />
+    <script src="../js/sessao.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alertas</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="assets/Styles/dash.css" />
-  <script src="../js/sessao.js"></script>
-</head>
+  <body onload="validarSessao()">
+    <div class="main">
+      <div class="sidebar">
+        <div class="profile">
+          <img src="./assets/Imgs/account.png" alt="Perfil" />
 
-<body onload="validarSessao()">
-  <div class="main">
-    <div class="sidebar">
-      <div class="profile">
-        <img src="./assets/Imgs/account.png" alt="Perfil" />
+          <h1>Olá, <span id="b_usuario"></span></h1>
+        </div>
 
-        <h1>Olá, <span id="b_usuario"></span></h1>
+        <a href="./dashboard.html">Visão Geral</a>
+        <a href="./detalhes.html">Histórico de Alertas</a>
+        <a
+          href="https://dryflow-team.atlassian.net/jira/core/form/2c1b8da3-e3a9-46ab-922d-4badab73ce36"
+          >Suporte</a
+        >
+        <a href="./cadastro-dryflow.html">Cadastrar Novo Usuário</a>
+
+        <a href="./index.html" class="logout-btn">
+          Sign-out
+          <img
+            src="./assets/Imgs/logout.png"
+            alt="Logout"
+            class="logout-icon"
+          />
+        </a>
       </div>
-
-      <a href="./dashboard.html">Visão Geral</a>
-      <a href="./detalhes.html">Histórico de Alertas</a>
-      <a href="https://dryflow-team.atlassian.net/jira/core/form/2c1b8da3-e3a9-46ab-922d-4badab73ce36">Suporte</a>
-      <a href="./cadastro-dryflow.html">Cadastrar Novo Usuário</a>
-
-      <a href="./index.html" class="logout-btn">
-        Sign-out
-        <img src="./assets/Imgs/logout.png" alt="Logout" class="logout-icon" />
-      </a>
+      <div class="container">
+        <!-- TABELA DE ALERTAS-->
+        <table class="table">
+          <caption>
+            Alertas
+          </caption>
+          <tbody id="divMensagem" class="alertas">
+            <!-- scroll no css  -->
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="container">
-
-
-      <!-- TABELA DE ALERTAS-->
-      <table class="table">
-        <caption>
-          Alertas
-        </caption>
-        <tbody id="divMensagem" class="alertas">
-          <!-- scroll no css  -->
-
-
-         
-        </tbody>
-      </table>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
 <script>
-  fetch("/medidas/alertas")
-    .then(res => res.json())
-    .then(data => {
+  var oficinaDaSessao = sessionStorage.OFICINA_USUARIO;
 
+  fetch(`/medidas/alertas/${oficinaDaSessao}`)
+    .then((res) => res.json())
+    .then((data) => {
       data.forEach((alerta) => {
         const umidade = alerta.umidadeRegistrada;
         const nomeModelo = alerta.modelo;
@@ -63,10 +68,10 @@
         let cor = "";
         var mensagem = "";
         if (umidade >= 45 && umidade <= 49) {
-          cor = "rgb(244, 178, 12)"; // amarelo 
+          cor = "rgb(244, 178, 12)"; // amarelo
           mensagem = ` Compressor ${nomeModelo} está próximo ao limite de 
           umidade! Faça uma Manutenção Preventiva.	| Umidade:<span style="color: ${cor};"> ${umidade}% </span>
-          | <span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`
+          | <span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`;
           divMensagem.innerHTML += `
           <tr>
             <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
@@ -77,7 +82,7 @@
           cor = "rgb(244, 136, 12)"; // laranja no limite
           mensagem = ` Compressor ${nomeModelo} atingiu o limite de umidade! Necessário manutenção!	
            | Umidade:<span style="color: ${cor};"> ${umidade}% </span>|
-            <span class="dtEhora"><i class="fa-solid fa-clock"></i>  ${horaRegistro}</span><br>`
+            <span class="dtEhora"><i class="fa-solid fa-clock"></i>  ${horaRegistro}</span><br>`;
           divMensagem.innerHTML += `
           <tr>
             <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
@@ -87,7 +92,7 @@
         } else if (umidade > 50) {
           cor = "#dc1919"; // vermelho claro
           mensagem = `	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção! | Umidade: <span style="color: ${cor};">${umidade}% </span>
-           |<span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`
+           |<span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`;
           divMensagem.innerHTML += `
           <tr>
             <td ><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
@@ -95,7 +100,6 @@
             
         `;
         }
-
       });
     });
 </script>

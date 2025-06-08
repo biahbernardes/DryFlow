@@ -51,8 +51,10 @@ function buscarMedidasEmTempoReal(req, res) {
 }
 
 function alertas(req, res) {
+  var oficinaDaSessao = req.params.oficinaDaSessao;
+
   medidaModel
-    .alertas()
+    .alertas(oficinaDaSessao)
     .then((resultado) => res.json(resultado))
     .catch((erro) => {
       console.log("Erro ao alertas:", erro.sqlMessage);

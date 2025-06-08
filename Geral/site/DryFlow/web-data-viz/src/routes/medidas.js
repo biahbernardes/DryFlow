@@ -13,7 +13,7 @@ router.get("/tempo-real/:idAquario", function (req, res) {
   medidaController.buscarMedidasEmTempoReal(req, res);
 });
 
-router.get("/alertas", function (req, res) {
+router.get("/alertas/:oficinaDaSessao", function (req, res) {
   medidaController.alertas(req, res);
 });
 
