@@ -66,6 +66,8 @@
             <span id="umidadePassou50NesseMes"></span>
           </div>
         </div>
+
+        <h1>Umidade Compressor Selecionado:</h1>
         <div id="graficos">
           <canvas id="myChartCanvas0"></canvas>
         </div>
@@ -379,6 +381,50 @@
     const config = {
       type: "line",
       data: dados,
+      options: {
+        responsive: true,
+        plugins: {
+          annotation: {
+            annotations: {
+              umidadeIdeal: {
+                type: "line",
+                yMin: 50,
+                yMax: 50,
+                borderColor: " #FFA500",
+                borderWidth: 2,
+                borderDash: [6, 4],
+                label: {
+                  content: "Limite",
+                  enabled: true,
+
+                  backgroundColor: " #FFA500",
+                  color: "white",
+                  position: "end",
+                  font: {
+                    size: 9,
+                  },
+                },
+              },
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: {
+              display: true,
+              text: "Umidade %",
+            },
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Horários",
+            },
+          },
+        },
+      },
     };
 
     // Adicionando gráfico criado em div na tela
