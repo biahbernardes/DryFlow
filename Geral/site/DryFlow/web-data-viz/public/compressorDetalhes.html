@@ -621,6 +621,8 @@
           fill: false,
           borderColor: "rgb(75, 192, 192)",
           tension: 0.1,
+          backgroundColor: "rgb(75, 192, 192)",
+          borderWidth: 2,
         },
       ],
     };
@@ -652,6 +654,49 @@
     const config = {
       type: "bar",
       data: dados,
+      options: {
+        responsive: true,
+        plugins: {
+          annotation: {
+            annotations: {
+              umidadeIdeal: {
+                type: "line",
+                yMin: 50,
+                yMax: 50,
+                borderColor: " #FFA500",
+                borderWidth: 2,
+                borderDash: [6, 4],
+                label: {
+                  content: "Limite",
+                  enabled: true,
+
+                  backgroundColor: " #FFA500",
+                  color: "white",
+                  position: "end",
+                  font: {
+                    size: 9,
+                  },
+                },
+              },
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: "Umidade %",
+            },
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Compressores",
+            },
+          },
+        },
+      },
     };
 
     // Adicionando gráfico criado em div na tela
@@ -733,6 +778,50 @@
     const config = {
       type: "line",
       data: dados,
+      options: {
+        responsive: true,
+        plugins: {
+          annotation: {
+            annotations: {
+              umidadeIdeal: {
+                type: "line",
+                yMin: 50,
+                yMax: 50,
+                borderColor: " #FFA500",
+                borderWidth: 2,
+                borderDash: [6, 4],
+                label: {
+                  content: "Limite",
+                  enabled: true,
+
+                  backgroundColor: " #FFA500",
+                  color: "white",
+                  position: "end",
+                  font: {
+                    size: 9,
+                  },
+                },
+              },
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: {
+              display: true,
+              text: "Umidade %",
+            },
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Horários",
+            },
+          },
+        },
+      },
     };
 
     // Adicionando gráfico criado em div na tela
