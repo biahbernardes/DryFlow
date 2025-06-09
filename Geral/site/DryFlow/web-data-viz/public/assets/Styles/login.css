@@ -11,7 +11,7 @@
 body {
   margin: 0;
   background-color: rgb(70, 4, 4);
-  font-family: "Montserrat";
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .container {
@@ -41,7 +41,6 @@ body {
 .navbar a {
   color: white;
   text-decoration: none;
-  font-family: "Montserrat";
 }
 
 .navbar a:hover {

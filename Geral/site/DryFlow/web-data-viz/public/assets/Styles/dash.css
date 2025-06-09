@@ -1,3 +1,4 @@
+
 :root {
   --cor-principal: #4a82c4;
   --cor-secundaria: #89bfff;
@@ -42,7 +43,8 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 26px;
+ 
 }
 
 .graficos {
@@ -397,6 +399,14 @@ body {
   margin-left: 150px;
 }
 
+.main .container h1{
+  color: #1b3b60;
+  font-size: 26px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+
 .main .container .graficos .info-limites .card p {
   font-size: medium;
 }
@@ -453,6 +463,7 @@ body {
   display: flex;
   margin-top: 65px;
   height: 400px;
+  width: 100%;
 }
 
 .text {
@@ -498,12 +509,7 @@ tbody {
 
 /* Lucas: Estilização cards que chegam do sessionStorage */
 
-.cardAquarios {
-  display: flex;
-  justify-content: space-around;
-  width: 80%;
-  margin-bottom: 30px;
-}
+
 
 .cardDinamico {
   border: 1px solid #4f484843;
@@ -527,14 +533,19 @@ tbody {
 
 .cardDinamico p span.alto {
   color: rgb(197, 18, 9);
+  font-weight: 600;
 }
 
 .cardDinamico p span.baixo {
   color: #195621;
+  font-weight: 600;
+
 }
 
 .cardDinamico p span.medio {
   color: rgb(244, 136, 12);
+  font-weight: 600;
+
 }
 
 .cardDinamico h4 {
@@ -547,20 +558,20 @@ tbody {
 }
 
 .bordaCardalto {
-  border: 7px solid rgb(197, 18, 9);
+  border: 5px solid rgba(195, 18, 9, 0.731);
 }
 
 .bordaCardmedio {
-  border: 7px solid rgb(244, 136, 12);
+  border: 5px solid rgba(244, 136, 12, 0.767);
 }
 
 .bordaCardbaixo {
-  border: 7px solid #195621;
+  border: 5px solid #195621c6;
 }
 
 #cardAquarios {
   display: flex;
-  width: 85%;
+  width: 70%;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -591,11 +602,16 @@ tbody {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 125px;
-  height: 125px;
-  padding: 2%;
+  width: 190px;
+  height: 120px;
+  padding: 13px;
   margin: 2%;
+  color: #0c1326;
   text-align: center;
-  border-radius: 15px;
-  border: #000000 solid 3px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #132e4c;
+  box-shadow: rgba(0, 0, 0, 0.483) 0px 5px 8px;
+  background-color: #faf9f9;
 }

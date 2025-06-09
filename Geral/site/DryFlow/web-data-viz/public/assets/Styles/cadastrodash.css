@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Barlow", "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana,
-    sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
   background-color: white;
 }
 :root{
@@ -71,7 +73,7 @@ body {
 .card h2 {
   margin: 0;
   font-size: 30px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+ 
 }
 
 .formulario {
@@ -86,7 +88,7 @@ body {
 .formulario span {
   font-size: 15px;
   font-weight: 800;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+ 
   margin-bottom: 6px;
   display: block;
 
@@ -110,7 +112,7 @@ body {
   margin: 10px 0;
   text-align: center;
   transition: background-color 0.3s;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+ 
   border: none;
   cursor: pointer;
 }
@@ -165,7 +167,7 @@ body {
 .card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+ 
 }
 
 .formulario .tipo_campo {
@@ -300,7 +302,7 @@ body {
   /* margin-bottom: 11.5px; */
   text-align: center;
   padding-left: 5px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+ 
 }
 
 .sidebar a {
@@ -314,7 +316,7 @@ body {
   margin: 10px 0;
   text-align: center;
   transition: background-color 0.3s;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+ 
 }
 
 .sidebar a:hover {
