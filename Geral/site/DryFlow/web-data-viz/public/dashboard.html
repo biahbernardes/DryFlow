@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visão Geral</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../js/sessao.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
-    <link rel="stylesheet" href="./assets/Styles/dash.css" />
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visão Geral</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/sessao.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+  <link rel="stylesheet" href="./assets/Styles/dash.css" />
+</head>
 
 <body onload="exibirAquarios(), validarSessao()">
   <div class="kpiData">Última Atualização: <span id="dataHora"></span></div>
@@ -207,7 +209,7 @@
 `;
           } else if (nivelRisco == 'riscoBaixo' && nivel == 'Baixo') {
 
-document.getElementById("cardAquarios").innerHTML += `
+            document.getElementById("cardAquarios").innerHTML += `
 <div class="cardDinamico bordaCard${classe}" onclick="verCompressorEspecifico(${item.idCompressor})">
 <h4>${item.modelo}</h4>
 <p>ID Compressor: ${item.idCompressor}</p>
@@ -217,8 +219,8 @@ document.getElementById("cardAquarios").innerHTML += `
 </div>
 <br>
 `;
-} else if (nivelRisco == 'todos'){
-  document.getElementById("cardAquarios").innerHTML += `
+          } else if (nivelRisco == 'todos') {
+            document.getElementById("cardAquarios").innerHTML += `
 <div class="cardDinamico bordaCard${classe}" onclick="verCompressorEspecifico(${item.idCompressor})">
 <h4>${item.modelo}</h4>
 <p>ID Compressor: ${item.idCompressor}</p>
@@ -228,7 +230,7 @@ document.getElementById("cardAquarios").innerHTML += `
 </div>
 <br>
 `;
-}
+          }
 
         });
       });
