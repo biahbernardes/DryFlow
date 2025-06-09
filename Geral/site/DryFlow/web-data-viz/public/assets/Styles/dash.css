@@ -260,7 +260,7 @@ body {
 }
 
 .info-limites > .card > .terceira {
-  color: rgb(0, 0, 0);
+  color: white;
   background-color: rgb(197, 18, 9);
   min-height: 3.5vh;
   border-radius: 2px;
@@ -399,6 +399,10 @@ body {
 
 .main .container .graficos .info-limites .card p {
   font-size: medium;
+}
+
+.info-limites{
+  margin-top: 30px;
 }
 
 .main .container .cardsInfo {
