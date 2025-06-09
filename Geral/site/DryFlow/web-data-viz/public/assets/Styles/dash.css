@@ -240,7 +240,7 @@ body {
   background-color: rgb(244, 178, 12);
   min-height: 3.5vh;
   border-radius: 2px;
-  font-size: small;
+  font-size: large;
   font-weight: 500;
   align-items: center;
   display: flex;
@@ -253,6 +253,7 @@ body {
   min-height: 3.5vh;
   border-radius: 2px;
   font-weight: 500;
+  font-size: large;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -264,9 +265,23 @@ body {
   min-height: 3.5vh;
   border-radius: 2px;
   font-weight: 500;
+  font-size: large;
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.info-limites > .card > .quarta {
+  color: rgb(0, 0, 0);
+  background-color: #195621;
+  min-height: 3.5vh;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: large;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
 }
 
 .kpis-container {
@@ -380,6 +395,10 @@ body {
   width: 90%;
   align-items: center;
   margin-left: 150px;
+}
+
+.main .container .graficos .info-limites .card p {
+  font-size: medium;
 }
 
 .main .container .cardsInfo {

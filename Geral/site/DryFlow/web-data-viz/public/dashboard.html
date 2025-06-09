@@ -43,11 +43,22 @@
           <!-- <span class="legenda">Parâmetros para Alertas</span> -->
           <div class="info-limites">
             <div class="card">
+              <div class="quarta">Menos de 45%</div>
+              <!-- <h4 >Próximo ao Limite de Umidade</h4>
+                <span >Entre 45% e 49%</span> -->
+              <p>
+                Compressores com <br />umidade baixa:<br /><br /><span
+                  id="kpi-baixo"
+                  >0</span
+                >
+              </p>
+            </div>
+            <div class="card">
               <div class="primeira">Entre 45% e 49%</div>
               <!-- <h4 >Próximo ao Limite de Umidade</h4>
                 <span >Entre 45% e 49%</span> -->
               <p>
-                Compressores perto do limite de umidade:<br /><br /><span
+                Compressores perto do <br />limite de umidade:<br /><br /><span
                   id="kpi-perto"
                   >0</span
                 >
@@ -58,7 +69,7 @@
               <!-- <h4 >Limite de Umidade</h4>
                 <span>50%</span> -->
               <p>
-                Compressores no limite de umidade:<br /><br /><span
+                Compressores no <br />limite de umidade:<br /><br /><span
                   id="kpi-no-limite"
                   >0</span
                 >
@@ -68,7 +79,7 @@
               <div class="terceira">Maior que 50%</div>
 
               <p>
-                Compressores acima do limite de umidade:<br /><br /><span
+                Compressores acima do <br />limite de umidade:<br /><br /><span
                   id="kpi-acima"
                   >0</span
                 >
@@ -141,6 +152,7 @@
 </script>
 <script>
   function atualizarKPIs(umidades) {
+    let baixo = 0;
     let perto = 0;
     let noLimite = 0;
     let acima = 0;
@@ -152,9 +164,12 @@
         noLimite++;
       } else if (umidade >= 45 && umidade <= 49) {
         perto++;
+      } else if (umidade < 50) {
+        baixo++;
       }
     });
 
+    document.getElementById("kpi-baixo").textContent = baixo;
     document.getElementById("kpi-perto").textContent = perto;
     document.getElementById("kpi-no-limite").textContent = noLimite;
     document.getElementById("kpi-acima").textContent = acima;
