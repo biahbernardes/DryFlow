@@ -523,6 +523,18 @@ tbody {
   cursor: pointer;
 }
 
+.bordaCardalto {
+  border: 7px solid rgb(197, 18, 9);
+}
+
+.bordaCardmedio {
+  border: 7px solid rgb(244, 136, 12);
+}
+
+.bordaCardbaixo {
+  border: 7px solid #195621;
+}
+
 #cardAquarios {
   display: flex;
   width: 85%;

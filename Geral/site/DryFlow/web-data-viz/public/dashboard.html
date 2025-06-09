@@ -98,14 +98,13 @@
         <div class="cards" id="cardAquarios"></div>
 
         <!-- <div class="cardsInfo">
-          <div class="card">
+          <div class="cardDinamico bordaCardalto">
             <h4>Compressor A</h4>
             <p>ID Compressor: 1</p>
             <p>Oficina: Brandão Car's</p>
             <p>Umidade Atual: 80%</p>
             <p>Nível de Risco: <span class="alto">Alto</span></p>
           </div>
-          
         </div> -->
       </div>
     </div>
@@ -185,7 +184,7 @@
           } // pega a ultima umidade e filtra se o nível dela é alto, baixo ou médio
 
           document.getElementById("cardAquarios").innerHTML += `
-          <div class="cardDinamico" onclick="verCompressorEspecifico(${item.idCompressor})">
+          <div class="cardDinamico bordaCard${classe}" onclick="verCompressorEspecifico(${item.idCompressor})">
             <h4>${item.modelo}</h4>
             <p>ID Compressor: ${item.idCompressor}</p>
             
