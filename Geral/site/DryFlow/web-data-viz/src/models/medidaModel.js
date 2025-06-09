@@ -48,6 +48,7 @@ function alertas(oficinaDaSessao) {
         INNER JOIN registroSensor rs ON s.fkCompressor = rs.fkSensor
         INNER JOIN compressor c ON c.idcompressor = s.fkCompressor
         WHERE c.fkOficina = ${oficinaDaSessao}
+        AND (TIME(rs.dtHrRegistrada) LIKE ("%%:%5:00") OR TIME(rs.dtHrRegistrada) LIKE ("%%:%0:00"))
         ORDER BY rs.dtHrRegistrada;
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
