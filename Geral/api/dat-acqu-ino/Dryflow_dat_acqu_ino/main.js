@@ -23,18 +23,18 @@ const serial = async (valoresSensorUmidade, valoresSensorDigital) => {
       // port: 3306,
 
       // CONEXÃO PARA MÀQUINA REMOTA LUBUNTU (SPRINT 3) */
+      host: "10.18.32.28",
+      user: "apiOficina1",
+      password: "Dry#2025",
+      database: "dryflow",
+      port: 3307,
+
+      // CONEXÃO PARA MÀQUINA LOCAL TESTE (Lucas Lubuntu) */
       // host: "127.0.0.1",
       // user: "apiOficina1",
       // password: "Dry#2025",
       // database: "dryflow",
       // port: 3307,
-
-      // CONEXÃO PARA MÀQUINA LOCAL TESTE (Lucas Lubuntu) */
-      host: "127.0.0.1",
-      user: "apiOficina1",
-      password: "Dry#2025",
-      database: "dryflow",
-      port: 3307,
     })
     .promise();
 
