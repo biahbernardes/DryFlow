@@ -278,3 +278,4 @@ SELECT * FROM compressor;
 SELECT * FROM sensor;
 SELECT * FROM registroSensor;
 
+SELECT nomeOficina FROM oficina WHERE idOficina = 2;
