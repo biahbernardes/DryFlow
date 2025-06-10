@@ -15,7 +15,9 @@
     <script src="../js/sessao.js"></script>
   </head>
 
-  <body onload="validarSessao()">
+  <body
+    onload="validarSessao(), exibirCompressoresAlerta('todos'), selectCompressoresOficina()"
+  >
     <div class="main">
       <div class="sidebar">
         <div class="profile">
@@ -42,7 +44,16 @@
         </a>
       </div>
       <div class="container">
+        <h1>TABELA DE ALERTAS DE UMIDADE</h1>
         <!-- TABELA DE ALERTAS-->
+        <p>Compressor:</p>
+        <select
+          name="fitro_compressor_alertas"
+          id="sel_fitro_compressor_alertas"
+          onchange="exibirCompressoresAlerta(sel_fitro_compressor_alertas.value)"
+        >
+          <option value="todos">Todos</option>
+        </select>
         <table class="table">
           <caption>
             Alertas
@@ -57,49 +68,102 @@
 </html>
 <script>
   var oficinaDaSessao = sessionStorage.OFICINA_USUARIO;
+  var compressoresDaSessao = JSON.parse(sessionStorage.AQUARIOS);
 
-  fetch(`/medidas/alertas/${oficinaDaSessao}`)
-    .then((res) => res.json())
-    .then((data) => {
-      data.forEach((alerta) => {
-        const umidade = alerta.umidadeRegistrada;
-        const nomeModelo = alerta.modelo;
-        const horaRegistro = alerta.dtHrRegistrada;
-        let cor = "";
-        var mensagem = "";
-        if (umidade >= 45 && umidade <= 49) {
-          cor = "rgb(244, 178, 12)"; // amarelo
-          mensagem = ` Compressor ${nomeModelo} está próximo ao limite de 
+  console.log(compressoresDaSessao);
+
+  function exibirCompressoresAlerta(compressor) {
+    divMensagem.innerHTML = "";
+    console.log("compressor selecionado" + compressor);
+    fetch(`/medidas/alertas/${oficinaDaSessao}`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.forEach((alerta) => {
+          const umidade = alerta.umidadeRegistrada;
+          const nomeModelo = alerta.modelo;
+          const horaRegistro = alerta.dtHrRegistrada;
+          console.log("compressor a ser usado" + nomeModelo);
+          let cor = "";
+          var mensagem = "";
+          if (compressor == nomeModelo) {
+            if (umidade >= 45 && umidade <= 49) {
+              cor = "rgb(244, 178, 12)"; // amarelo
+              mensagem = ` Compressor ${nomeModelo} está próximo ao limite de 
           umidade! Faça uma Manutenção Preventiva.	| Umidade:<span style="color: ${cor};"> ${umidade}% </span>
           | <span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`;
-          divMensagem.innerHTML += `
+              divMensagem.innerHTML += `
           <tr>
             <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
             ${mensagem}</td>
             
         `;
-        } else if (umidade == 50) {
-          cor = "rgb(244, 136, 12)"; // laranja no limite
-          mensagem = ` Compressor ${nomeModelo} atingiu o limite de umidade! Necessário manutenção!	
+            } else if (umidade == 50) {
+              cor = "rgb(244, 136, 12)"; // laranja no limite
+              mensagem = ` Compressor ${nomeModelo} atingiu o limite de umidade! Necessário manutenção!	
            | Umidade:<span style="color: ${cor};"> ${umidade}% </span>|
             <span class="dtEhora"><i class="fa-solid fa-clock"></i>  ${horaRegistro}</span><br>`;
-          divMensagem.innerHTML += `
+              divMensagem.innerHTML += `
           <tr>
             <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
             ${mensagem}</td>
             
         `;
-        } else if (umidade > 50) {
-          cor = "#dc1919"; // vermelho claro
-          mensagem = `	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção! | Umidade: <span style="color: ${cor};">${umidade}% </span>
+            } else if (umidade > 50) {
+              cor = "#dc1919"; // vermelho claro
+              mensagem = `	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção! | Umidade: <span style="color: ${cor};">${umidade}% </span>
            |<span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`;
-          divMensagem.innerHTML += `
+              divMensagem.innerHTML += `
           <tr>
             <td ><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
             ${mensagem}</td>
             
         `;
-        }
+            }
+          } else if (compressor == "todos") {
+            if (umidade >= 45 && umidade <= 49) {
+              cor = "rgb(244, 178, 12)"; // amarelo
+              mensagem = ` Compressor ${nomeModelo} está próximo ao limite de 
+          umidade! Faça uma Manutenção Preventiva.	| Umidade:<span style="color: ${cor};"> ${umidade}% </span>
+          | <span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`;
+              divMensagem.innerHTML += `
+          <tr>
+            <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
+            ${mensagem}</td>
+            
+        `;
+            } else if (umidade == 50) {
+              cor = "rgb(244, 136, 12)"; // laranja no limite
+              mensagem = ` Compressor ${nomeModelo} atingiu o limite de umidade! Necessário manutenção!	
+           | Umidade:<span style="color: ${cor};"> ${umidade}% </span>|
+            <span class="dtEhora"><i class="fa-solid fa-clock"></i>  ${horaRegistro}</span><br>`;
+              divMensagem.innerHTML += `
+          <tr>
+            <td><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
+            ${mensagem}</td>
+            
+        `;
+            } else if (umidade > 50) {
+              cor = "#dc1919"; // vermelho claro
+              mensagem = `	Compressor ${nomeModelo} está acima do limite de umidade! Necessário Manutenção! | Umidade: <span style="color: ${cor};">${umidade}% </span>
+           |<span class="dtEhora"><i class="fa-solid fa-clock"></i> ${horaRegistro}</span><br>`;
+              divMensagem.innerHTML += `
+          <tr>
+            <td ><span style="color: ${cor};"><strong><i class="fa-solid fa-triangle-exclamation"></i></strong></span>
+            ${mensagem}</td>
+            
+        `;
+            }
+          }
+        });
       });
-    });
+  }
+
+  function selectCompressoresOficina() {
+    for (var i = 0; i < compressoresDaSessao.length; i++) {
+      console.log(compressoresDaSessao[i].modelo);
+      sel_fitro_compressor_alertas.innerHTML += `
+      <option value="${compressoresDaSessao[i].modelo}">${compressoresDaSessao[i].modelo}</option>
+      `;
+    }
+  }
 </script>

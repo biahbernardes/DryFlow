@@ -1,4 +1,3 @@
-
 :root {
   --cor-principal: #4a82c4;
   --cor-secundaria: #89bfff;
@@ -44,7 +43,6 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 26px;
- 
 }
 
 .graficos {
@@ -399,7 +397,7 @@ body {
   margin-left: 150px;
 }
 
-.main .container h1{
+.main .container h1 {
   color: #1b3b60;
   font-size: 26px;
   text-align: center;
@@ -411,7 +409,7 @@ body {
   font-size: medium;
 }
 
-.info-limites{
+.info-limites {
   margin-top: 30px;
 }
 
@@ -478,6 +476,7 @@ body {
   margin-top: 30px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
+  margin-bottom: 60px;
 }
 
 .table caption {
@@ -505,11 +504,10 @@ tbody {
   overflow-y: scroll; /*isso que deixa rolar p baixo na tabela*/
   height: 80vh;
   flex-direction: column-reverse;
+  justify-content: space-between;
 }
 
 /* Lucas: Estilização cards que chegam do sessionStorage */
-
-
 
 .cardDinamico {
   border: 1px solid #4f484843;
@@ -539,13 +537,11 @@ tbody {
 .cardDinamico p span.baixo {
   color: #195621;
   font-weight: 600;
-
 }
 
 .cardDinamico p span.medio {
   color: rgb(244, 136, 12);
   font-weight: 600;
-
 }
 
 .cardDinamico h4 {
