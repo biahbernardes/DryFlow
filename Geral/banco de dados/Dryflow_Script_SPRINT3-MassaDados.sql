@@ -48,7 +48,7 @@
     ('Bela Rodrigues', 'bela@deluxecars.com', '123456', 'gerente', 4),
     ('Cláudio Ohara', 'claudio@deluxecars.com', '123456', 'tecnico', 4),
     ('Roberta Marinho', 'roberta@amorporcarros.com', '123456', 'supervisor', 5),
-    ('Hector Marques', 'hector@amorporcarros.com', '123456', 'tecnico', 5);
+    ('Hector Marques', 'hectormarques@amorporcarros.com', '123456', 'tecnico', 5);
 
 
 
@@ -139,7 +139,7 @@
     (20, '2025-06-11 06:00:00', 1),
     (20, '2025-06-11 07:00:00', 1),
     (20, '2025-06-11 08:00:00', 1),
-    (20, '2025-06-11 09:00:00', 1),
+    (60, '2025-06-11 09:00:00', 1),
     (20, '2025-06-10 09:00:00', 2),
     (20, '2025-06-10 10:00:00', 2),
     (25, '2025-06-10 11:00:00', 2),
