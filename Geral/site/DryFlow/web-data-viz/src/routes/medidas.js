@@ -50,5 +50,7 @@ router.get("/ultimas24HorasLinha/:compressorEspecifico", function (req, res) {
 router.get("/nomeOficinaUsuario/:oficinaDoUsuarioTitulo", function (req, res) {
   medidaController.nomeOficinaUsuario(req, res);
 });
-
+router.get("/modeloCompressorSelecionado/:modeloCompressorTitulo", function (req, res) {
+  medidaController.modeloCompressorSelecionado(req, res);
+});
 module.exports = router;

@@ -58,7 +58,7 @@
             class="kpiGraficoLinhaCompressorEspecifico"
             id="kpiHorarioInicioUmidadeMaior50Hoje"
           >
-            <p>Horário do primeiro registro com umidade acima do 50% hoje:</p>
+            <p>Horário do primeiro registro com umidade acima de 50% hoje:</p>
             <span id="horarioInicioPassou50"></span>
           </div>
           <div
@@ -70,14 +70,14 @@
           </div>
         </div>
 
-        <h1>Umidade Compressor Selecionado:</h1>
+        <h1>Umidade do Compressor  <span id="nomeDocompressor" >:</h1>
         <div id="graficos">
           <canvas id="myChartCanvas0"></canvas>
         </div>
         <div>
           <p id="avisoCaptura" style="color: #000000"></p>
         </div>
-        <h1>Compressor Selecionado nas últimas 24 horas</h1>
+        <h1>Compressor  <span class="nomeCompressor"> </h1>
         <div id="graficos">
           <canvas id="myChartCanvasUltimas24Horas"></canvas>
         </div>
@@ -105,6 +105,17 @@
     </div>
   </body>
 </html>
+
+<script>
+   var modeloCompressorTitulo = sessionStorage.COMPRESSOR_SELECIONADO;
+  fetch(`/medidas/modeloCompressorSelecionado/${modeloCompressorTitulo}`)
+    .then((res) => res.json())
+    .then((dados) => {
+      console.log("Nome do compressor: " + dados[0].modelo);
+      document.querySelector('.nomeCompressor').innerHTML =`${dados[0].modelo} nas últimas 24 horas`;
+      nomeDocompressor.innerHTML = `${dados[0].modelo}`;
+    });
+</script>
 <script>
   var cargo = sessionStorage.CARGO_USUARIO;
 
