@@ -613,7 +613,20 @@ tbody {
   background-color: #faf9f9;
 }
 
+/* AJUSTES LUCAS 10/06 */
+
 #botoesSideBar {
   display: flex;
   flex-direction: column;
+}
+
+#sel_fitro_compressor_alertas {
+  background-color: var(--cor-terciaria);
+  border: #1e5290;
+  color: white;
+  height: 4vh;
+  font-weight: 400;
+  border-radius: 2.5px;
+  margin-bottom: 15px;
+  /* text-align: center; */
 }
