@@ -612,3 +612,8 @@ tbody {
   box-shadow: rgba(0, 0, 0, 0.483) 0px 5px 8px;
   background-color: #faf9f9;
 }
+
+#botoesSideBar {
+  display: flex;
+  flex-direction: column;
+}
