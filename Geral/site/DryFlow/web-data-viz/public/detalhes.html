@@ -46,9 +46,9 @@
         </a>
       </div>
       <div class="container">
-        <h1>TABELA DE ALERTAS DE UMIDADE</h1>
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 21vw;">
         <!-- TABELA DE ALERTAS-->
-        <p>Compressor:</p>
+        <p style="margin-top: 0px; ">Filtrar por Compressor:</p>
         <select
           name="fitro_compressor_alertas"
           id="sel_fitro_compressor_alertas"
@@ -56,9 +56,10 @@
         >
           <option value="todos">Todos</option>
         </select>
+        </div>
         <table class="table">
           <caption>
-            Alertas
+          Tabela de Alertas
           </caption>
           <tbody id="divMensagem" class="alertas">
             <!-- scroll no css  -->

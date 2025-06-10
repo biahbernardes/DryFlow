@@ -228,7 +228,7 @@ body {
   padding-bottom: 12px;
 
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  height: 16vh;
+  height: 18vh;
   width: 15vw;
   text-align: center;
   justify-content: flex-start;
@@ -240,7 +240,7 @@ body {
   background-color: rgb(244, 178, 12);
   min-height: 3.5vh;
   border-radius: 2px;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 500;
   align-items: center;
   display: flex;
@@ -253,7 +253,7 @@ body {
   min-height: 3.5vh;
   border-radius: 2px;
   font-weight: 500;
-  font-size: large;
+  font-size: 1rem;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -265,7 +265,7 @@ body {
   min-height: 3.5vh;
   border-radius: 2px;
   font-weight: 500;
-  font-size: large;
+  font-size: 1rem;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -277,7 +277,7 @@ body {
   min-height: 3.5vh;
   border-radius: 2px;
   font-weight: 500;
-  font-size: large;
+  font-size: 1rem;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -473,7 +473,7 @@ body {
   /*deixa a tabela mais limpa, fundindo as bordas, não separa por célula*/
   background-color: #fff;
   width: 80%;
-  margin-top: 30px;
+  margin-top: 0px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   margin-bottom: 60px;
@@ -599,8 +599,8 @@ tbody {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 190px;
-  height: 120px;
+  width: 15vw;
+  height: 16vh;
   padding: 13px;
   margin: 2%;
   color: #0c1326;
