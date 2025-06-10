@@ -158,6 +158,15 @@ function buscarMedidas24HorasLinha(compressorEspecifico) {
   return database.executar(instrucaoSql);
 }
 
+function nomeOficinaUsuario(idOficinaDoUsuario) {
+  const instrucaoSql = `
+       SELECT nomeOficina FROM oficina WHERE idOficina = ${idOficinaDoUsuario}
+
+    `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarUltimasMedidas,
   buscarMedidasEmTempoReal,
@@ -168,4 +177,5 @@ module.exports = {
   ultimasTodosCompressoresUmidadeMaior,
   ultimasCompressoresOficina,
   buscarMedidas24HorasLinha,
+  nomeOficinaUsuario,
 };

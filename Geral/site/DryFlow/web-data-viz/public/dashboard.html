@@ -92,7 +92,7 @@
 
         <div class="filtro">
           <div style="width: 70%; text-align: center">
-            <h3>Compressores da Oficina Brandão Cars</h3>
+            <h3>Compressores da <span id="nomeDaOficina"></span></h3>
           </div>
           <div style="display: flex; flex-direction: column; margin-top: 0%">
             <p>Filtrar Compressores:</p>
@@ -288,4 +288,13 @@
     sessionStorage.COMPRESSOR_SELECIONADO = idCompressor;
     window.location.href = "compressorDetalhes.html";
   }
+</script>
+<script>
+  var oficinaDoUsuarioTitulo = sessionStorage.OFICINA_USUARIO;
+  fetch(`/medidas/nomeOficinaUsuario/${oficinaDoUsuarioTitulo}`)
+    .then((res) => res.json())
+    .then((dados) => {
+      console.log("Nome da oficina: " + dados[0].nomeOficina);
+      nomeDaOficina.innerHTML = `${dados[0].nomeOficina}`;
+    });
 </script>

@@ -47,4 +47,8 @@ router.get("/ultimas24HorasLinha/:compressorEspecifico", function (req, res) {
   medidaController.buscarMedidas24HorasLinha(req, res);
 });
 
+router.get("/nomeOficinaUsuario/:oficinaDoUsuarioTitulo", function (req, res) {
+  medidaController.nomeOficinaUsuario(req, res);
+});
+
 module.exports = router;
