@@ -497,6 +497,7 @@ body {
 
 .table tbody tr {
   border-bottom: 1px solid #100f0f; /* linha */
+  margin-bottom: 10px;
 }
 
 tbody {
