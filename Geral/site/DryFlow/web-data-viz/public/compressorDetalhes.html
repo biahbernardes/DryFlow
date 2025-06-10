@@ -22,13 +22,15 @@
           <h1>Olá, <span id="b_usuario"></span></h1>
         </div>
 
-        <a href="./dashboard.html">Visão Geral</a>
-        <a href="./detalhes.html">Histórico de Alertas</a>
-        <a
-          href="https://dryflow-team.atlassian.net/jira/core/form/2c1b8da3-e3a9-46ab-922d-4badab73ce36"
-          >Suporte</a
-        >
-        <a href="./cadastro-dryflow.html">Cadastrar Novo Usuário</a>
+        <div id="botoesSideBar">
+          <a href="./dashboard.html">Visão Geral</a>
+          <a href="./detalhes.html">Histórico de Alertas</a>
+          <a
+            href="https://dryflow-team.atlassian.net/jira/core/form/2c1b8da3-e3a9-46ab-922d-4badab73ce36"
+            >Suporte</a
+          >
+          <a href="./cadastro-dryflow.html">Cadastrar Novo Usuário</a>
+        </div>
 
         <a href="./index.html" class="logout-btn">
           Sign-out
@@ -103,6 +105,33 @@
   </body>
 </html>
 <script>
+  var cargo = sessionStorage.CARGO_USUARIO;
+
+  console.log("Cargo do usuario:" + cargo);
+
+  if (cargo == "gerente" || cargo == "supervisor") {
+    botoesSideBar.innerHTML = `
+    <a href="./dashboard.html">Visão Geral</a>
+          <a href="./detalhes.html">Histórico de Alertas</a>
+          <a
+            href="https://dryflow-team.atlassian.net/jira/core/form/2c1b8da3-e3a9-46ab-922d-4badab73ce36"
+            >Suporte</a
+          >
+          <a href="./cadastro-dryflow.html">Cadastrar Novo Usuário</a>
+          
+    `;
+  } else {
+    botoesSideBar.innerHTML = `
+    
+          <a href="./dashboard.html">Visão Geral</a>
+          <a href="./detalhes.html">Histórico de Alertas</a>
+          <a
+            href="https://dryflow-team.atlassian.net/jira/core/form/2c1b8da3-e3a9-46ab-922d-4badab73ce36"
+            >Suporte</a
+          >
+    `;
+  }
+
   function atualizarDataHora() {
     const agora = new Date();
     const dataHoraFormatada = agora.toLocaleString("pt-BR"); // horario e data brasileiros
